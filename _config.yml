@@ -1,13 +1,13 @@
 # Site
-title:              Moon
-bio:                'Minimal, one column jekyll theme.'
-description:        "Moon is a minimal, one column jekyll theme for your blog."
+title:              Jacob Aronoff
+bio:                "I'm a software engineer at BitSight Technologies. I am currently a senior at Milton Academy, and will be attending Northeastern University College of Computer and Information Science starting this fall, 2016."
+description:        "I program mainly in Swift, Python, and Java. I'm currently working on a CLI that organizes your computer automatically."
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 locale:             en_US
-url:                http://taylantatli.me/Moon
+url:                http://jaronoff97.github.io
 
 # Jekyll
 permalink:          /:title/
@@ -25,7 +25,7 @@ sass:
   style:            compressed
 
 # Comments
-disqus_shortname:   taylantatli
+disqus_shortname:   jaronoff97
 
 # Social
 # if you don't have any of social below, comment the line.
@@ -37,18 +37,18 @@ disqus_shortname:   taylantatli
   #ad-slot:
 #bing-verify:
 #email:
-twitter:            username
-facebook:           username
-github:             username
-#stackoverflow:      123456/username   from a "http://stackoverflow.com/users/123456/username" link
-#linkedin:           username
+twitter:            eggsandjakey
+facebook:           Jearonoff
+github:             jaronoff97
+stackoverflow:      4056595/dafly45  # from a "http://stackoverflow.com/users/123456/username" link
+linkedin:           jaronoff97
 #xing:              username
-instagram:          username
+#instagram:          username
 #lastfm:             username
 #tumblr:             username
 #pinterest:         username
 #foursquare:        username
-steam:              username
+#steam:              username
 #dribbble:          username
 #youtube:            username
 #soundcloud:        username
