@@ -7,7 +7,7 @@ words_per_minute:   200
 logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 locale:             en_US
-url:                http://jaronoff97.github.io
+url:                127.0.0.1:4000
 
 # Jekyll
 permalink:          /:title/
@@ -26,6 +26,13 @@ sass:
 
 # Comments
 disqus_shortname:   jaronoff97
+
+projects: 
+  - Swift
+  - Python
+  - Java
+  - Tools
+
 
 # Social
 # if you don't have any of social below, comment the line.
