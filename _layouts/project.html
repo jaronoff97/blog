@@ -23,10 +23,10 @@ layout: compress
                 </div>
                 <div class="post-list">
                 {% for project in site.projects %}
+                        <h2>{{ project | inspect }}</h2>
                     {% for post in site.posts %} 
-                        {% if post.project==project and post.hidden == false %}
+                        {% if post.project != nil and post.project == project and post.hidden == false %}
                     <ul>
-                        <h2>{{ project }}</h2>
                         <li class="wow fadeInLeft" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                             <p>{{ post.excerpt }}</p>
