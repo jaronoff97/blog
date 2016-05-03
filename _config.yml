@@ -27,7 +27,8 @@ sass:
 # Comments
 disqus_shortname:   jaronoff97
 
-projects: 
+projects:
+  - Mirror 
   - Swift
   - Python
   - Java
