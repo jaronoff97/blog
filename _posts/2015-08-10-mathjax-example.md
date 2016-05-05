@@ -10,7 +10,7 @@ tag:
 - test
 - jekyll
 comments: true
-hidden: false
+hidden: true
 project: Swift
 ---
 
