@@ -38,3 +38,30 @@ The basis of programming is variables. Think back (or look ahead) to algebra, wh
 {% highlight python %}
   x = 5 #Your first python variable!
 {% endhighlight %}
+
+We can do all sorts of things to x, we can add to it
+
+{% highlight python %}
+  x = x + 5 #adding
+  x = x - 3 #subtracting
+  x = x * 6 #multiplaction
+  x = x / 4 #dividing
+{% endhighlight %}
+
+Now you may be wondering, okay all of this stuff worked, whatever I was using didn't tell me anything went wrong. How do I know it worked though?
+Well let me tell you about something great
+
+
+{% highlight python %}
+  print(x) # Lets see what x is!
+{% endhighlight %}
+
+Lets make another variable, call it y!
+
+
+{% highlight python %}
+  y = 4 #Your second python variable!
+  print(x+y) #We can add, subtract, divide, multiply, etc. 
+  z = y / x #We can make a new variable called z based on x and y
+{% endhighlight %}
+
