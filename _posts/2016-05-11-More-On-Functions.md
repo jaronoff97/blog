@@ -84,4 +84,8 @@ def full_name(first, last, spacing=' '):
   return(first+spacing+last)
 
 print(full_name(my_first_name, my_last_name))
+#Or we can do set a variable equal to the output
+my_full_name = full_name(my_first_name, my_last_name)
 {% endhighlight %}
+
+Really cool and powerful. As we learn more, it'll be even better. Next time, we're gonna go over control flow and how we can do more based on our variables
