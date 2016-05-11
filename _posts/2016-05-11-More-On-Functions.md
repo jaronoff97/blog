@@ -76,3 +76,12 @@ def print_full_name(first, last, spacing=' '):
 
 print_full_name(my_first_name, my_last_name, '      ')
 {% endhighlight %}
+
+Ok so now the last part of basic functions is the magic 'return' keyword. Just like in algebra if we plug something in to a function, we expect something back right?
+
+{% highlight python %}
+def full_name(first, last, spacing=' '):
+  return(first+spacing+last)
+
+print(full_name(my_first_name, my_last_name))
+{% endhighlight %}
