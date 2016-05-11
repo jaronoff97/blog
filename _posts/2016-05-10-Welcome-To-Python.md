@@ -39,6 +39,7 @@ The basis of programming is variables. Think back (or look ahead) to algebra, wh
   x = 5 #Your first python variable!
 {% endhighlight %}
 
+The little hashtag, pound, number sign, etc. is what's called a comment, we can put it after any complete line of code (but not in the middle of one)
 We can do all sorts of things to x, we can add to it
 
 {% highlight python %}
@@ -63,5 +64,37 @@ Lets make another variable, call it y!
   y = 4 #Your second python variable!
   print(x+y) #We can add, subtract, divide, multiply, etc. 
   z = y / x #We can make a new variable called z based on x and y
+{% endhighlight %}
+
+Ready for some more great magic?! Just like algebra, we have more than just variables, we have functions! 
+Just like Algebra, we can apply a function to a variable.
+
+{% highlight python %}
+  def f(x):
+    w = x * 10
+    print(w)
+{% endhighlight %}
+
+So this function will multiply the number we pass in by 10 and then print it out.
+Keep in mind, we actually have to tell python we want to use this function.
+
+
+{% highlight python %}
+  f(10) #call the method with some number
+{% endhighlight %}
+
+Something to note about python: spacing and indentation matters! A LOT!!!! Be sure that when you're writing python code, you indent the next line after you type a colon
+
+
+{% highlight python %}
+  def f(x): #THIS IS NO GOOD!!!
+  w = x * 10
+  print(w)
+
+    ##########
+
+  def f(x): #This works fine!
+    w = x * 10
+    print(w)
 {% endhighlight %}
 
