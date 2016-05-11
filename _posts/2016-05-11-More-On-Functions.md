@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Welcome to python
+title: More on Functions
 date: 2016-05-11
 excerpt: "More variables. More functions. More fun"
 tags: [python, code]
