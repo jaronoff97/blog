@@ -98,3 +98,4 @@ Something to note about python: spacing and indentation matters! A LOT!!!! Be su
     print(w)
 {% endhighlight %}
 
+Okay, well that's enough for now, next time we'll go over different kinds of variables, built-in-functions, and functions with multiple parameters.
