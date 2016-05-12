@@ -10,10 +10,9 @@ project: Python
 ---
 
 And we're back! Let another day of Python begin!! 
-We know how to make variables (Strings and Numbers) and we know how to make functions that do stuff to those variables. But what if we want to do something different for each kind of variable we get? Well, the answer lies in one of the words in the previous sentence.
+We know how to make variables (Strings and Numbers) and we know how to make functions that do stuff to those variables. But what if we want to do something different for each kind of variable we get? Well, the answer lies within one of the words in the previous sentence.
 
 I wonder IF you'll get it...
-
 
 {% highlight python %}
 def hello(foo="hello",bar="world"):
@@ -31,6 +30,7 @@ hello() #prints 'hello world'
 hello("someone") #prints 'someone world'
 hello("hello","Jacob") #prints "Who are you saying hello to? oh hi Jacob"
 hello(bar="worlds") #prints "Who are you saying hello to? oh hi worlds"
+hello(foo="goodbye") #prints 'goodbye world'
 {% endhighlight %}
 
 So, in python we use the keyword **if** to begin a question and we use the following words to ask the question:
@@ -69,6 +69,7 @@ def guessing_game(number):
 
 guessing_game(101)
 guessing_game(-1)
+guessing_game(50)
 guessing_game(30)
 guessing_game(20)
 guessing_game(27)
