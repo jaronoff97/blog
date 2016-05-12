@@ -117,4 +117,4 @@ So this is the whole program. Lets go over what the new stuff does:
 
 Well that's all for now, next time we're gonna go over lists and some more powerful python syntax.
 
-
+{% gist b01a73f3368f4b0cf0b0575f5c80d184 %}
