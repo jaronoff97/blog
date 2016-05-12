@@ -27,8 +27,8 @@ Try this function out in the following ways:
 
 
 {% highlight python %}
-hello()
-hello("someone")
-hello("hello","Jacob")
+hello() #prints 'hello world' 
+hello("someone") #prints 'someone world'
+hello("hello","Jacob") #prints "Who are you saying hello to? oh hi Jacob"
 hello(bar="worlds")
 {% endhighlight %}
