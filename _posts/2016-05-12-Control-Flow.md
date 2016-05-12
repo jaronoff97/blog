@@ -77,3 +77,4 @@ guessing_game(27)
 
 > Something to note: In my code I used a function called format. This function allows us to print strings and numbers together. Format looks inside of a string for curly brackets with numbers (starting at 0). It then takes the first parameter in the function and puts it in the right place (more on this later)
 
+
