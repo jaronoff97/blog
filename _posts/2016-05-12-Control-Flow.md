@@ -78,4 +78,43 @@ guessing_game(27)
 
 > Something to note: In my code I used a function called format. This function allows us to print strings and numbers together. Format looks inside of a string for curly brackets with numbers (starting at 0). It then takes the first parameter in the function and puts it in the right place (more on this later)
 
+Lets make this a bit cooler though, it's kinda of annoying that in order to play the game you have to program, lets add some user input! We're going to use a simple built-in function called **input**
+
+~~~ python
+secret_number = 27
+lower_bound = 0
+upper_bound = 100
+their_number = -100
+
+
+def guessing_game(number):
+    if number <= lower_bound or number >= upper_bound:
+        print("Out of bounds!")
+        return  # stops the method, we could also just say return, but break is a really useful control flow statement
+    if number > secret_number:
+        print("TOO HIGH!")
+    elif number < secret_number:
+        print("TOO LOW!")
+    elif number == secret_number:
+        print("You got it! My number was {0}".format(secret_number))
+    else:
+        print("This should never happen!")
+
+
+while their_number is not secret_number:
+    their_number = input("Guess a number: ")
+    guessing_game(their_number)
+~~~
+
+So this is the whole program. Lets go over what the new stuff does:
+
+* We make a number called **their_number** equal to -100 which really doesn't matter because we're gonna set it equal to something else immediately
+* Our **guessing_game** function is the exact same as before
+* We have a new control flow statement **while**, which is pretty self explanatory, basically while the condition is true, do the following block of code
+* Inside of there we set **their_number** equal to the **input** of the user
+* **input** takes a parameter equal to the text it'll print out
+* We then call the **guessing_game** method with **their_number**
+
+Well that's all for now, next time we're gonna go over lists and some more powerful python syntax.
+
 
