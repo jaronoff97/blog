@@ -74,5 +74,25 @@ for num in range(0,10):#range is another built in function in python
     print(num)#prints 0 through 9
 ~~~
 
+With python, we can have lists of strings, and numbers together. Lists have some built in functions that are really useful:
+
+~~~ python
+list = ["string1",10,"string2",100]
+if 10 in list:
+    list.remove(list.index(10))
+    list.insert(3,300)
+    for thing in list:
+        print(thing)
+
+~~~
+
+Here are some of the functions of array:
+
+* append(obj) #add an object to the end of an array
+* count(obj) #count the amount of times the object shows up in the array
+* index(obj) #where's the first occurance of the object
+* insert(index, obj) #put an object at a certain place
+* remove(obj) #get rid of an object if it's there
+
 
 
