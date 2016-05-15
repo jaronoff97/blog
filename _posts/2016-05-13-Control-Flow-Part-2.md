@@ -94,5 +94,5 @@ Here are some of the functions of array:
 * list.**insert(index, obj)** #put an object at a certain place
 * list.**remove(obj)** #get rid of an object if it's there
 
-
+Next time we're going to go over a different kind of list called a dictionary. In the meantime, I'd suggest to make a program that uses lists and some of the other things we've learned. 
 
