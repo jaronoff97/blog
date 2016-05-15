@@ -96,3 +96,4 @@ Here are some of the functions of array:
 
 Next time we're going to go over a different kind of list called a dictionary. In the meantime, I'd suggest to make a program that uses lists and some of the other things we've learned. 
 
+{% gist 6c88c16f0e09bfc346c76b6bdd265af6 %}
