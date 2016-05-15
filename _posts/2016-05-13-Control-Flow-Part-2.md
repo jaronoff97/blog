@@ -88,11 +88,11 @@ if 10 in list:
 
 Here are some of the functions of array:
 
-* append(obj) #add an object to the end of an array
-* count(obj) #count the amount of times the object shows up in the array
-* index(obj) #where's the first occurance of the object
-* insert(index, obj) #put an object at a certain place
-* remove(obj) #get rid of an object if it's there
+* list.**append(obj)** #add an object to the end of an array
+* list.**count(obj)** #count the amount of times the object shows up in the array
+* list.**index(obj)** #where's the first occurance of the object
+* list.**insert(index, obj)** #put an object at a certain place
+* list.**remove(obj)** #get rid of an object if it's there
 
 
 
