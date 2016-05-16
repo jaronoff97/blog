@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Dictionaries
+title: Final Python Project
 date: 2016-05-15
-excerpt: "Final Python project"
+excerpt: "Todolist application, using everything we've learned"
 tags: [python, code, final]
 comments: true
 hidden: false
@@ -113,6 +113,74 @@ if __name__ == '__main__':
     main()
 ~~~
 In here we get each item in our todolist and print out which number todo it is. We then print out the keys and values for that todo item. If you want to add to this program, try making it so that after the items have been printed, the user can add or delete from this list. The final code for that will be posted at the bottom. 
+
+The first step I would take is breaking up the adding and printing parts of the program into methods so we the user can keep asking to use them. 
+
+~~~ python
+def add_todo():
+    print("When you're done entering your todos type 'Done!'")
+    while(True):
+        add_todo = raw_input("Name a thing you have to do: ")
+        if "Done!" in add_todo:
+            break
+        todos.append(make_todo(add_todo))
+
+
+def print_todos():
+    print("--------------------")
+    for todo in todos:
+        print("Here is your {0} todo".format(todo["number"]))
+        for key, value in todo.iteritems():
+            print("The {0} is {1}".format(key, value))
+        print("--------------------")
+~~~
+
+The **add_todo()** is called at the beggining of our program and then inside of a **while** loop so we can keep doing it as long as we want. The **print_todos()** is the same as before, but I added in some lines to make it more visually appealing. 
+
+~~~ python
+def remove_todo():
+    to_delete = input("Which todo have you completed? ") - 1
+    todos.remove(to_delete)
+~~~
+
+Here's the **remove_todo()** method which asks the user to remove a todo from their list. The issue with this is that once the todo item is deleted, the rest of the todolist's numbers in the dictionary dont change. To fix that i made a method: 
+
+~~~ python
+def remove_todo():
+    to_delete = input("Which todo have you completed? ") - 1
+    todos.remove(to_delete)
+    reassign_numbers()
+
+
+def reassign_numbers():
+    for num in range(0, len(todos)):
+        todos[num]["number"] = num + 1
+~~~
+
+All it does is go through and change the numbers of each todo.
+
+Finally we put all the method calls in a **while** loop where we ask the user for their input:
+
+~~~ python
+def main():
+    print("Welcome to your todolist!")
+    add_todo()
+    print_todos()
+    while(True):
+        choice = raw_input(
+            "If you want to add to your list say 'add', if you want to remove things say 'remove', if you want to see your todos say 'print', say anything else to exit ")
+        if 'add' in choice:
+            add_todo()
+        elif 'remove' in choice:
+            remove_todo()
+        elif 'print' in choice:
+            print_todos()
+        else:
+            print("Thanks!")
+            break
+~~~
+
+That's it! Very simple all in all, hopefully you feel comfortable with basic python now. My next series is going to be with Swift, it'll be a more difficult tutorial, going through more advanced concepts, but feel free to take a look! The entire code for this project is posted at the bottom in the **gist**
 
 {% gist c3e7dcd97af0a9e6265c39b5cd04257a %}
 
