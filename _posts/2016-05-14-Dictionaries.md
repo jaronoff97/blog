@@ -54,6 +54,7 @@ So lets make a program that uses everything we've learned. Let's make a todolist
 todos=[] #Make an empty list of our todos
 ~~~
 Now to introduce a new way of programming in python
+
 ~~~ python
 todos=[]
 
