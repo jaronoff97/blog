@@ -70,3 +70,5 @@ print(power(10,power: 3))
 ~~~
 
 Okay well that's enough for now, next time we'll go over different kinds of datastructures, classes, and some more swifty behavior.
+
+{% gist f8f64e9abbfd0197ee5690974e7cf86f %}
