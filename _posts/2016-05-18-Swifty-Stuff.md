@@ -126,5 +126,7 @@ Which would make our constructor look like this:
 let new_homework = Homework(subject: .Science, due_date:"Tuesday",name:"Finish Swift Tutorial")
 ~~~
 
-Notice how the subject in our constructor isn't **Subject.Science**. It's implied that it's a subject because that's what the constructor asks for.
+Notice how the subject in our constructor isn't **Subject.Science**. It's implied that it's a subject because that's what the constructor asks for. Ok well that's all for now, next time is going to be a tough one as we're going to go over different kinds of functions, inheritance, and optionals. Be prepared because this next one is going to be our toughest one for the entire tutorial series.
+
+{% gist 5a20e5f1e8c9edea0907f3f1bfd88a0a %}
 
