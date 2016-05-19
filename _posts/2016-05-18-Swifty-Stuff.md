@@ -3,7 +3,7 @@ layout: post
 title: Swifty Stuff
 date: 2016-05-18
 excerpt: "Classes, structs, enums, etc."
-tags: [swift, code, first]
+tags: [swift, code, struct, class]
 comments: true
 hidden: false
 project: Swift
