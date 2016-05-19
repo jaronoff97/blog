@@ -192,3 +192,5 @@ print("-----DescendingDueDate-----")
 ~~~
 
 Well that's all for now, I know this was a tough one, but hopefully you understood it. Next time we're going to start iOS application building by learning three final swift concepts. I also think I'm going to make a video to show the iOS stuff.
+
+{% gist a6e7e5566745593fcbaa7e5a29169c2e %}
