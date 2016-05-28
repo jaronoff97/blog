@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Control Flow
+title: Part 3, Control Flow
 date: 2016-05-11
-excerpt: "I wonder IF this works FOR a lot of things"
+excerpt: "Part 3: I wonder IF this works FOR a lot of things"
 tags: [python, code]
 comments: true
 hidden: false

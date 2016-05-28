@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Dictionaries
+title: Part 5, Dictionaries
 date: 2016-05-14
-excerpt: "Every key has a value"
+excerpt: "Part 5: Every key has a value"
 tags: [python, code, dictionary]
 comments: true
 hidden: false

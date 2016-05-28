@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Final Python Project
+title: Part 6, Final Python Project
 date: 2016-05-15
-excerpt: "Todolist application, using everything we've learned"
+excerpt: "Part 6: Todolist application, using everything we've learned"
 tags: [python, code, final]
 comments: true
 hidden: false

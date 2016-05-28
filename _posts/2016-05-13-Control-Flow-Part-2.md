@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Control Flow Pt. 2
+title: Part 4, More Loops
 date: 2016-05-13
-excerpt: "I'll keep listing things for a while"
+excerpt: "Part 4: I'll keep listing things for a while"
 tags: [python, code, lists, for]
 comments: true
 hidden: false

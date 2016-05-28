@@ -1,8 +1,8 @@
 ---
 layout: post
-title: More on Functions
+title: Part 2, More on Functions
 date: 2016-05-11
-excerpt: "More variables. More functions. More fun"
+excerpt: "Part 2: More variables. More functions. More fun"
 tags: [python, code]
 comments: true
 hidden: false

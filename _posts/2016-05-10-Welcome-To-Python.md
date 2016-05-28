@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Welcome to python
+title: Part 1, Welcome to python
 date: 2016-05-10
-excerpt: "Hello World – Python."
+excerpt: "Part1: Hello World – Python."
 tags: [python, code, first]
 comments: true
 hidden: false
