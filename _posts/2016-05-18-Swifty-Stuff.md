@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Part 3, Swifty Stuff
+title: Part 2, Swifty Stuff
 date: 2016-05-18
 excerpt: "Classes, structs, enums, etc."
 tags: [swift, code, struct, class]

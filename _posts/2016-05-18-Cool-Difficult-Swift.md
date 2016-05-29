@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Part 2, Cool, Difficult Swift
+title: Part 3, Cool, Difficult Swift
 date: 2016-05-18
 excerpt: "Closures are shorthand functions"
 tags: [swift, code, closures]
