@@ -42,27 +42,7 @@ In our **main** lets construct a new instance of a FrameLayoutURLReader.
 
 All we're doing here is making a new instance of itself, resizing it, and showing it. Now let's think about what we want this to look like. If we're thinking early 00's browser, it should just have a place to type a URL and a button to go to that URL. In the center we'll display whatever HTML that URL returns. It should look something like this:
 
-~~~ java
-/*
-----------------------------------
-| Type a URL    |       GO       |
-|--------------------------------|
-|                                |
-|                                |
-|                                |
-|                                |
-|           HTML DATA            |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-----------------------------------
-*/
-~~~
+{% gist cfb17a893257c90506e0f54a62fb7229 %}
 
 So for our UI componenets we're going to need a JTextField so the user can input a URL, a JTextArea for us to display the response, a JButton for the user to press Go!, and for aesthetic purposes we're going to put our JTextArea inside of a JScrollPane, so that we can see all of the html. Here's what that looks like in code: 
 
@@ -76,27 +56,7 @@ So for our UI componenets we're going to need a JTextField so the user can input
 
 So now we have to put these components in a layout, if we look back at our diagram: 
 
-~~~ java
-/*
----------------------------------- <-- a BorderLayout with a North and Center
-| Type a URL    |       GO       | <-- a (1,2) Gridlayout
-|--------------------------------|
-|                                |
-|                                |
-|                                |
-|                                |
-|           HTML DATA            | <-- a (1,1) Gridlayout
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-|                                |
-----------------------------------
-*/
-~~~
+{% gist 0bdf57feb43629020de0d1c8dfb323fb %}
 
 > The reason we have a (1,1) GridLayout for our center is so that our scrollpane takes up the entire space. 
 
