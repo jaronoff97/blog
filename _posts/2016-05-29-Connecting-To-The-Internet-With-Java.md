@@ -16,7 +16,7 @@ Hello and welcome to my first Java tutorial. This is going to be my only text-ba
 
 First we're going to make a class named FrameLayoutURLReader, this class will **extend** JFrame and __implement__ ActionListener. By inheriting from JFrame, we make this program an application whose layout will be swing/ frame based. By implementing actionlistener, we can attach listeners to buttons so that we can do something on a click. 
 
-~~~ Java
+~~~ java
 public class FrameLayoutURLReader extends JFrame implements ActionListener {
 	public static void main(String[] args){
 
@@ -32,7 +32,7 @@ public void actionPerformed(ActionEvent e){
 
 In our **main** lets construct a new instance of a FrameLayoutURLReader.
 
-~~~ Java
+~~~ java
 	public static void main(String[] args){
 	FrameLayoutURLReader application = new FrameLayoutURLReader("Get URL");    // construct a new instance
       application.resize(600, 600);// resize the frame
@@ -42,6 +42,7 @@ In our **main** lets construct a new instance of a FrameLayoutURLReader.
 
 All we're doing here is making a new instance of itself, resizing it, and showing it. Now let's think about what we want this to look like. If we're thinking early 00's browser, it should just have a place to type a URL and a button to go to that URL. In the center we'll display whatever HTML that URL returns. It should look something like this:
 
+~~~
 ----------------------------------
 | Type a URL    |       GO       |
 |--------------------------------|
@@ -59,11 +60,12 @@ All we're doing here is making a new instance of itself, resizing it, and showin
 |                                |
 |                                |
 ----------------------------------
+~~~
 
 So for our UI componenets we're going to need a JTextField so the user can input a URL, a JTextArea for us to display the response, a JButton for the user to press Go!, and for aesthetic purposes we're going to put our JTextArea inside of a JScrollPane, so that we can see all of the html. Here's what that looks like in code: 
 
 
-~~~ Java
+~~~ java
    public JTextField urlTextField = new JTextField("Enter a valid URL");//Text field for a URL
    public JTextArea urlTextArea = new JTextArea(400, 300);//Text area for our HTML Code
    public JScrollPane urlScrollTextArea = new JScrollPane(urlTextArea);//Make it so our text area can scroll
@@ -72,6 +74,7 @@ So for our UI componenets we're going to need a JTextField so the user can input
 
 So now we have to put these components in a layout, if we look back at our diagram: 
 
+~~~
 ---------------------------------- <-- a BorderLayout with a North and Center
 | Type a URL    |       GO       | <-- a (1,2) Gridlayout
 |--------------------------------|
@@ -89,12 +92,13 @@ So now we have to put these components in a layout, if we look back at our diagr
 |                                |
 |                                |
 ----------------------------------
+~~~
 
 > The reason we have a (1,1) GridLayout for our center is so that our scrollpane takes up the entire space. 
 
 We put the code for this in our constructor so that our layout is ready to go by the time we call **application.show**
 
-~~~ Java
+~~~ java
    public FrameLayoutURLReader( String title) {
       super(title);
       JPanel centerPanel = new JPanel();//Construct center panel
@@ -118,7 +122,7 @@ We put the code for this in our constructor so that our layout is ready to go by
 
 So now that we've made our layout and added our actionlistener to our button, we're ready to begin our URL parsing. First, let's make a method called **readURL** which will be called in our actionPerformed.
 
-~~~ Java
+~~~ java
 public void  actionPerformed (ActionEvent e) {
       readURL();//This will be called when we press the go button
    }   // end of Action Performed
@@ -130,7 +134,7 @@ public void readURL(){
 
 In order to connect to and read from a URL we need to construct three things. a __URL__, __InputStreamReader__, and __BufferedReader__. The URL's job is to point our program in the correct direction, the InputStreamReader's job is to open a connection to our URL, and finally our BufferedReader's job is to read from that connection. 
 
-~~~ Java
+~~~ java
 public void readURL(){
 	URL destinationURL = null;//Declare a new URL for our program to go
 	InputStreamReader isr = null;//Declare a DataInputSteram which connects our program to the internet
@@ -140,7 +144,7 @@ public void readURL(){
 
 Now we do the real work of connecting and reading. First we initialize our three objects:
 
-~~~ Java
+~~~ java
 try {
      destinationURL = new URL("http://" + urlTextField.getText());//Set the URL's location
      isr = new InputStreamReader(destinationURL.openStream());// open a stream to our URL and put the data in isr
@@ -154,7 +158,7 @@ try {
 
 Now that we are ready to read data from our __**reader**__, we can make a String which will represent the line we're reading from. We want to read EVERYTHING from our reader, line by line. Because each URL will have a different amount of lines, it's best to use a while loop. Our condition is as long as line isn't null because once the reader is done, the method __readLine()__ will return **null**. Finally, inside our while loop, we want to add each line to the textarea which can be done using the method __urlTextArea.append__.
 
-~~~ Java
+~~~ java
 public void readURL() {
    System.out.println("READURL");
    URL destinationURL = null;//Declare a new URL for our program to go
