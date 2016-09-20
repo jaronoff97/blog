@@ -1,7 +1,7 @@
 # Site
 title:              Jacob Aronoff
-bio:                "I'm a software engineer at BitSight Technologies. I am currently a senior at Milton Academy, and will be attending Northeastern University College of Computer and Information Science starting this fall, 2016."
-description:        "I program mainly in Swift, Python, and Java. I'm currently working on a CLI that organizes your computer automatically."
+bio:                "I'm a software engineer at BitSight Technologies. I am currently attending Northeastern University College of Computer and Information Science. I previously went to Milton Academy where I founded the school's programming club which does programming community outreach."
+description:        "I program mainly in Swift, Python, and Java. I'm currently the lead developer for the Feedshare app."
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/logo.png'
