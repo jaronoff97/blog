@@ -1,0 +1,171 @@
+{
+  "basics": {
+    "name": "Jacob Aronoff",
+    "label": "",
+    "picture": "",
+    "email": "jacobaronoff45@gmail.com",
+    "phone": "(617) 645-6573",
+    "website": "jaronoff97.github.io",
+    "summary": "I'm from Newton, Massachusetts and have been in the Boston area for most of my life. I went to Milton Academy where I helped grow the schools programming department from 40 people to 120 people (in a school of 800). I was instrumental in the founding of the schools programming club and tutoring system. I currently attend Northeastern University where I study Computer Science. I'm very interested in tutoring, entrepreneurship, and programming (of course!) I'm part of Northeastern's NUHacks club whose mission is to help student make cool things for the purpose of making cool things (a mission near and dear to my heart.) I was recently elected a NUHacks board member.",
+    "location": {
+      "address": "29 Lansing road",
+      "postalCode": "MA 02465",
+      "city": "Newton",
+      "countryCode": "US",
+      "region": "Massachusetts"
+    },
+    "profiles": []
+  },
+  "work": [
+    {
+      "company": "Feedshare",
+      "position": "Co-Founder",
+      "website": "http://feedshare.org",
+      "startDate": "2016-08",
+      "endDate": "2017-02",
+      "summary": "Feedshare is an app that allows college students to find free food around campus.",
+      "highlights": [
+        "Built a cross platform mobile application in react native, swift, objective C and java",
+        "Selected as a Nexpo presenter"
+      ]
+    },
+    {
+      "company": "Bitsight Technologies",
+      "position": "Software Engineering Intern",
+      "website": "https://www.bitsighttech.com",
+      "startDate": "2015-06",
+      "endDate": "2016-08",
+      "summary": "I worked at Bitsight for two summers",
+      "highlights": [
+        "Automated customer support by leveraging three seperate APIs in a microservice",
+        "Created micro services in Flask, Javascript, and Java",
+        "Helped update the company wide testing su",
+        "Automated product team workflow",
+        "Added more expressive information in customer admin portal"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Milton Academy Programming Club",
+      "position": "Founder and Head Tutor",
+      "website": "",
+      "startDate": "2014-09",
+      "endDate": "2016-06",
+      "summary": "Started the programming tutor curriculum at my high school",
+      "highlights": [
+        "Award named after me"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Milton Academy",
+      "area": "",
+      "studyType": "High School",
+      "startDate": "2012-09",
+      "endDate": "2016-06",
+      "gpa": "",
+      "courses": [
+        "Programming Applications",
+        "Programming Independent Study"
+      ]
+    },
+    {
+      "institution": "Northeastern University",
+      "area": "Computer Science",
+      "studyType": "BS",
+      "startDate": "2016-08",
+      "endDate": "2021-06",
+      "gpa": "",
+      "courses": [
+        "CS 2500 - Fundamentals of CS 1",
+        "CS 1800 - Discrete Structures"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Laurence S. Persky Memorial Award",
+      "date": "2015-06",
+      "awarder": "Milton Academy",
+      "summary": "excellence in work appearing in a Milton Academy Student Publication"
+    },
+    {
+      "title": "First Prize",
+      "date": "2015-02",
+      "awarder": "Blueprint MIT",
+      "summary": "I won Blueprint by making an app to help coordinate food delivery in schools"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Personal Blog",
+      "publisher": "Self",
+      "releaseDate": "2015",
+      "website": "jaronoff97.github.io",
+      "summary": "My personal blog where I have made numerous tutorials for beginning and advanced programmers"
+    }
+  ],
+  "skills": [
+    {
+      "name": "App Development",
+      "level": "Expert",
+      "keywords": [
+        "Swift",
+        "Java",
+        "React native"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Advanced",
+      "keywords": [
+        "Python",
+        "Java",
+        "Javascript",
+        "SQL"
+      ]
+    },
+    {
+      "name": "API Development",
+      "level": "Advanced",
+      "keywords": [
+        "Flask",
+        "Swagger"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Hebrew",
+      "fluency": "Beginner"
+    },
+    {
+      "language": "Chinese (Mandarin)",
+      "fluency": "Conversational"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Entrepreneurship",
+      "keywords": [
+        "Tamid",
+        "Entrepreneurship Club"
+      ]
+    },
+    {
+      "name": "Photography",
+      "keywords": []
+    },
+    {
+      "name": "Film",
+      "keywords": []
+    }
+  ],
+  "references": []
+}
