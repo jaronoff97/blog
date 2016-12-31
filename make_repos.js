@@ -14,7 +14,7 @@ request.get('https://api.github.com/users/jaronoff97/repos', options, function(e
     var projects = []
     for (var i = 0; i < body.length; i++) {
         console.log(body[i])
-        projects.push({ name: body[i].name, url: body[i].url, updated: body[i].updated_at, description: body[i].description })
+        projects.push({ name: body[i].name, url: body[i].html_url, updated: body[i].updated_at, description: body[i].description })
     }
     nativeObject['projects'] = projects.sort(function(a, b) {
         return Date.parse(b.updated) - Date.parse(a.updated)
