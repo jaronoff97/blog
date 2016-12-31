@@ -18,7 +18,12 @@ description: "I program mainly in Swift, Python, and Java. I'm currently the lea
 <div class="aboutme">
 	<ul class="recent">
 		{% for project in site.projects %}
-	    	<li><a href="{{ project.url}}"><h2 class="post-title" itemprop="name">{{ project.name }}</h2></a></li>
+	    	<li>
+	    		<a href="{{ project.url}}">
+	    			<h2 class="post-title" itemprop="name">{{ project.name }}</h2>
+	    			<h3 class='post-title' itemprop="description">{{project.description}}</h3>
+	    		</a>
+	    	</li>
 	    {% endfor %}
 	</ul>
 </div>

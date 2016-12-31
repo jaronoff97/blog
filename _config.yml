@@ -1,57 +1,67 @@
-# Site settings
-title: Jacob Aronoff
-description: "I program mainly in Swift, Python, and Java. I'm currently the lead developer for the Feedshare app."
-bio: "I'm a software engineer at BitSight Technologies. I am currently attending Northeastern University College of Computer and Information Science. I previously went to Milton Academy where I founded the school's programming club which does programming community outreach."
+title: 'Jacob Aronoff'
+description: 'I program mainly in Swift, Python, and Java. I''m currently the lead developer for the Feedshare app.'
+bio: 'I''m a software engineer at BitSight Technologies. I am currently attending Northeastern University College of Computer and Information Science. I previously went to Milton Academy where I founded the school''s programming club which does programming community outreach.'
 baseurl: ""
-url: "http://jaronoff.com"
-# User settings
-username: Jacob Aronoff
-user_title: Jacob Aronoff - Backend
+url: 'http://jaronoff.com'
+username: 'Jacob Aronoff'
+user_title: 'Jacob Aronoff - Backend'
 email: jacobaronoff45@gmail.com
 twitter_username: eggsandjakey
-github_username:  jaronoff97
-facebook_username:  Jearonoff
+github_username: jaronoff97
+facebook_username: Jearonoff
 linkedin_username: jaronoff97
 disqus_username: jaronoff97
-
-# Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:title/
-
-
-# html minify
+permalink: '/:title/'
 compress_html:
-  clippings: all
-  comments: all
-  endings: []
-  profile: false
-
-# Links to include in menu navigation
+    clippings: all
+    comments: all
+    endings: []
+    profile: false
 links:
-  - title: home
-    url: /
-  - title: my posts
-    url: /posts
-  - title: series
-    url: /series
-  - title: tags
-    url: /tags
-  - title: about me
-    url: /about
-# projects in header index
+    - {title: home, url: /}
+    - {title: 'my posts', url: /posts}
+    - {title: series, url: /series}
+    - {title: tags, url: /tags}
+    - {title: 'about me', url: /about}
 projects:
-  - name: Feedshare
-    url: https://github.com/jaronoff97/Feedshare-Public
-  - name: Mirrorpi
-    url: https://github.com/jaronoff97/mirrorpi
-  - name: Organizr
-    url: https://github.com/jaronoff97/organizr
-# exclude my node related stuff
-exclude: ['package.json', 'src', 'node_modules']
-# Gems
+    - {name: jaronoff97.github.io, url: 'https://api.github.com/repos/jaronoff97/jaronoff97.github.io', updated: '2016-12-30T22:05:02Z', description: null}
+    - {name: Feedshare-Public, url: 'https://api.github.com/repos/jaronoff97/Feedshare-Public', updated: '2016-12-30T05:20:28Z', description: 'This is a public version of Feedshare with redacted keys; there is no git history so as to keep things anonymous.'}
+    - {name: mirrorpi, url: 'https://api.github.com/repos/jaronoff97/mirrorpi', updated: '2016-12-30T02:21:58Z', description: 'This was my senior project for my last year at Milton Academy. The project was programming in python, using opencv. Check Final_Version for the code that was used in production'}
+    - {name: organizr, url: 'https://api.github.com/repos/jaronoff97/organizr', updated: '2016-12-30T02:09:17Z', description: 'This CLI organizes your computer''s Downloads and Desktop files so that you don''t have to'}
+    - {name: CoffeeForChange, url: 'https://api.github.com/repos/jaronoff97/CoffeeForChange', updated: '2016-12-30T02:06:26Z', description: null}
+    - {name: dankWeather, url: 'https://api.github.com/repos/jaronoff97/dankWeather', updated: '2016-10-26T21:02:12Z', description: null}
+    - {name: NativeBase, url: 'https://api.github.com/repos/jaronoff97/NativeBase', updated: '2016-10-20T21:59:35Z', description: 'The missing piece of React Native'}
+    - {name: AlwaysBlue, url: 'https://api.github.com/repos/jaronoff97/AlwaysBlue', updated: '2016-10-01T16:12:05Z', description: 'ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE '}
+    - {name: hacks.github.io, url: 'https://api.github.com/repos/jaronoff97/hacks.github.io', updated: '2016-09-09T00:18:07Z', description: 'The website for NU Hacks, a weekly social event for hackers and makers'}
+    - {name: sample_code, url: 'https://api.github.com/repos/jaronoff97/sample_code', updated: '2016-05-19T18:33:34Z', description: 'This is the sample code for my python tutorial series which can be found on my github pages website. jaronoff97.github.io'}
+    - {name: Flask-Boilerplate, url: 'https://api.github.com/repos/jaronoff97/Flask-Boilerplate', updated: '2016-05-10T18:25:06Z', description: 'My own personal Flask Boilerplate setup'}
+    - {name: Eight_Queens, url: 'https://api.github.com/repos/jaronoff97/Eight_Queens', updated: '2016-04-25T18:29:19Z', description: 'Solution to Eight Queens'}
+    - {name: Pokeapi-wrapper, url: 'https://api.github.com/repos/jaronoff97/Pokeapi-wrapper', updated: '2016-04-14T01:43:32Z', description: 'This is my example for the pokeapi.'}
+    - {name: iOS_Example, url: 'https://api.github.com/repos/jaronoff97/iOS_Example', updated: '2016-04-07T12:20:52Z', description: 'This is an example for iOS apps which has segues, list views, tab views, and cocoapods.'}
+    - {name: play_as_one, url: 'https://api.github.com/repos/jaronoff97/play_as_one', updated: '2016-02-28T13:58:29Z', description: 'This is the git repo for our Blueprint MIT Hackathon app.'}
+    - {name: file_organizer, url: 'https://api.github.com/repos/jaronoff97/file_organizer', updated: '2016-02-22T18:35:09Z', description: 'This is a python file organizer'}
+    - {name: Physics_Soccer, url: 'https://api.github.com/repos/jaronoff97/Physics_Soccer', updated: '2016-02-21T22:11:46Z', description: 'This is a game made in javascript using node and socket io. This game uses calculus to determine electric field strengths and will use calculus to analyze a player''s movements.'}
+    - {name: Git-Draw, url: 'https://api.github.com/repos/jaronoff97/Git-Draw', updated: '2016-01-18T03:59:13Z', description: 'This is a git draw repo'}
+    - {name: hexo-base, url: 'https://api.github.com/repos/jaronoff97/hexo-base', updated: '2016-01-16T20:18:47Z', description: null}
+    - {name: mygithubpage, url: 'https://api.github.com/repos/jaronoff97/mygithubpage', updated: '2015-11-10T02:24:29Z', description: null}
+    - {name: GitHubTests, url: 'https://api.github.com/repos/jaronoff97/GitHubTests', updated: '2015-10-16T16:00:28Z', description: 'This is a test for people to learn how to use github, we''re going to be learning how to push, pull, and branch a git repo'}
+    - {name: MASitApp, url: 'https://api.github.com/repos/jaronoff97/MASitApp', updated: '2015-08-14T22:30:02Z', description: 'This app connects dog walkers and teachers'}
+    - {name: ConversionCalculator, url: 'https://api.github.com/repos/jaronoff97/ConversionCalculator', updated: '2015-07-17T19:41:16Z', description: 'First application made in swift'}
+    - {name: Calculator-Objective-C, url: 'https://api.github.com/repos/jaronoff97/Calculator-Objective-C', updated: '2015-07-06T15:37:13Z', description: 'my first calculator in objective C'}
+    - {name: BMRCalc_iOS, url: 'https://api.github.com/repos/jaronoff97/BMRCalc_iOS', updated: '2015-07-01T18:35:43Z', description: 'This is one of my first iOS creations with objective C'}
+    - {name: MusicPlayerV2, url: 'https://api.github.com/repos/jaronoff97/MusicPlayerV2', updated: '2015-05-14T02:44:30Z', description: 'First push'}
+    - {name: PathFinder, url: 'https://api.github.com/repos/jaronoff97/PathFinder', updated: '2015-02-28T16:03:02Z', description: 'java recursive pathfinder'}
+    - {name: Pong-java-javascript, url: 'https://api.github.com/repos/jaronoff97/Pong-java-javascript', updated: '2015-02-28T15:54:35Z', description: 'Pong in java'}
+    - {name: MusicPlayer, url: 'https://api.github.com/repos/jaronoff97/MusicPlayer', updated: '2015-02-28T15:38:40Z', description: 'A music player I wrote in java and javafx for an exam project. this is Version 1.0'}
+    - {name: NodeApp, url: 'https://api.github.com/repos/jaronoff97/NodeApp', updated: '2015-02-26T01:27:15Z', description: 'Node testing'}
+exclude:
+    - package.json
+    - src
+    - node_modules
 gems:
-  - jekyll-mentions
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-gist
+    - jekyll-mentions
+    - jekyll-feed
+    - jekyll-sitemap
+    - jekyll-gist
