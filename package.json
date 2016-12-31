@@ -1,7 +1,7 @@
 {
-  "name": "victorigortemplate",
+  "name": "jaronoff.com",
   "version": "1.0.0",
-  "description": "My jekyll blog template.",
+  "description": "My jekyll blog.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "test"
@@ -16,6 +16,7 @@
     "js"
   ],
   "author": "Victor Igor",
+  "coauthor": "Jacob Aronoff",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer-stylus": "^0.4.0",
