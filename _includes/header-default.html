@@ -1,12 +1,15 @@
 <header class="header-site" role="banner">
     <div class="content">
 
+
+
         <div class="person">
-            <img src="https://s-media-cache-ak0.pinimg.com/564x/9d/4d/31/9d4d314ec7722d05541111a180e4e54b.jpg" alt="">
+            <img src="/assets/img/profile.jpg" alt="">
+            <h2> Jacob Aronoff </h2>
         </div>
 
         <h1>
-            <span class="site-title">[{{site.username}}]</span>
+            <span class="header-site">[   {{site.username}}   ]</span>
         </h1>
 
         <div class="icons-home">
@@ -19,16 +22,16 @@
                 <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
             </a>
 
-            <a aria-label="My Google Plus" target="_blank" href="https://plus.google.com/u/0/+{{site.gplus_username}}/posts">
-                <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
+            <a aria-label="My Facebook" target="_blank" href="https://facebook.com/{{site.facebook_username}}">
+                <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
             </a>
 
             <a aria-label="My Github" target="_blank" href="https://github.com/{{site.github_username}}">
                 <svg class="icon icon-github-alt"><use xlink:href="#icon-github-alt"></use></svg>
             </a>
 
-            <a aria-label="Use the RSS to get updated" target="_blank" href="{{ "/feed.xml" | prepend: site.baseurl }}">
-                <svg class="icon icon-rss"><use xlink:href="#icon-rss"></use></svg>
+            <a aria-label="My Linkedin" target="_blank" href="http://linkedin.com/in/{{ site.linkedin_username }}">
+                <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg>
             </a>
 
         </div>
@@ -53,6 +56,19 @@
                     </a>
                 </li>
               {% endfor %}
+        </ul>
+        <ul class="recent">
+            <p>More about me:</p>
+            <li>
+                <a href="{{site.baseurl}}/about">
+                    <h2>My bio</h2>
+                </a>
+            </li>
+            <li>
+                <a href="{{site.baseurl}}/resume">
+                    <h2>My resume</h2>
+                </a>
+            </li>
         </ul>
 
     </div>
