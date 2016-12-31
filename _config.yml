@@ -1,79 +1,57 @@
-# Site
-title:              Jacob Aronoff
-bio:                "I'm a software engineer at BitSight Technologies. I am currently attending Northeastern University College of Computer and Information Science. I previously went to Milton Academy where I founded the school's programming club which does programming community outreach."
-description:        "I program mainly in Swift, Python, and Java. I'm currently the lead developer for the Feedshare app."
-reading_time:       true
-words_per_minute:   200
-logo:               'assets/img/logo.png'
-background:         'assets/img/placeholder-big.jpg'
-locale:             en_US
-url:                http://jaronoff.com
+# Site settings
+title: Jacob Aronoff
+description: "I program mainly in Swift, Python, and Java. I'm currently the lead developer for the Feedshare app."
+bio: "I'm a software engineer at BitSight Technologies. I am currently attending Northeastern University College of Computer and Information Science. I previously went to Milton Academy where I founded the school's programming club which does programming community outreach."
+baseurl: ""
+url: "http://jaronoff.com"
+# User settings
+username: Jacob Aronoff
+user_title: Jacob Aronoff - Backend
+email: jacobaronoff45@gmail.com
+twitter_username: eggsandjakey
+github_username:  jaronoff97
+facebook_username:  Jearonoff
+linkedin_username: jaronoff97
+disqus_username: jaronoff97
 
-# Jekyll
-permalink:          /:title/
-markdown:           kramdown
-highlighter:        rouge
-kramdown:
-  auto_ids:         true
-  footnote_nr:      1
-  entity_output:    as_char
-  toc_levels:       1..6
-  enable_coderay:   false
-mathjax:            true
-sass:
-  sass_dir:         _sass
-  style:            compressed
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
 
-# Comments
-disqus_shortname:   jaronoff97 
 
+# html minify
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  profile: false
+
+# Links to include in menu navigation
+links:
+  - title: home
+    url: /
+  - title: my posts
+    url: /posts
+  - title: series
+    url: /series
+  - title: tags
+    url: /tags
+  - title: about me
+    url: /about
+# projects in header index
 projects:
-  - Mirror 
-  - Swift
-  - Python
-  - Java
-  - Tools
-
-
-# Social
-# if you don't have any of social below, comment the line.
-#google:
-  #plus:            #username
-  #analytics:
-  #verify:
-  #ad-client:
-  #ad-slot:
-#bing-verify:
-#email:
-twitter:            eggsandjakey
-facebook:           Jearonoff
-github:             jaronoff97
-stackoverflow:      4056595/dafly45  # from a "http://stackoverflow.com/users/123456/username" link
-linkedin:           jaronoff97
-#xing:              username
-#instagram:          username
-#lastfm:             username
-#tumblr:             username
-#pinterest:         username
-#foursquare:        username
-#steam:              username
-#dribbble:          username
-#youtube:            username
-#soundcloud:        username
-#weibo:             username
-#flickr:            username
-#codepen:           username
-#keybase:           username
-
+  - name: Feedshare
+    url: https://github.com/jaronoff97/Feedshare-Public
+  - name: Mirrorpi
+    url: https://github.com/jaronoff97/mirrorpi
+  - name: Organizr
+    url: https://github.com/jaronoff97/organizr
+# exclude my node related stuff
+exclude: ['package.json', 'src', 'node_modules']
 # Gems
 gems:
   - jekyll-mentions
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
-
-jekyll-mentions:
-    base_url: https://github.com
-
-# Exclude list
-exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
