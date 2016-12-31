@@ -7,6 +7,8 @@ tags: [post, update]
 comments: true
 hidden: false
 project: Mirror
+categories:
+- Mirror
 ---
 ## First Mirror Update
 Hello! This is my first post involving my smart mirror project!

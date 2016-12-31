@@ -7,6 +7,8 @@ tags: [python, code, dictionary]
 comments: true
 hidden: false
 project: Python
+categories:
+- Python Tutorial
 ---
 
 Welcome back! Today is our last day of python and we're going to cover the last part of basic python: dictionaries. Dictionaries work just like you'd expect. For every 'key' in the dictionary there must be a corresponding value. Lets think about this like a literal dictionary:

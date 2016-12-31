@@ -7,6 +7,8 @@ tags: [python, code, final]
 comments: true
 hidden: false
 project: Python
+categories:
+- Python Tutorial
 ---
 
 So lets make a program that uses everything we've learned. Let's make a todolist!

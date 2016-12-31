@@ -7,6 +7,8 @@ tags: [swift, code, first]
 comments: true
 hidden: false
 project: Swift
+categories:
+- Swift Tutorial
 ---
 
 Welcome to Swift! Swift is my favorite programming language right now for a bunch of reasons. If you're familiar with a statically-typed language like Java, C, or C++, Swift will come as a breath of fresh air. Swift is a statically-typed, type-inferred language. This tutorial is meant for more experienced programmers, you should have a good understanding of either a statically-typed language like Java or a great understanding of a dynamically-typed language like Python. This first tutorial is going to go over the basics of Swift. 

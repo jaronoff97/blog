@@ -7,6 +7,8 @@ tags: [python, code, lists, for]
 comments: true
 hidden: false
 project: Python
+categories:
+- Python Tutorial
 ---
 
 And we're back (after a slight hiatus)! Let another day of Python begin!!

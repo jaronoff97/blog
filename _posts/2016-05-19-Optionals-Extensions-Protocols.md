@@ -7,6 +7,8 @@ tags: [swift, code, extensions, optional, protocol]
 comments: true
 hidden: false
 project: Swift
+categories:
+- Swift Tutorial
 ---
 
 Now that we've gotten over the hurdle of closures we can learn the last three things we need to know before we start iOS programming. Let's start with Optionals.

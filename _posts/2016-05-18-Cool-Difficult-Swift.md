@@ -7,6 +7,8 @@ tags: [swift, code, closures]
 comments: true
 hidden: false
 project: Swift
+categories:
+- Swift Tutorial
 ---
 
 Today is gonna be our toughest day yet, but by the end of it, you're gonna know everything you have to about Swift.

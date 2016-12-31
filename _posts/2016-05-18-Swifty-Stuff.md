@@ -7,6 +7,8 @@ tags: [swift, code, struct, class]
 comments: true
 hidden: false
 project: Swift
+categories:
+- Swift Tutorial
 ---
 
 Welcome back to another glorious day of Swift! Today we're going to learn about differnt data structures to make efficient and effective **Object Oriented**(__OO__) Code. The first one we'll go over is the classic **OO** design: the class.

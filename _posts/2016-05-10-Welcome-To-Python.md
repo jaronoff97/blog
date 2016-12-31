@@ -7,6 +7,8 @@ tags: [python, code, first]
 comments: true
 hidden: false
 project: Python
+categories:
+- Python Tutorial
 ---
 
 Welcome to Python! Python is a really great programming language, thats easy to learn and fun to use. In order to write python code, you have two options. You can use what's called interactive mode which is done by going to terminal and typing
