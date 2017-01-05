@@ -152,5 +152,20 @@ This produced two images:
 ![qplot-2](http://jaronoff.com/assets/img/qplot/qplot-2.png)
 ![qplot-3](http://jaronoff.com/assets/img/qplot/qplot-3.png)
 
-I definetely see where this language is useful. The ability to make these pretty in depth images in a couple lines of code is pretty amazing. Also the line at the end is useful too, basically the **?** operator is a help function. 
+I definetely see where this language is useful. The ability to make these pretty in depth images in a couple lines of code is pretty amazing. Also the line at the end is useful too, basically the **?** operator is a help function. Again, kinda cool that R is similar to bash with this sort of syntax.
+
+~~~ R
+> roll <- function() {
++ die <- 1:6
++ dice = sample(die, size = 2, replace = TRUE, prob = c(1/8, 1/8, 1/8, 1/8, 1/8, 3/8))
++ sum(dice)
++ }
+> rolls <- replicate(10000, roll())
+> qplot(rolls, binwidth = 1)
+> 
+~~~
+
+![qplot-4](http://jaronoff.com/assets/img/qplot/qplot-4.png)
+
+Finally, I learned a new part of the sample function, now I can assign probabilities. Okay so that completes chapter 2. Pretty uneventful, but I got to learn more about packages, probabilites, and graphs. Though I'm not enjoying R's type system, it's good that it has a bunch of useful built in features.
 
