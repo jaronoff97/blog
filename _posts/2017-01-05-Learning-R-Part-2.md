@@ -167,5 +167,5 @@ I definetely see where this language is useful. The ability to make these pretty
 
 ![qplot-4](http://jaronoff.com/assets/img/qplot/qplot-4.png)
 
-Finally, I learned a new part of the sample function, now I can assign probabilities. Okay so that completes chapter 2. Pretty uneventful, but I got to learn more about packages, probabilites, and graphs. Though I'm not enjoying R's type system, it's good that it has a bunch of useful built in features.
+Finally, I learned a new part of the sample function, now I can assign probabilities. Okay so that completes chapter 2. Pretty uneventful, but I got to learn more about packages, probabilites, and graphs. Though I'm not enjoying R's type system, it's good that it has a bunch of useful built in features. In the next part I'm going to be designing a deck of cards that can be dealt, shuffled, and used.
 
