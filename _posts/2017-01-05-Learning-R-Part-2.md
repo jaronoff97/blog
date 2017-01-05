@@ -126,11 +126,31 @@ SO it takes a bunch of time to install **ggplot2**, but now that it's installed,
 In this part, we make a basic array from -1 to 1, and then we cube the array. Now the last part is really cool, I qplot'ed **x** and **y**. After I ran that function, it opened up a new window and showed a plot. 
 
 
-![qplot-1](http://jaronoff.com/assets/img/qplot-1.png)
+![qplot-1](http://jaronoff.com/assets/img/qplot/qplot-1.png)
 
-That's pretty cool, I like the fact that you can easily make that.
+That's pretty cool, I like the fact that you can easily make that. Now it looks like I'm going to be doing more qplot stuff.
 
+~~~ R
+> x <- c(1, 2, 2, 2, 3, 3)
+> qplot(x, binwidth = 1)
+> replicate(3, 1 + 1)
+[1] 2 2 2
+> roll <- function () {
++ die <- 1:6
++ dice <- sample(die, size=2, replace = TRUE)
++ sum(dice)
++ }
+> replicate(10, roll())
+ [1] 4 3 4 6 8 9 6 7 8 7
+> rolls <- replicate(10000, roll())
+> qplot(rolls, binwidth = 1)
+> ?sqrt
+~~~
 
+This produced two images: 
 
+![qplot-2](http://jaronoff.com/assets/img/qplot/qplot-2.png)
+![qplot-3](http://jaronoff.com/assets/img/qplot/qplot-3.png)
 
+I definetely see where this language is useful. The ability to make these pretty in depth images in a couple lines of code is pretty amazing. Also the line at the end is useful too, basically the **?** operator is a help function. 
 
