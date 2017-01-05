@@ -251,18 +251,6 @@ So obiviously, after you assign the result of a function, it doesn't reevaluate.
 [1] 7
 > counter <- function(adder){
 + c = 0
-+ inner_counter(){
-Error: unexpected '{' in:
-"c = 0
-inner_counter(){"
-> c = adder(c)
-Error: could not find function "adder"
-> c}
-Error: unexpected '}' in "c}"
-> inner_counter}
-Error: unexpected '}' in "inner_counter}"
-> counter <- function(adder){
-+ c = 0
 + inner_counter <- function(){
 + c = adder(c)
 + c}
