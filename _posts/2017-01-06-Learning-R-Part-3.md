@@ -357,7 +357,7 @@ So the book says, **"data frames are the two-dimensional version of a list. They
 [1] "/Users/jea/Library/Application Support/Sublime Text 3/Packages"
 ~~~
 
-It's great how easy it is to import and work with CSVs, that'll definetly make life easier. At least R has great built in functions, otherwise I'd be dreading this so much more.
+It's great how easy it is to import and work with CSVs, that'll definetly make life easier. At least R has great built in functions, otherwise I'd be dreading this so much more. Okay well that's all for this chapter, next chapter is "R Notation", whatever they mean by that.
 
 
 
