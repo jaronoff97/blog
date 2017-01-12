@@ -30,7 +30,7 @@ Part 5, modifying values in R. I'm betting this is going to be a contiuation of 
 > vec[4:6] <- vec[4:6] + 1
 > vec
 [1] 1 0 1 1 2 1
-> deck <- read.table("/Users/jea/Documents/Code/R-lang/deck.csv", header=TRUE, sep = ","
+> deck <- read.table("/Users/jea/Documents/Code/R-lang/deck.csv", header=TRUE, sep = ",")
 > deck$new <- 1:52
 > names(deck)
 [1] "face"  "suit"  "value" "new"  
