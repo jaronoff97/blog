@@ -14,7 +14,11 @@
       "countryCode": "US",
       "region": "Massachusetts"
     },
-    "profiles": []
+    "profiles": [{
+      "network": "Github",
+      "username": "jaronoff97",
+      "url": "http://www.github.com/jaronoff97"
+    }]
   },
   "work": [
     {
@@ -25,7 +29,7 @@
       "endDate": "2017-02",
       "summary": "Feedshare is an app that allows college students to find free food around campus.",
       "highlights": [
-        "Built a cross platform mobile application in react native, swift, objective C and java",
+        "Built a cross platform mobile application in React Native, Swift, Objective C and Java",
         "Selected as a Nexpo presenter"
       ]
     },
@@ -39,7 +43,7 @@
       "highlights": [
         "Automated customer support by leveraging three seperate APIs in a microservice",
         "Created micro services in Flask, Javascript, and Java",
-        "Helped update the company wide testing su",
+        "Helped update the company wide testing suite",
         "Automated product team workflow",
         "Added more expressive information in customer admin portal"
       ]
@@ -54,7 +58,19 @@
       "endDate": "2016-06",
       "summary": "Started the programming tutor curriculum at my high school",
       "highlights": [
-        "Award named after me"
+        "The programming department named the 'Jacob Aronoff Award' in my honor"
+      ]
+    },
+    {
+      "organization": "826 Boston",
+      "position": "English Tutor",
+      "website": "http://www.826boston.org",
+      "startDate": "2016-09",
+      "endDate": "2016-7-01",
+      "summary": "Tutored students in English at the Burke high school in roxbury",
+      "highlights": [
+        "Helped students with their college essays",
+        "Taught english grammar to students whose second language was english"
       ]
     }
   ],
@@ -77,9 +93,10 @@
       "studyType": "BS",
       "startDate": "2016-08",
       "endDate": "2021-06",
-      "gpa": "",
+      "gpa": "3.852",
       "courses": [
-        "CS 2500 - Fundamentals of CS 1",
+        "CS 3500 - Object Oriented Design",
+        "DS 4100 - Data Collection, Analysis, and Integration",
         "CS 1800 - Discrete Structures"
       ]
     }
@@ -89,13 +106,13 @@
       "title": "Laurence S. Persky Memorial Award",
       "date": "2015-06",
       "awarder": "Milton Academy",
-      "summary": "excellence in work appearing in a Milton Academy Student Publication"
+      "summary": "Excellence in work appearing in a Milton Academy Student Publication"
     },
     {
       "title": "First Prize",
       "date": "2015-02",
       "awarder": "Blueprint MIT",
-      "summary": "I won Blueprint by making an app to help coordinate food delivery in school's"
+      "summary": "I designed an app that coordinated food delivery for students. The app allowed a driver to pick up multiple orders for users, and then deliver them to a given location."
     }
   ],
   "publications": [
