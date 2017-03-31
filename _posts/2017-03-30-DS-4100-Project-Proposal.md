@@ -35,9 +35,9 @@ For the past couple of weeks in my weekly reviews, I've talked a lot about analy
 
 Stack:
 
-MySQL backend
-GraphQL middleware
-Node.js frontend
+* MySQL backend
+* GraphQL middleware
+* Node.js frontend
 
 
 
