@@ -16,7 +16,9 @@ categories:
 
 For my project, I want to investigate Reddit. There's a lot of openly available data about reddit that I'll be able to scrape. Recently, there was a brief study posted on FiveThirtyEight doing what he called "Reddit Algebra", which was actually just a fancier way of explaining set operations.
 
-![FiveThirtyEight](https://fivethirtyeight.com/features/dissecting-trumps-most-rabid-online-following/)
+[FiveThirtyEight Article](https://fivethirtyeight.com/features/dissecting-trumps-most-rabid-online-following/)
+
+
 
 For the past couple of weeks in my weekly reviews, I've talked a lot about analyzing reddit data to generate predictions or statistics. What I want to do with this project, is take the basics of what the aformentioned person did, and go one step further. Here would be my process:
 
