@@ -26,6 +26,7 @@ links:
     - {title: tags, url: /tags}
     - {title: 'about me', url: /about}
 projects:
+    - {name: listmkr_backend, url: 'https://github.com/jaronoff97/listmkr_backend', updated: '2017-01-21T07:22:59Z', description: 'This is the backend for my PennApps XV project'}
     - {name: jaronoff97.github.io, url: 'https://github.com/jaronoff97/jaronoff97.github.io', updated: '2016-12-30T22:05:02Z', description: null}
     - {name: Feedshare-Public, url: 'https://github.com/jaronoff97/Feedshare-Public', updated: '2016-12-30T05:20:28Z', description: 'This is a public version of Feedshare with redacted keys; there is no git history so as to keep things anonymous.'}
     - {name: mirrorpi, url: 'https://github.com/jaronoff97/mirrorpi', updated: '2016-12-30T02:21:58Z', description: 'This was my senior project for my last year at Milton Academy. The project was programming in python, using opencv. Check Final_Version for the code that was used in production'}
@@ -35,7 +36,6 @@ projects:
     - {name: NativeBase, url: 'https://github.com/jaronoff97/NativeBase', updated: '2016-10-20T21:59:35Z', description: 'The missing piece of React Native'}
     - {name: AlwaysBlue, url: 'https://github.com/jaronoff97/AlwaysBlue', updated: '2016-10-01T16:12:05Z', description: 'ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE ALWAYS BLUE '}
     - {name: hacks.github.io, url: 'https://github.com/jaronoff97/hacks.github.io', updated: '2016-09-09T00:18:07Z', description: 'The website for NU Hacks, a weekly social event for hackers and makers'}
-    - {name: sample_code, url: 'https://github.com/jaronoff97/sample_code', updated: '2016-05-19T18:33:34Z', description: 'This is the sample code for my python tutorial series which can be found on my github pages website. jaronoff97.github.io'}
     - {name: Flask-Boilerplate, url: 'https://github.com/jaronoff97/Flask-Boilerplate', updated: '2016-05-10T18:25:06Z', description: 'My own personal Flask Boilerplate setup'}
     - {name: Eight_Queens, url: 'https://github.com/jaronoff97/Eight_Queens', updated: '2016-04-25T18:29:19Z', description: 'Solution to Eight Queens'}
     - {name: Pokeapi-wrapper, url: 'https://github.com/jaronoff97/Pokeapi-wrapper', updated: '2016-04-14T01:43:32Z', description: 'This is my example for the pokeapi.'}

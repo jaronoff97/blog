@@ -40,7 +40,7 @@ Stack:
 * Node.js frontend
 
 
-
+The end goal of my project will be the following: given a reddit username suggest other subreddits that user may like, or given a subreddit, give a list of subreddits similar. I would accomplish this using collaborative filtering.
 
 
 
