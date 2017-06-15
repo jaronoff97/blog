@@ -26,6 +26,7 @@ links:
     - {title: tags, url: /tags}
     - {title: 'about me', url: /about}
 projects:
+    - {name: ds-reddit-project, url: 'https://github.com/jaronoff97/ds-reddit-project', updated: '2017-04-22T04:52:15Z', description: 'this is the repository for my DS4100 class which recommends subreddits'}
     - {name: listmkr_backend, url: 'https://github.com/jaronoff97/listmkr_backend', updated: '2017-01-21T07:22:59Z', description: 'This is the backend for my PennApps XV project'}
     - {name: jaronoff97.github.io, url: 'https://github.com/jaronoff97/jaronoff97.github.io', updated: '2016-12-30T22:05:02Z', description: null}
     - {name: Feedshare-Public, url: 'https://github.com/jaronoff97/Feedshare-Public', updated: '2016-12-30T05:20:28Z', description: 'This is a public version of Feedshare with redacted keys; there is no git history so as to keep things anonymous.'}
@@ -53,7 +54,6 @@ projects:
     - {name: BMRCalc_iOS, url: 'https://github.com/jaronoff97/BMRCalc_iOS', updated: '2015-07-01T18:35:43Z', description: 'This is one of my first iOS creations with objective C'}
     - {name: MusicPlayerV2, url: 'https://github.com/jaronoff97/MusicPlayerV2', updated: '2015-05-14T02:44:30Z', description: 'First push'}
     - {name: PathFinder, url: 'https://github.com/jaronoff97/PathFinder', updated: '2015-02-28T16:03:02Z', description: 'java recursive pathfinder'}
-    - {name: Pong-java-javascript, url: 'https://github.com/jaronoff97/Pong-java-javascript', updated: '2015-02-28T15:54:35Z', description: 'Pong in java'}
     - {name: MusicPlayer, url: 'https://github.com/jaronoff97/MusicPlayer', updated: '2015-02-28T15:38:40Z', description: 'A music player I wrote in java and javafx for an exam project. this is Version 1.0'}
     - {name: NodeApp, url: 'https://github.com/jaronoff97/NodeApp', updated: '2015-02-26T01:27:15Z', description: 'Node testing'}
 exclude:
