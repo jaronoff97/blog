@@ -50,7 +50,11 @@ In addition to the fellowship i'm also working at DataDog! DataDog is a company 
 
 ### Soundtrack for the week
 
+
 [MM... Food](https://www.youtube.com/watch?v=xOYkjt9F81c) - MF DOOM
+
 [Malibu](https://www.youtube.com/watch?v=IROfKBoVtTg) - Anderson Paak
+
 [Thrill of the Arts](https://www.youtube.com/watch?v=wJIFJ-L-Lw8) - Vulfpeck
+
 [Luke Cage Sountrack](https://open.spotify.com/user/g0u1d1e1/playlist/6CdBcKJ5vXXkWJfmC45kqB)
