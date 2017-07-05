@@ -41,11 +41,11 @@ Here are some projects I'm going to start work on very soon:
 
 ## Soundtrack for the week
 
-[The Anthology](https://www.youtube.com/watch?v=vQofcJ6L2Rk&list=PLDC60C815BE117301)
+[The Anthology](https://www.youtube.com/watch?v=vQofcJ6L2Rk&list=PLDC60C815BE117301) - A Tribe Called Quest
 
-[Hella Personal Film Festival](https://www.youtube.com/watch?v=hqHbtOUZjdI)
+[Hella Personal Film Festival](https://www.youtube.com/watch?v=hqHbtOUZjdI) - Open Mike Eagle
 
-[The Stranger](https://www.youtube.com/watch?v=gFy1BMaYRh0)
+[The Stranger](https://www.youtube.com/watch?v=gFy1BMaYRh0) - Billy Joel
 
 
 
