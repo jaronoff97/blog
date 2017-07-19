@@ -32,4 +32,4 @@ This weekend I went to Martha's Vineyard with my parents and some friends, we're
 
 [The End of Comedy](https://www.youtube.com/watch?v=xOYkjt9F81c) - Drugdealer
 
-[Coming of Age](Coming Of Age by Ben Williams on Spotify) - Ben Williams
+[Coming of Age](https://www.youtube.com/watch?v=Sao2tnp5KMk&list=PLuElwtKolKAOtoahfJSu7W6seCV3Xh44L) - Ben Williams
