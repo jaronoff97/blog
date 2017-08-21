@@ -22,15 +22,17 @@
   },
   "work": [
     {
-      "company": "Feedshare",
-      "position": "Co-Founder",
-      "website": "http://feedshare.org",
-      "startDate": "2016-08",
-      "endDate": "2017-02",
-      "summary": "Feedshare is an app that allows college students to find free food around campus.",
+      "company": "DataDog",
+      "position": "Sofware Engineer",
+      "website": "http://www.datadoghq.com",
+      "startDate": "2017-05",
+      "endDate": "2017-08",
+      "summary": "Datadog allows you to view your company's cloud infrastructure in one place and can alert you when different metrics pass a chosen threshold.",
       "highlights": [
-        "Built a cross platform mobile application in React Native, Swift, Objective C and Java",
-        "Selected as a Nexpo presenter"
+        "Built a service that deals with millions of requests per day",
+        "Developed and maintained multiple Go and Python services",
+        "Sped up a significant portion of the company's infrastructure",
+        "Worked with distributed technologies like Kafka, Cassandra, and ElasticSearch"
       ]
     },
     {
@@ -62,15 +64,15 @@
       ]
     },
     {
-      "organization": "826 Boston",
-      "position": "English Tutor",
-      "website": "http://www.826boston.org",
-      "startDate": "2016-09",
-      "endDate": "2016-7-01",
-      "summary": "Tutored students in English at the Burke high school in roxbury",
+      "organization": "HackNY",
+      "position": "Fellow",
+      "website": "http://www.hackny.org",
+      "startDate": "2017-05",
+      "endDate": "2017-08",
+      "summary": "Part of the hackNY class of 2017 fellows",
       "highlights": [
-        "Helped students with their college essays",
-        "Taught english grammar to students whose second language was english"
+        "Worked on social good projects with other fellows",
+        "Learned more about CS education around NYC"
       ]
     }
   ],
@@ -140,8 +142,9 @@
       "keywords": [
         "Python",
         "Java",
-        "Javascript",
-        "SQL"
+        "NodeJS",
+        "SQL",
+        "Go"
       ]
     },
     {
