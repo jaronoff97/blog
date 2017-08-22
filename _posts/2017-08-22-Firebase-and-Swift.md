@@ -234,6 +234,44 @@ And lastly in FirebaseInitialization
 
 As you can see it's incredibely easy to implement this if you wanted to create a new class. What's also useful is that there are no strong ties to firebase from the table view. Please let me know what you think on reddit!
 
+UPDATE
+
+code to remove items: 
+
+In our FirebaseInitialization class
+
+~~~ swift
+let removeFunc = { (data: FIRDataSnapshot) in
+            let index = self.items.index(where: { (item) -> Bool in
+                let properties = data.value as? NSDictionary
+                return item.id == properties!.value(forKey: "id") as! String
+            })
+            self.items.remove(at: index!)
+            delegate.reloadData()
+        }
+~~~
+
+~~~ swift
+func removeItem(id: String) {
+    childRef.child(id).removeValue()
+}
+~~~
+
+And in our UITableViewController
+
+~~~ swift
+
+override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+        let groceryItem = items?[indexPath.row]
+        self.firebase?.removeItem(id: (groceryItem?.id)!)
+    }
+}
+~~~
+
+As you can see adding functionality is quite simple.
+
+
 
 [github](https://github.com/jaronoff97/FirebasePlayground/tree/data_modeling)
 
