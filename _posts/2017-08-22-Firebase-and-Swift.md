@@ -235,6 +235,9 @@ And lastly in FirebaseInitialization
 As you can see it's incredibely easy to implement this if you wanted to create a new class. What's also useful is that there are no strong ties to firebase from the table view. Please let me know what you think on reddit!
 
 
+[github](https://github.com/jaronoff97/FirebasePlayground/tree/data_modeling)
+
+
 
 
 
