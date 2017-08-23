@@ -271,6 +271,12 @@ override func tableView(_ tableView: UITableView, commit editingStyle: UITableVi
 
 As you can see adding functionality is quite simple.
 
+UPDATE 2:
+
+Models within models
+
+If you have json within json, as long as that piece of data implements the `FirebaseItem` protocol, all you have to do is call the `getJSON()` method. Because of the type system, this simple approach allows us to do whatever we want. What's also great about this is that if you have a sub model that then has another object within it, all you have to do is call that item's `getJSON()` method within that sub-model's method.
+
 
 
 [github](https://github.com/jaronoff97/FirebasePlayground/tree/data_modeling)
