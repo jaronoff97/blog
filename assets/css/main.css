@@ -597,7 +597,7 @@ aside #topmenu ul li span {
 aside nav ul {
     padding: 10px 0 0 10px;
     float: left;
-    margin-right: 60px;
+    margin-right: 10%;
 }
 
 aside nav ul .counter-menu {
