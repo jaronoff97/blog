@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -13,6 +15,15 @@ html {
     margin: 0 auto !important;
     position: relative !important;
   }
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: darkgray;
 }
 
 body {
@@ -247,7 +258,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 800;
     font-style: normal
 }
@@ -583,7 +594,7 @@ aside #topmenu ul li span {
     -webkit-transform: skewx(20deg);
     transform: skewx(20deg);
     display: block;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 800;
     font-style: normal;
     font-size: .813rem;
@@ -613,7 +624,7 @@ aside nav ul a {
     width: 100%;
     cursor: pointer;
     text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     color: #b3b3b1;
@@ -689,7 +700,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .search-form .search-field {
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     font-size: 1.625rem;
@@ -749,7 +760,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .search-form .search-list {
     position: absolute;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal
 }
@@ -1221,7 +1232,7 @@ body {
 .post .time {
     text-align: center;
     margin-top: 30px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal
 }
@@ -1252,7 +1263,7 @@ body {
     max-width: 50rem;
     padding: 0 1.25rem;
     margin: 0 auto 1.875rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     font-size: 1.125rem;
@@ -1285,7 +1296,7 @@ body {
 }
 
 .post-content a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     color: #5d4d7a;
@@ -1311,7 +1322,7 @@ body {
 .post-content h3,
 .post-content h4,
 .post-content h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 800;
     font-style: normal
 }
@@ -1497,7 +1508,7 @@ table td {
 }
 
 .tag-title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     font-size: 2.25rem;
@@ -1784,7 +1795,7 @@ pre span {
 .author .def {
     color: #808080;
     font-size: 1.125rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     margin: .625rem;
@@ -1802,7 +1813,7 @@ pre span {
 }
 
 .author .name a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 800;
     font-style: normal;
     text-decoration: none;
@@ -1821,7 +1832,7 @@ pre span {
 }
 
 .author .desc {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     margin: .625rem;
@@ -1875,10 +1886,11 @@ footer {
 }
 
 footer p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arvo', serif;
     font-weight: 300;
     font-style: normal;
     color: #fff;
     text-align: center;
     margin: 0
 }
+
