@@ -929,12 +929,6 @@ body {
     padding-right: 0;
 }
 
-@media only screen and (max-width:320px) {
-    .header-site .recent:last-child {
-        display: none
-    }
-}
-
 .header-site .recent:before,
 .header-site .recent:after {
     content: '';
