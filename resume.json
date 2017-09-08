@@ -30,8 +30,8 @@
       "company": "DataDog",
       "position": "Sofware Engineer",
       "website": "http://www.datadoghq.com",
-      "startDate": "2017-05",
-      "endDate": "2017-08",
+      "startDate": "May 2017",
+      "endDate": "August 2017",
       "location": "New York City, New York",
       "highlights": [
         "Built a service that deals with millions of requests per day",
@@ -44,8 +44,8 @@
       "company": "Bitsight Technologies",
       "position": "Software Engineering Intern",
       "website": "https://www.bitsighttech.com",
-      "startDate": "2015-06",
-      "endDate": "2016-08",
+      "startDate": "June 2015",
+      "endDate": "August 2016",
       "location": "Cambridge, Massachusetts",
       "highlights": [
         "Automated customer support by leveraging three seperate APIs in a microservice",
@@ -61,8 +61,8 @@
       "organization": "Milton Academy Programming Club",
       "position": "Founder and Head Tutor",
       "website": "",
-      "startDate": "2014-09",
-      "endDate": "2016-06",
+      "startDate": "September 2014",
+      "endDate": "June 2016",
       "summary": "Started the programming tutor curriculum at my high school",
       "highlights": [
         "The programming department named the 'Jacob Aronoff Award' in my honor"
@@ -72,8 +72,8 @@
       "organization": "HackNY",
       "position": "Fellow",
       "website": "http://www.hackny.org",
-      "startDate": "2017-05",
-      "endDate": "2017-08",
+      "startDate": "May 2017",
+      "endDate": "August 2017",
       "summary": "Part of the hackNY class of 2017 fellows",
       "highlights": [
         "Worked on social good projects with other fellows"
@@ -85,8 +85,8 @@
       "institution": "Northeastern University, College of Computer and Information Science",
       "area": "",
       "studyType": "Candidate for a Bachelor of Science in Computer Science",
-      "startDate": "2016-08",
-      "endDate": "2020-06",
+      "startDate": "August 2016",
+      "endDate": "June 2020",
       "gpa": "3.9/4.0",
       "honors": "Dean's list",
       "courses": [
@@ -99,8 +99,8 @@
       "institution": "Milton Academy",
       "area": "",
       "studyType": "High School",
-      "startDate": "2012-09",
-      "endDate": "2016-06",
+      "startDate": "09/2012",
+      "endDate": "June 2016",
       "gpa": "",
       "courses": [
         "Programming Applications",
@@ -113,7 +113,7 @@
     {
       "name": "The Genial, Brilliant, Candy-Loving Hackers of Stetson West",
       "publisher": "Wired Magazine",
-      "releaseDate": "2017-05",
+      "releaseDate": "May 2017",
       "website": "https://www.wired.com/2017/04/the-genial-brilliant-candy-loving-hackers-of-stetson-west/",
       "summary": "A profile of my friends and I about our lives as CS majors at Northeastern."
     }
