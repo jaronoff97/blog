@@ -27,6 +27,18 @@
   },
   "work": [
     {
+      "company": "Giphy",
+      "position": "Hackathon Ambassador",
+      "website": "http://www.giphy.com",
+      "startDate": "9/17",
+      "endDate": "Present",
+      "highlights": [
+        "Represented Giphy at local hackathons",
+        "Assisted students with Giphy APIs",
+        "Created sample applications using the GIPHY API"
+      ]
+    },
+    {
       "company": "DataDog",
       "position": "Sofware Engineer",
       "website": "http://www.datadoghq.com",
@@ -58,17 +70,6 @@
   ],
   "volunteer": [
     {
-      "organization": "Milton Academy Programming Club",
-      "position": "Founder and Head Tutor",
-      "website": "",
-      "startDate": "9/14",
-      "endDate": "6/16",
-      "summary": "Started the programming tutor curriculum at my high school",
-      "highlights": [
-        "The programming department named the 'Jacob Aronoff Award' in my honor"
-      ]
-    },
-    {
       "organization": "HackNY",
       "position": "Fellow",
       "website": "http://www.hackny.org",
@@ -77,6 +78,17 @@
       "summary": "Part of the hackNY class of 2017 fellows",
       "highlights": [
         "Worked on social good projects with other fellows"
+      ]
+    },
+    {
+      "organization": "Milton Academy Programming Club",
+      "position": "Founder and Head Tutor",
+      "website": "",
+      "startDate": "9/14",
+      "endDate": "6/16",
+      "summary": "Started the programming tutor curriculum at my high school",
+      "highlights": [
+        "The programming department named the 'Jacob Aronoff Award' in my honor"
       ]
     }
   ],
@@ -93,18 +105,6 @@
         "CS 3500 - Object Oriented Design",
         "DS 4100 - Data Collection, Analysis, and Integration",
         "CS 1800 - Discrete Structures"
-      ]
-    },
-    {
-      "institution": "Milton Academy",
-      "area": "",
-      "studyType": "High School",
-      "startDate": "9/12",
-      "endDate": "6/16",
-      "gpa": "",
-      "courses": [
-        "Programming Applications",
-        "Programming Independent Study"
       ]
     }
   ],
