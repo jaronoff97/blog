@@ -46,10 +46,10 @@
       "endDate": "8/17",
       "location": "New York City, New York",
       "highlights": [
-        "Built a service that deals with millions of requests per day",
+        "Built a service that handles with millions of requests per day",
         "Developed and maintained multiple Go and Python services",
-        "Sped up a significant portion of the company's infrastructure, solving 50+ customer request tickets",
-        "Worked with distributed technologies like Kafka, Cassandra, and ElasticSearch"
+        "Acclerated a portion of the company's infrastructure, solving 50+ customer request tickets",
+        "Worked with distributed technologies including Kafka, Cassandra, and ElasticSearch"
       ]
     },
     {
@@ -75,7 +75,7 @@
       "website": "http://www.hackny.org",
       "startDate": "5/17",
       "endDate": "8/17",
-      "summary": "Part of the hackNY class of 2017 fellows",
+      "summary": "Member of the hackNY class of 2017 fellows",
       "highlights": [
         "Worked on social good projects with other fellows"
       ]
@@ -115,7 +115,7 @@
       "publisher": "Wired Magazine",
       "releaseDate": "5/17",
       "website": "https://www.wired.com/2017/04/the-genial-brilliant-candy-loving-hackers-of-stetson-west/",
-      "summary": "A profile of my friends and I about our lives as CS majors at Northeastern."
+      "summary": "A profile of my friends and me about our lives as CS majors at Northeastern."
     }
   ],
   "skills": [
