@@ -35,7 +35,7 @@
       "highlights": [
         "Represent Giphy at local hackathons",
         "Assist students with Giphy APIs",
-        "Creat sample applications using the Giphy API"
+        "Create sample applications using the Giphy API"
       ]
     },
     {
@@ -62,8 +62,7 @@
       "highlights": [
         "Automated customer support by leveraging three seperate APIs in a microservice",
         "Created micro services in Flask, Javascript, and Java",
-        "Updated the company wide testing suite",
-        "Added more expressive information in customer admin portal"
+        "Updated the company wide testing suite"
       ]
     }
   ],
@@ -87,7 +86,7 @@
       "endDate": "Jun 2016",
       "summary": "Started the programming tutor curriculum",
       "highlights": [
-        "The programming department named the 'Jacob Aronoff Award'"
+        "The programming department created the 'Jacob Aronoff Award'"
       ]
     }
   ],
@@ -157,6 +156,17 @@
         "MongoDB",
         "Cassandra",
         "Postgres"
+      ]
+    },
+    {
+      "name": "Technologies",
+      "level": "Advanced",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Terraform"
       ]
     }
   ],
