@@ -41,7 +41,7 @@
       "company": "DataDog",
       "position": "Sofware Engineer",
       "website": "http://www.datadoghq.com",
-      "startDate": "May 2017",
+      "startDate": "May",
       "endDate": "Aug 2017",
       "location": "New York City, New York",
       "highlights": [
@@ -70,9 +70,9 @@
       "organization": "HackNY",
       "position": "Fellow",
       "website": "http://www.hackny.org",
-      "startDate": "May 2017",
+      "startDate": "May",
       "endDate": "Aug 2017",
-      "summary": "Served as member of the hackNY class of 2017 fellows",
+      "summary": "Served as a member of the hackNY class of 2017 fellows",
       "highlights": [
         "Worked on social good projects with other fellows"
       ]
