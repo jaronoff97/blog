@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo');
-
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -7,14 +6,14 @@ html {
 }
 
 @media (max-height: 700px) {
-  .content {
-    transform: initial !important;
-    -webkit-transform: initial !important;
-    left: auto !important;
-    top: 20px !important;
-    margin: 0 auto !important;
-    position: relative !important;
-  }
+    .content {
+        transform: initial !important;
+        -webkit-transform: initial !important;
+        left: auto !important;
+        top: 20px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+    }
 }
 
 a {
@@ -277,6 +276,7 @@ h4 {
 
 .icons-home {
     text-align: center;
+    cursor: default;
 }
 
 .icons-home a {
@@ -1871,4 +1871,3 @@ footer p {
     text-align: center;
     margin: 0
 }
-
