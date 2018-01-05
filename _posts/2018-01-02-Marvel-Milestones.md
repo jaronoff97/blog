@@ -19,17 +19,23 @@ categories:
 * Agent Carter Season 1
 * Agent Carter One Shot
 * Agent Carter Season 2
+* Iron Man
+* Iron Man 2
 
 
 ## Rankings
 
-1) Captain America
+1) Iron Man
 
-2) Agent Carter Season 1
+2) Captain America
 
-3) Agent Carter Season 2
+3) Agent Carter Season 1
 
-4) Agent Carter One Shot
+4) Iron Man 2
+
+5) Agent Carter Season 2
+
+6) Agent Carter One Shot
 
 ## Short Short Reviews
 
@@ -48,4 +54,15 @@ This one shot was ehhhh as a result of it just feeling disconnected from everyth
 ### Agent Carter Season 1
 
 Agent carter season 2 had its ups and downs. It felt like it left a bit too much to the imagination, and a lot of loose ends. What happened to dottie? What's going to happen to Wilkes? What was the key for? The first season felt very succint in a lot of ways, and the second season left too much unanswered and too many plot holes. It would have been cool if they also explained the Zero Matter more, or maybe put in the context of the future Inhumans / Kree / Terragenesis. Overall, it was ehhhh
+
+### Iron Man
+
+This is one of my favorite Marvel movies to date. It's always in everyone's top 3 favorite Marvel movies, and it's definitely in mine. It's the move that started it all. Each part of the movie feels so good and RDJ IS SO perfect as tony stark it's crazy.
+
+### Iron Man 2
+
+There are some parts of Iron Man 2 that feel great and others that feel eh. It would have been better if they got a bit darker/ deeper with the connection between Venko and Stark (both the parents and their children), it probably would have created a better final battle. The final battle was also a bit underwhelming, they could have made it a bit more epic. Also the destruction that was happening in the park was a bit underplayed, and it would have been good if they mentioned things like injuries and other side effects of the battle. It would definitely have made Tony a better character in the overall MCU, it would have really contributed more to his regret and character choices in the later movies (i.e. Ultron and Civil war.)
+
+
+
 
