@@ -21,6 +21,10 @@ categories:
 * Agent Carter Season 2
 * Iron Man
 * Iron Man 2
+* The Incredible Hulk
+* The Consultant
+* A Funny Thing Happened on the way to Thor's Hammer
+* Thor
 
 
 ## Rankings
@@ -29,13 +33,21 @@ categories:
 
 2) Captain America
 
-3) Agent Carter Season 1
+3) Thor
 
-4) Iron Man 2
+4) A Funny Thing Happened on the way to Thor's Hammer
 
-5) Agent Carter Season 2
+5) The Incredible Hulk
 
-6) Agent Carter One Shot
+6) Agent Carter Season 1
+
+7) Iron Man 2
+
+8) Agent Carter Season 2
+
+9) The Consultant
+
+10) Agent Carter One Shot
 
 ## Short Short Reviews
 
@@ -62,6 +74,23 @@ This is one of my favorite Marvel movies to date. It's always in everyone's top 
 ### Iron Man 2
 
 There are some parts of Iron Man 2 that feel great and others that feel eh. It would have been better if they got a bit darker/ deeper with the connection between Venko and Stark (both the parents and their children), it probably would have created a better final battle. The final battle was also a bit underwhelming, they could have made it a bit more epic. Also the destruction that was happening in the park was a bit underplayed, and it would have been good if they mentioned things like injuries and other side effects of the battle. It would definitely have made Tony a better character in the overall MCU, it would have really contributed more to his regret and character choices in the later movies (i.e. Ultron and Civil war.)
+
+### The Incredible Hulk
+
+I actually don't love this movie, the acting is ehhhh, and most of the tie ins are just Thaddeus Ross and SHIELD stuff, but even then it's just so aside from the plot it doesn't really seem that great. Also, I get annoyed by the fights in general, they just aren't that well coreographed/ planned out, and the Hulk's portrayal is only okay.
+
+### The Consultant
+
+The consultant was a cool way to introduce us to Sitwell, and also it was cool to see Tony Stark again being used by SHIELD. Other than that, it only okay, it just felt unneccesary.
+
+### A Funny Thing Happened on the way to Thor's Hammer
+
+Loved this one shot! It just showed Coulson being a bad ass person who really knows what to do in a tense situation. Coulson just keeps everything calm and underwraps, and carry's himself perfectly.
+
+### Thor
+
+I thought Thor was pretty good, it wasn't the best kind of goofy thor (@Ragnarok) but it was well lightharted, and introduced Thor really well, better than Hulk for sure. It was also great to see all of Coulson's busy week tied together neatly. Thor also introduced more of the MCU lore which I always love learning about.
+
 
 
 
