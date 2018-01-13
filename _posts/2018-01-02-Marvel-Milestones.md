@@ -25,29 +25,41 @@ categories:
 * The Consultant
 * A Funny Thing Happened on the way to Thor's Hammer
 * Thor
+* Avengers
+* Item 47
+* Iron Man 3
+* All Hail The King
 
 
 ## Rankings
 
 1) Iron Man
 
-2) Captain America
+2) Iron Man 3
 
-3) Thor
+3) Captain America
 
-4) A Funny Thing Happened on the way to Thor's Hammer
+4) Avengers
 
-5) The Incredible Hulk
+5) All Hail the King
 
-6) Agent Carter Season 1
+6) Thor
 
-7) Iron Man 2
+7) Item 47
 
-8) Agent Carter Season 2
+8) A Funny Thing Happened on the way to Thor's Hammer
 
-9) The Consultant
+9) The Incredible Hulk
 
-10) Agent Carter One Shot
+10) Agent Carter Season 1
+
+11) Iron Man 2
+
+12) Agent Carter Season 2
+
+13) The Consultant
+
+14) Agent Carter One Shot
 
 ## Short Short Reviews
 
@@ -90,6 +102,26 @@ Loved this one shot! It just showed Coulson being a bad ass person who really kn
 ### Thor
 
 I thought Thor was pretty good, it wasn't the best kind of goofy thor (@Ragnarok) but it was well lightharted, and introduced Thor really well, better than Hulk for sure. It was also great to see all of Coulson's busy week tied together neatly. Thor also introduced more of the MCU lore which I always love learning about.
+
+### Avengers
+
+Avengers was awesome, from start to finish it felt so succint. The way the different members of team interact feels very genuine; they all kinda hate each other to start. All throughout the movie they don't even get closer with one another. The only time they're a team is right when they need to be. When they finally get together, they realize that oh we're all on the same side. Little things that happen here and there are great; the little interactions between the side characters, and the mentions of some of what's to come. I like how they actually show Tony get hit to the ground right next to the shawarma place, which is why later he mentions it. I really like the interactions between Cap and Tony for a multitude of reasons. But basically, they are ALWAYS at each other's throats going after each other's core, but really only Tony is the one who changes. Cap calls tony out for only being in it for himself, and later he does the most selfless thing possible saving millions, not for the fame, but because it was the right thing.
+
+
+### Item 47
+
+This was a great little one shot, it used all of the characters that we're introduced and showed us what it was like being a part of the aftermath cleanup. It also showed that SHIELD is monitoring everything that's happening in the world. I like how they also just recruit talented people. The whole use of action sequences was really interesting. Overall it was probably the best one shot yet. 
+
+
+### Iron Man 3
+
+I love iron man 3 because its just shear nerdiness and obsession. Throughout the movie we see Tony going through what is basically PTSD from his traumatic experience and handling it pretty poorly. I love how we just get to really know tony more personally than ever before. This also acts as an amazing end to Tony's trilogy; we really get a sense of his journey and it does a great job of setting up his character for Ultron, Spiderman, and Civil War.
+
+### All Hail The King
+
+Loved this one shot because oh my god Ben Kingsley is just an amazing actor. We just got to see another corner of the world, and a continuation of the ten rings! I would love to see a movie where spiderman faces the ten rings as a continuation of Tony's legacy.
+
+
 
 
 
