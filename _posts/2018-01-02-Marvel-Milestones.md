@@ -29,37 +29,47 @@ categories:
 * Item 47
 * Iron Man 3
 * All Hail The King
+* Thor: The Dark World
+* Agents of S.H.I.E.L.D. Season 1
+* Captain America: The Winter Soldier
 
 
 ## Rankings
 
 1) Iron Man
 
-2) Iron Man 3
+2) Captain America: The Winter Soldier
 
-3) Captain America
+3) Iron Man 3
 
-4) Avengers
+4) Agents of S.H.I.E.L.D. Season 1
 
-5) All Hail the King
+5) Captain America
 
-6) Thor
+6) Avengers
 
-7) Item 47
+7) All Hail the King
 
-8) A Funny Thing Happened on the way to Thor's Hammer
+8) Thor: The Dark World
 
-9) The Incredible Hulk
+9) Thor
 
-10) Agent Carter Season 1
+10) Item 47
 
-11) Iron Man 2
+11) A Funny Thing Happened on the way to Thor's Hammer
 
-12) Agent Carter Season 2
+12) The Incredible Hulk
 
-13) The Consultant
+13) Agent Carter Season 1
 
-14) Agent Carter One Shot
+14) Iron Man 2
+
+15) Agent Carter Season 2
+
+16) The Consultant
+
+17) Agent Carter One Shot
+
 
 ## Short Short Reviews
 
@@ -121,6 +131,19 @@ I love iron man 3 because its just shear nerdiness and obsession. Throughout the
 
 Loved this one shot because oh my god Ben Kingsley is just an amazing actor. We just got to see another corner of the world, and a continuation of the ten rings! I would love to see a movie where spiderman faces the ten rings as a continuation of Tony's legacy.
 
+
+### Thor: The Dark World
+
+Thor 2 was pretty good, better than the first. You could tell that the interactions and story line was better connected than last time. I also liked how we got more of an intro to the universe as a whole. It was also cool how Jane was more relevant in this story unlike other side characters in the past. Highlights: Sif and the warriors three. I loved all of their interactions and heroism throughout the movie, and would love to see a spin off of just their adventures.
+
+### Agents of S.H.I.E.L.D. Season 1
+
+Agents of Shield was actually way better than i thought it was going to be. There was some corny-ness here and there, but overall I actually enjoyed it. Each episode felt important to the whole story of Shield as a whole. I think the highlight though is the break that winter soldier caused. It would have been cooler if they had done it a bit later in the show so that we felt more attached to the main characters, and the twists and turns in the episode were better. 
+
+
+### Captain America: The Winter Soldier
+
+Loved this movie. SO much. I think that this was one of the best in the Captain America series. The whole plot of the movie, just the multitude of lies on top of secrets, etc. was done so well. I also like how connected it was to the rest of the universe. I think my favorite part was seeing agent Sitwell getting thrown off the building as our intro to Falcon. It got me more excited to see the rest of Agents of Shield. I also liked the post credits and their intro to what we're going to see in the shows and in Ultron.
 
 
 
