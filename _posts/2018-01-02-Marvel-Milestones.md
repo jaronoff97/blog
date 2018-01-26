@@ -32,6 +32,13 @@ categories:
 * Thor: The Dark World
 * Agents of S.H.I.E.L.D. Season 1
 * Captain America: The Winter Soldier
+* Agents of S.H.I.E.L.D. Season 2
+* Guardians of the Galaxy
+* Daredevil Season 1
+* Guardians of the Galaxy Vol 2
+* Jessica Jones Season 1
+* Avengers: Age of Ultron
+
 
 
 ## Rankings
@@ -40,35 +47,47 @@ categories:
 
 2) Captain America: The Winter Soldier
 
-3) Iron Man 3
+3) Guardians of the Galaxy
 
-4) Agents of S.H.I.E.L.D. Season 1
+4) Daredevil Season 1
 
-5) Captain America
+5) Iron Man 3
 
-6) Avengers
+6) Guardians of the Galaxy Vol 2
 
-7) All Hail the King
+7) Jessica Jones Season 1
 
-8) Thor: The Dark World
+8) Avengers: Age of Ultron
 
-9) Thor
+9) Agents of S.H.I.E.L.D. Season 1
 
-10) Item 47
+10) Captain America
 
-11) A Funny Thing Happened on the way to Thor's Hammer
+11) Avengers
 
-12) The Incredible Hulk
+12) All Hail the King
 
 13) Agent Carter Season 1
 
-14) Iron Man 2
+14) Agents of S.H.I.E.L.D. Season 2
 
-15) Agent Carter Season 2
+15) Thor: The Dark World
 
-16) The Consultant
+16) Thor
 
-17) Agent Carter One Shot
+17) Item 47
+
+18) A Funny Thing Happened on the way to Thor's Hammer
+
+19) The Incredible Hulk
+
+20) Iron Man 2
+
+21) Agent Carter Season 2
+
+22) The Consultant
+
+23) Agent Carter One Shot
 
 
 ## Short Short Reviews
@@ -145,6 +164,29 @@ Agents of Shield was actually way better than i thought it was going to be. Ther
 
 Loved this movie. SO much. I think that this was one of the best in the Captain America series. The whole plot of the movie, just the multitude of lies on top of secrets, etc. was done so well. I also like how connected it was to the rest of the universe. I think my favorite part was seeing agent Sitwell getting thrown off the building as our intro to Falcon. It got me more excited to see the rest of Agents of Shield. I also liked the post credits and their intro to what we're going to see in the shows and in Ultron.
 
+### Agents of S.H.I.E.L.D. Season 2
+
+Season 2 was pretty good, but it was made ehhh by the flip flopping of the character relationships. One minute the characters love each other, next they hate each other. They keep making the same mistakes over and over again. The best parts of the show were Skye, Coulson and Fitz. But I really didn't like the parts with Bobbi and Mack. The whole "real SHIELD" twist felt like an unneccesary plot point and disrupted the swing of everything else happening. It would have been way better if they were together for everything. The episode where they attack the hydra base right before Ultron was amazing, Daisy's fight scene was one of the best in the show.
+
+### Guardians of the Galaxy
+
+I loved this movie sososo much. It was such a breath of fresh air for marvel, and superhero movies in general. It's campy, self aware, but still brilliant. They did a great job with character development and plot development while introducing a big plot point for the overall story ~~infinity stone~~. Benicio del toro was also amazing as the Collector, sorta menacing, but very strange. ALSO THIS EASILY HAD ONE OF THE BEST SOUNDTRACKS OF ANY SUPERHERO MOVIE. I listen to it all of them.
+
+### Daredevil Season 1
+
+This is easily the best of the tv shows yet. I love how Matt is just so to the point, and in both of his careers he's an absolute badass. The relationships between Matt, Foggy, and Karen as well as the side relationship between Matt and Claire. But probably the best part was Fisk. He was perfectly cast, and played the role absolutely perfectly. I also love how they set him up to be the villain in the future. The fights were so well coordinated.
+
+### Guardians of the Galaxy Vol 2
+
+Some people didn't love volume 2 that much, but I actually thought it was one of the best #2 movies of any of them. I loved how they developed Rocket into this very vulnerable character and the parallel they drew with Yondu was brilliant. I also thought it was great how Yondu was both a villain and a hero in this. With Yondu as a father figure to Quill and Yondu's similarity to Rocket, I'm excited to see how that dynamic plays out in the next films. The use of Ego, quill's father as the villain was great, and made better by using the idea of father figures to mirror the hatred that Gamora and Nebula feel. Oh and their relationship was also really interesting to see unfold. And on top of all of that they managed to squeeze in the Sovereign as another villain, and they're setting themselves up to be in the next guardians movie. Also they had an unbelievable soundtrack too.
+
+### Jessica Jones Season 1
+
+Jessica Jones to me was more about Killgrave than anything. He was just so goddamn devious and evil. I was incredibely impressed by David Tennant's acting abilities to just really make you hate him. Jessica was good, but her best parts were about the way she dealt with trauma and anxiety. I thought it was great noir filming though.
+
+### Avengers: Age of Ultron
+
+Age of Ultron isn't seen by the community as that great, but I thought it was really well done. I think the most important part of the movie was the trust between the characters. Seeing the cracks unfold between Tony and Steve was really important. In addition to that, seeing how Tony's goal is to protect the world via Ultron is really important to understanding what's going to happen in Civil War. I think ultron as a villain was ehhh, but his role overall was important. I also like how they introduced Klaue, and how Ultron accidentally cut off his arm.
 
 
 
