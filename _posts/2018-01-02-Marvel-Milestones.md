@@ -38,6 +38,12 @@ categories:
 * Guardians of the Galaxy Vol 2
 * Jessica Jones Season 1
 * Avengers: Age of Ultron
+* WHIH Ant-Man relevant things
+* Ant-Man
+* Daredevil Season 2
+* Agents of S.H.I.E.L.D. Season 3
+* Luke Cage Season 1
+* WHIH Civil War relevant things
 
 
 
@@ -55,39 +61,52 @@ categories:
 
 6) Guardians of the Galaxy Vol 2
 
-7) Jessica Jones Season 1
+7) Daredevil Season 2
 
-8) Avengers: Age of Ultron
+8) Jessica Jones Season 1
 
-9) Agents of S.H.I.E.L.D. Season 1
+9) Avengers: Age of Ultron
 
-10) Captain America
+10) Luke Cage Season 1
 
-11) Avengers
+11) Captain America
 
-12) All Hail the King
+12) Avengers
 
-13) Agent Carter Season 1
+13) All Hail the King
 
-14) Agents of S.H.I.E.L.D. Season 2
+14) Ant-Man
 
-15) Thor: The Dark World
+15) Agents of S.H.I.E.L.D. Season 3
 
-16) Thor
+16) Agent Carter Season 1
 
-17) Item 47
+17) Agents of S.H.I.E.L.D. Season 1
 
-18) A Funny Thing Happened on the way to Thor's Hammer
+18) Thor: The Dark World
 
-19) The Incredible Hulk
+19) Agents of S.H.I.E.L.D. Season 2
 
-20) Iron Man 2
+20) Thor
 
-21) Agent Carter Season 2
+21) Item 47
 
-22) The Consultant
+22) WHIH Ant-Man relevant things
 
-23) Agent Carter One Shot
+23) A Funny Thing Happened on the way to Thor's Hammer
+
+24) The Incredible Hulk
+
+25) Iron Man 2
+
+26) Agent Carter Season 2
+
+27) The Consultant
+
+28) WHIH Civil War relevant things
+
+29) Agent Carter One Shot
+
 
 
 ## Short Short Reviews
@@ -188,6 +207,29 @@ Jessica Jones to me was more about Killgrave than anything. He was just so godda
 
 Age of Ultron isn't seen by the community as that great, but I thought it was really well done. I think the most important part of the movie was the trust between the characters. Seeing the cracks unfold between Tony and Steve was really important. In addition to that, seeing how Tony's goal is to protect the world via Ultron is really important to understanding what's going to happen in Civil War. I think ultron as a villain was ehhh, but his role overall was important. I also like how they introduced Klaue, and how Ultron accidentally cut off his arm.
 
+### WHIH Ant-Man relevant things
+
+I loved these little ant-man tie ins! Seeing paul rudd doing his thing; stealing the cars, standing up for the little guy, joking around, not taking any one else's crap. I always love seeing these tie in things to be part of the greater MCU.
+
+### Ant-Man
+
+I loved the tone set by this movie, with the heist aspects. Luis was also SO amazing, and using his voice-over as a story telling mechanism to recreate the heist trope was great. I also thought the use of Pym as a mentor was a great way to shadow the use of mentors in the past I.E. Iron Man and Captain America (though I'm glad they didn't kill off Hank.) I thought the thing that Hank and Hope's relationship felt a bit shoe-horned, but maybe that was because they were really bad at pretending they weren't on the same side. Overall though, I really liked Ant-Man as a character.
+
+### Daredevil Season 2
+
+I LOVED THIS SEASON SO MUCH. I really loved the Punisher, and his use as a philosophical counter to Daredevil. I actually think that their conversations (in some cases) were better than their fight scenes. That's definitely saying a lot given that their fight scenes were so good. I also am so excited to see how Fisk is going to play a role in the Defenders universe in general. I also forgot how good elektra was in this; as a love interest she was great but also as a way to create more tension between Daredevil and Stick. Also creating both distance and more love between Foggy, Matt, and Karen was really moving.
+
+### Agents of S.H.I.E.L.D. Season 3
+
+This season was way better in quality. I normally don't like how shows just keep reviving characters, but in this case they earned it because Ward is SUCH a messed up character. Also Simmons and Fitz always makes me so sad to see how Fitz is such a great guy but the world just doesn't let them be together, until such a sweet moment towards the end of the season. You could also tell that the acting, and the quality of the special effects got much better this season. In addition to that I think they're getting better at creating villains and killing off characters, creating real moments of angst.
+
+### Luke Cage Season 1
+
+People hate on this show way too much. I really enjoyed it for its amazing soundtrack, great fight scenes, twists/ turns, and thrills. I thought the way they used Cottonmouth and Mariah as two sides of the criminal coin was really cool. I thought Diamondback was good, but could have been done a bit better. It's hard to do a show with so many villains each with weird roles in the grand scheme of things, but I guess that's what made the show really interesting; it was as much about the villains as it was about the hero.
+
+### WHIH Civil War relevant things
+
+Eh, didn't love these. Thought they were too cheesy. Though I did like seeing president ellis talk about the role the avengers should play. I think it would have been better if they brought in a 'panel' on the show of random side characters we've seen before to talk about the accords/ the role the avengers should play.
 
 
 
