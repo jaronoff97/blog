@@ -44,6 +44,12 @@ categories:
 * Agents of S.H.I.E.L.D. Season 3
 * Luke Cage Season 1
 * WHIH Civil War relevant things
+* Captain America: Civil War
+* Agents of S.H.I.E.L.D. Season 4
+* Iron Fist Season 1
+* Doctor Strange
+* Spider-Man: Homecoming
+* The Defenders Season 1
 
 
 
@@ -51,61 +57,73 @@ categories:
 
 1) Iron Man
 
-2) Captain America: The Winter Soldier
+2) Spider-Man: Homecoming
 
-3) Guardians of the Galaxy
+3) Captain America: Civil War
 
-4) Daredevil Season 1
+4) Captain America: The Winter Soldier
 
-5) Iron Man 3
+5) Guardians of the Galaxy
 
-6) Guardians of the Galaxy Vol 2
+6) Daredevil Season 1
 
-7) Daredevil Season 2
+7) Iron Man 3
 
-8) Jessica Jones Season 1
+8) Guardians of the Galaxy Vol 2
 
-9) Avengers: Age of Ultron
+9) Daredevil Season 2
 
-10) Luke Cage Season 1
+10) Jessica Jones Season 1
 
-11) Captain America
+11) Avengers: Age of Ultron
 
-12) Avengers
+12) Luke Cage Season 1
 
-13) All Hail the King
+13) Captain America
 
-14) Ant-Man
+14) Avengers
 
-15) Agents of S.H.I.E.L.D. Season 3
+15) All Hail the King
 
-16) Agent Carter Season 1
+16) Ant-Man
 
-17) Agents of S.H.I.E.L.D. Season 1
+17) Doctor Strange
 
-18) Thor: The Dark World
+18) Agents of S.H.I.E.L.D. Season 4
 
-19) Agents of S.H.I.E.L.D. Season 2
+19) The Defenders Season 1
 
-20) Thor
+20) Agents of S.H.I.E.L.D. Season 3
 
-21) Item 47
+21) Agent Carter Season 1
 
-22) WHIH Ant-Man relevant things
+22) Agents of S.H.I.E.L.D. Season 1
 
-23) A Funny Thing Happened on the way to Thor's Hammer
+23) Thor: The Dark World
 
-24) The Incredible Hulk
+24) Agents of S.H.I.E.L.D. Season 2
 
-25) Iron Man 2
+25) Thor
 
-26) Agent Carter Season 2
+26) Item 47
 
-27) The Consultant
+27) WHIH Ant-Man relevant things
 
-28) WHIH Civil War relevant things
+28) A Funny Thing Happened on the way to Thor's Hammer
 
-29) Agent Carter One Shot
+29) The Incredible Hulk
+
+30) Iron Man 2
+
+31) Agent Carter Season 2
+
+32) Iron Fist Season 1
+
+33) The Consultant
+
+34) WHIH Civil War relevant things
+
+35) Agent Carter One Shot
 
 
 
@@ -231,6 +249,36 @@ People hate on this show way too much. I really enjoyed it for its amazing sound
 
 Eh, didn't love these. Thought they were too cheesy. Though I did like seeing president ellis talk about the role the avengers should play. I think it would have been better if they brought in a 'panel' on the show of random side characters we've seen before to talk about the accords/ the role the avengers should play.
 
+### Captain America: Civil War
+
+I absolutely loved Civil War for tons of reasons. I think the way they set you up to think that Zemo was going to try and kill off different members of the avengers was brilliant, but what was even better was the fact that everyone fell into his ploy to split them up. Zemo delivered some killer lines too – "a government destroyed within can't build back up." The way they introduced Wakanda, and the black panther was also really cool; setting up the plot for his standalone movie. Another part I loved was bringing Spiderman into the plot in the BEST possible way. The last thing I wanted was another spiderman origin story. Just throwing him into the story was amazing, especially under the guise of Tony. 
+
+I haven't even gotten to how well the split between Steve and Tony was setup. Rewatching all of the other films leading up to this was especially eye-opening into how much tony and steve mess around with each other and are often at odds. Thinking back to ultron they have playful moments like where Tony makes fun of Cap saying "language." But they also have real tension when Tony is creating the Vision. Seeing that brought to the next level through the Zemo and Bucky was perfect. My favorite interaction between them has got to be "he's my best friend" - Steve ... "so was I" - Tony. Because that's the moment it was for sure over.
+
+
+### Agents of S.H.I.E.L.D. Season 4
+
+This season was quite the fricken' rollercoaster. We start off with the introduction of Mace, which was kinda interesting, but also very strange. It felt a bit like he was shoehorned into the plot at first, until it started to make sense why he was there. Looking back at the whole season, I see the use of Eli Morrow, but in the moment I was really tired of his whole subplot. He was needed as an element to introduce the darkhold, and eventually AIDA. He was also used to introduce Ghost Rider, which was AMAZING, I really hope we see him again in season 5, cause damn was he badass. AIDA and Radcliffe though really stole the show with all the levels of trickery going on there. It was so refreshing to be confused during the show, and to not be able to predict what was going to happen next. In many ways I actually liked the portrayal of AI via AIDA more than via ultron, because it showed that even a calculated approach can go haywire very quickly in that world. I think my least favorite part of the season was the ending with AIDA getting killed by coulson, I think it would have felt a bit more poetic if it had been fitz who ultimately killed her. OH and that reminds me the bit between Fitz's LMD and Jemma was so amazing because you could just see the emotion that both characters were putting into the role. UGH and Mack's daughter was a really great addition to humanize that fake world, and his decisions. This was probably the best season yet in acting, plot, CGI, etc.
+
+
+### Iron Fist Season 1
+
+I go back and forth about my feelings on this show. Danny Rand was the worst character in the whole show, but everyone around him was pretty great. I loved the meachums, especially Ward. I mean Ward definitely stole the show for me, and made a lot of it very worth it. Back to Danny, it felt like they couldn't really choose a direction with him, and not in the "oh he's new to this world he didn't have direction" kind of way, more in the "let's change his motives every episode randomly" kind of way. The writing and dialogue was sloppy, and what's worse is that the moments that could have been really great – Colleen's actually a member of the Hand, Davos's introduction as a friend and then his feeling of betrayal, and Harold's betrayal – all felt insignificant and kind of ehhh. I think this was all mainly because Danny was poorly written or because they cared more about telling and not really showing.
+
+
+### Doctor Strange
+
+I thought doctor strange was great, but a bit too generic now. The visuals were CRAZY and that was really fun, but I think the plot of there being a stubborn person who gets taught by a master and then the teacher dies is a bit played out (see Iron Man, Captain America, GOTG 2). Also the villain was good, but still the one-off villain problem definitely exists, and Mads Mikkelsen didn't come off as too menacing. I think their timeline was a bit too short too, it would have been useful to see Strange train longer. I think my favorite part of the movie was the end where Strange just outsmarted Dormammu, and comes back as a BADASS sorcerer supreme. I'm excited for the next Doctor Strange movie with Mordo though, because that's gonna be a really interesting plot.
+
+
+### Spider-Man: Homecoming
+
+Spiderman is one of my favorite Marvel movies to this day. It was a refreshing change up from all of the past Spiderman movies, and it did an AMAZING job of portraying Peter Parker as a high schooler in this day and age. He wasn't grungy like Maguire's spiderman, he wasn't unbelievably a nerd like Garfield's spiderman, he was understandably geeky and uncool. Peter in this movie was a kid, and it was more of a coming of age story than anything where he really matured throughout the whole movie. His friends were also great; loved Ned so much. AH and Michael Keaton as Toomes was perfect! I remember seeing this in theatre's and realizing that was Liz's dad literally 3 seconds before Peter opened the door to his house. The audience literally gasped all together, it was crazy. I also like how Tony mirrored a father figure in the movie, and he knew it too. It all just felt so perfect the rational behind all of the character decisions; Tony not wanting Peter to die on his hands, and Peter feeling like he can do anything.
+
+
+### The Defenders Season 1
+
+The Defenders had so much potential to be AMAZING, but I think even though I had so much hype for the show it didn't meet it. I think they got all of the character interactions correct, seeing how luke interacted with danny and jessica interacting with Matt felt perfect. The problem was the villains. The Hand had been made out to be this CRAZY powerful organization, yet four people could beat them? The largest battle was with like 30 people, yet the leaders kept talking about they had ARMIES. I felt like they just missed an opportunity to really make the Hand out to be crazy scary. The problem with the show was that it was more telling than showing. We didn't see the chaste being wiped out, only the aftermath. We didn't see the events in the past that the Hand orchestrated, only heard. They barely explained what a black sky is, and now you have elektra back from the dead. Elektra was the only part of the hand that made sense to me, especially given her relationship with Matt. They definitely just lost a bit chance to have potentially one of the best villain plotlines, especially with SIGOURNEY WEAVER. I would have loved to see some badassery from her, but nothing :( I have hope that the season of the defenders is going to be about Fisk fucking stuff up which would be amazing because he is truly a terrifying villain.
 
 
 
