@@ -50,6 +50,13 @@ categories:
 * Doctor Strange
 * Spider-Man: Homecoming
 * The Defenders Season 1
+* Inhumans
+* Thor: Ragnarok
+* The Punisher Season 1
+* Runaways Season 1
+* Agents of S.H.I.E.L.D. Season 5
+* Black Panther
+* Jessica Jones Season 2
 
 
 
@@ -67,63 +74,78 @@ categories:
 
 6) Daredevil Season 1
 
-7) Iron Man 3
+7) Black Panther
 
-8) Guardians of the Galaxy Vol 2
+8) Iron Man 3
 
-9) Daredevil Season 2
+9) Thor: Ragnarok
 
-10) Jessica Jones Season 1
+10) Guardians of the Galaxy Vol 2
 
-11) Avengers: Age of Ultron
+11) The Punisher Season 1
 
-12) Luke Cage Season 1
+12) Daredevil Season 2
 
-13) Captain America
+13) Jessica Jones Season 1
 
-14) Avengers
+14) Avengers: Age of Ultron
 
-15) All Hail the King
+15) Luke Cage Season 1
 
-16) Ant-Man
+16) Captain America
 
-17) Doctor Strange
+17) Avengers
 
-18) Agents of S.H.I.E.L.D. Season 4
+18) Agents of S.H.I.E.L.D. Season 5
 
-19) The Defenders Season 1
+19) All Hail the King
 
-20) Agents of S.H.I.E.L.D. Season 3
+20) Ant-Man
 
-21) Agent Carter Season 1
+21) Runaways Season 1
 
-22) Agents of S.H.I.E.L.D. Season 1
+22) Doctor Strange
 
-23) Thor: The Dark World
+23) Agents of S.H.I.E.L.D. Season 4
 
-24) Agents of S.H.I.E.L.D. Season 2
+24) The Defenders Season 1
 
-25) Thor
+25) Agents of S.H.I.E.L.D. Season 3
 
-26) Item 47
+26) Agent Carter Season 1
 
-27) WHIH Ant-Man relevant things
+27) Agents of S.H.I.E.L.D. Season 1
 
-28) A Funny Thing Happened on the way to Thor's Hammer
+28) Thor: The Dark World
 
-29) The Incredible Hulk
+29) Agents of S.H.I.E.L.D. Season 2
 
-30) Iron Man 2
+30) Thor
 
-31) Agent Carter Season 2
+31) Item 47
 
-32) Iron Fist Season 1
+32) WHIH Ant-Man relevant things
 
-33) The Consultant
+33) A Funny Thing Happened on the way to Thor's Hammer
 
-34) WHIH Civil War relevant things
+34) The Incredible Hulk
 
-35) Agent Carter One Shot
+35) Iron Man 2
+
+36) Agent Carter Season 2
+
+37) Jessica Jones Season 2
+
+38) Iron Fist Season 1
+
+39) The Consultant
+
+40) WHIH Civil War relevant things
+
+41) Agent Carter One Shot
+
+42) Inhumans
+
 
 
 
@@ -279,6 +301,55 @@ Spiderman is one of my favorite Marvel movies to this day. It was a refreshing c
 ### The Defenders Season 1
 
 The Defenders had so much potential to be AMAZING, but I think even though I had so much hype for the show it didn't meet it. I think they got all of the character interactions correct, seeing how luke interacted with danny and jessica interacting with Matt felt perfect. The problem was the villains. The Hand had been made out to be this CRAZY powerful organization, yet four people could beat them? The largest battle was with like 30 people, yet the leaders kept talking about they had ARMIES. I felt like they just missed an opportunity to really make the Hand out to be crazy scary. The problem with the show was that it was more telling than showing. We didn't see the chaste being wiped out, only the aftermath. We didn't see the events in the past that the Hand orchestrated, only heard. They barely explained what a black sky is, and now you have elektra back from the dead. Elektra was the only part of the hand that made sense to me, especially given her relationship with Matt. They definitely just lost a bit chance to have potentially one of the best villain plotlines, especially with SIGOURNEY WEAVER. I would have loved to see some badassery from her, but nothing :( I have hope that the season of the defenders is going to be about Fisk fucking stuff up which would be amazing because he is truly a terrifying villain.
+
+
+### Inhumans
+
+This was one of the worst shows ever. I couldn't believe how bad it was. It was like everytime they had a chance to fix it, they made it worse. Like way worse. Each of the character relationships made no sense, plot decisions made no sense, and it wasn't like they were trying to make it like they that. I wouldn't recommend this show to any person... ever. 
+
+### Thor: Ragnarok
+
+I loved this movie! Such great design, and color scheme, plus they did a great job of changing Thor's character in a way that made so much sense, while also making Loki a better character. I just love how connected this movie felt to the greater universe. I thought that there may have been too much comedy at some points, but it was still very tasteful. I thought Hela was a really good villain too, showing her destruction was really well done. Also Hela killing the warriors three was particularly sad for me, because I really loved them, and thought it would have been cool for them to show up in infinity war, because they're amazing warriors. 
+
+### The Punisher Season 1
+
+I thought this show was really well done, and pretty timely when it comes to the gun control debate. But beyond the political discourse in the show, Jon Bernthal is a true badass in the show, and is a perfect punisher. I really liked the way they portrayed his moral compass. I thought Madhani was okay, but Billy Russo was DOPE! He did such an amazing job of being this dubious chraracter that betrayed everyone while still following his own story. I'm excited to see if he shows up again in the MCU soon. Also excited to see what they do for Season 2.
+
+### Runaways Season 1
+
+This was a really interesting show for tons of reasons. It felt very unlike most shows, not just the MCU, but every tv show. The show followed a very strange structure; acting more like a drama-mystery. I thought it was really well done though, and the child actors did a great job. I'm excited to see what happens next season. That being said, I was really suprised there were no mentions of anything else in the MCU, all in all it felt very disconnected and I wonder if it's ever going to be part of it.
+
+### Agents of S.H.I.E.L.D. Season 5
+
+(The season isn't over yet so I'm just going to write about what I've seen so far.) 
+
+So far this season is a fricken' rollarcoaster. There's not a moment that goes by that something batshit doesn't happen. The thing about it is, is that it feels coherent, and I really like it. The entire plot of time travel and space travel is really interesting and well done. I like how I always feel a sense of not knowing what happening, it's a real change in what AOS has felt like in the past. Even the hydra subplot in this is really cool, and feels like it may tie in to Infinity War. I also think that Fitzsimmons is taken to a new level that's crazy cool with Diek being their grandson. Fitz's mental health is also really depressing and well done, and I like how Simmons is dealing with it.
+
+### Black Panther
+
+I thought Black Panther was an amazing movie. It was a breath of fresh air for marvel movies, especially given that many marvel villains can be pretty one dimensional. Killmonger was absolutely perfect though. I thought he was not only a great villain, but everything about him was understable, all of his actions given the context of America made a lot of sense. Shuri was also perfect. Oh and the first time that I saw it, I remember being very nervous during many of the fight scenes, like fuck this is real, T'Challa is in some real danger here. 
+
+### Jessica Jones Season 2
+
+I thought this season of jessica jones was bad. Like really not so great. The writing was sloopy, the acting was meh, and the plot was pretty bland. I thought overall this was a lowpoint for the netflix MCU shows. It just felt like it didn't belong and the plot was forced. I was bummed that they killed off Will Simpson in one of the first episodes. Jessica wasn't that bad herself, but Trish was really terrible and Jessica's mother was really bad as well. I feel like what could have made this season better was simply a little bit more of a focused plot and some better acting. Jessica's transformation from grungy into depressed alcoholic like she is now was really enthralling though. They did set up Trish pretty well though as the villain for the next season, and I think that's going to be very interesting.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
