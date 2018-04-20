@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo');
-
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -7,14 +6,14 @@ html {
 }
 
 @media (max-height: 700px) {
-  .content {
-    transform: initial !important;
-    -webkit-transform: initial !important;
-    left: auto !important;
-    top: 20px !important;
-    margin: 0 auto !important;
-    position: relative !important;
-  }
+    .content {
+        transform: initial !important;
+        -webkit-transform: initial !important;
+        left: auto !important;
+        top: 20px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+    }
 }
 
 a {
@@ -277,6 +276,7 @@ h4 {
 
 .icons-home {
     text-align: center;
+    cursor: default;
 }
 
 .icons-home a {
@@ -670,8 +670,8 @@ input[type="search"]::-webkit-search-cancel-button {
 .search-form {
     position: relative;
     top: 0;
-    -webkit-transform: translateX(-200px);
-    transform: translateX(-200px);
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
     z-index: 9999;
     width: 100%;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -707,8 +707,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .search-form.active {
     top: 0;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     -ms-filter: none;
     -webkit-filter: none;
     filter: none;
@@ -1871,4 +1871,3 @@ footer p {
     text-align: center;
     margin: 0
 }
-
