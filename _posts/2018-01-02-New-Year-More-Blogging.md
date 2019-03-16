@@ -28,3 +28,6 @@ While in NYC, I'm planning on going to a new restaurant at least once a week, if
 For those who know me IRL, you know that I'm HUGE into the marvel cinematic universe (MCU.) I'm planning on watching every single piece of content in the MCU leading up to Infinity War. I created a little python program [here](https://www.github.com/jaronoff97/MovieMarathonTracker) to keep track of my watching. I think I'm also going to be blog for every major milestone in my watching (every movie, every season, maybe not the one shots.) 
 
 Really excited to get stated on all of this work!!
+
+### FUN!
+https://youtu.be/tv1urfDXs-o
