@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'jaronoff.com',
+  url: 'http://jaronoff.com',
   title: 'Jacob Aronoff',
   subtitle: 'Software Engineer @ Drift. hackNY \' 17 Alumny. Interact Fellow',
   copyright: '© All rights reserved.',
