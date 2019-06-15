@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "name": "gatsby-starter-lumen",
-  "description": "A minimal, lightweight and mobile-first starter for creating blazing-fast static blogs",
+  "name": "jaronoff97.github.io",
+  "description": "Jacob Aronoff's personal website based off of https://github.com/alxshelepenok/gatsby-starter-lumen",
   "main": "n/a",
   "scripts": {
     "develop": "yarn run clean && gatsby develop",
@@ -18,14 +18,12 @@
     "test:watch": "jest --watch --config ./jest/jest-config.js",
     "release": "standard-version"
   },
-  "repository": "https://github.com/alxshelepenok/gatsby-starter-lumen",
-  "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
+  "repository": "https://github.com/jaronoff97/jaronoff97.github.io",
+  "author": "Jacob Aronoff <me@jaronoff.com>",
   "license": "MIT",
   "keywords": [
     "gatsby",
     "graphql",
-    "netlify",
-    "netlify-cms",
     "pagination",
     "categories",
     "tags",
@@ -50,8 +48,6 @@
     "gatsby-plugin-flow": "^1.0.6",
     "gatsby-plugin-google-gtag": "^1.0.17",
     "gatsby-plugin-manifest": "^2.1.1",
-    "gatsby-plugin-netlify": "^2.0.17",
-    "gatsby-plugin-netlify-cms": "^3.0.18",
     "gatsby-plugin-offline": "^2.1.3",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
@@ -72,7 +68,6 @@
     "katex": "^0.10.2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
-    "netlify-cms": "^2.9.1",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
     "prismjs": "^1.16.0",
