@@ -1,11 +1,11 @@
 # Jacob Aronoff's Personal Blog
 
-This blog is Jekyll based, and the theme comes from [here](https://victorvoid.github.io/space-jekyll-template/). I'm not a good designer, and I thank the creator for making this!
+This blog is gatsby based, and the theme comes from [here](https://github.com/alxshelepenok/gatsby-starter-lumen). I'm not a good designer, and I thank the creator for making this!
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2016 Victor Igor
+Copyright (c) 2016-2018 Alexander Shelepenok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
