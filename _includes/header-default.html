@@ -1,0 +1,58 @@
+<header class="header-site" role="banner">
+    <div class="content">
+        <div class="person">
+            <img src="/assets/img/profile.jpg" alt="">
+        </div>
+        <h1>
+            <span class="site-title">[{{site.title}}]</span>
+            <small style="display: block; font-size: 65%; font-weight: 300;"><a href="{{site.baseurl}}/about">Bio</a> | <a href="{{site.baseurl}}/resume">Resume</a></small>
+        </h1>
+        <div class="icons-home">
+
+            <a aria-label="Send email" href="mailto:{{site.email}}">
+                <svg class="icon icon-email"><use xlink:href="#icon-email"></use></svg>
+            </a>
+
+            <a aria-label="My Twitter" target="_blank" href="https://twitter.com/{{site.twitter_username}}">
+                <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+            </a>
+
+            <a aria-label="My Facebook" target="_blank" href="https://facebook.com/{{site.facebook_username}}">
+                <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+            </a>
+
+            <a aria-label="My Github" target="_blank" href="https://github.com/{{site.github_username}}">
+                <svg class="icon icon-github-alt"><use xlink:href="#icon-github-alt"></use></svg>
+            </a>
+
+            <a aria-label="My Linkedin" target="_blank" href="http://linkedin.com/in/{{ site.linkedin_username }}">
+                <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg>
+            </a>
+
+        </div>
+
+        <ul class="recent">
+            <p>Recent posts:</p>
+             {% for post in site.posts limit:3%}
+                <li>
+                    <a href="{{ post.url | prepend: site.baseurl }}">
+                        <h2 class="post-title" itemprop="name">{{ post.title }}</h2>
+                    </a>
+                </li>
+              {% endfor %}
+        </ul>
+
+        <ul class="recent">
+            <p>Recent projects:</p>
+             {% for project in site.projects limit:3%}
+                <li>
+                    <a href="{{ project.url}}">
+                        <h2 class="post-title" itemprop="name">{{ project.name }}</h2>
+                    </a>
+                </li>
+              {% endfor %}
+        </ul>
+
+    </div>
+    {% include menu-search.html %}
+</header>

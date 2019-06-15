@@ -1,0 +1,205 @@
+{
+  "basics": {
+    "name": "Jacob Aronoff",
+    "label": "",
+    "picture": "",
+    "email": "jacobaronoff45@gmail.com",
+    "phone": "(617) 645-6573",
+    "website": "http://jaronoff.com",
+    "availability": "January-June 2019",
+    "summary": "I'm from Newton, Massachusetts and attended Milton Academy where I founded the school’s Programming Club and Computer Science tutoring system. During my tenure at Milton, I helped grow the school’s Programming department from 40 to 120 students, in a school of 800. I currently attend Northeastern University as a sophomore, where I major in Computer Science and I'm very interested in tutoring, entrepreneurship, and programming. I was recently elected to the Board of Directors of Northeastern's NUHacks club - whose mission is to help students make, break, hack, design, build and other creative-type things, which is a mission near and dear to my heart. I am also a Program Director in Northeastern’s Entrepreneur's Club, responsible for Connect and TechTreks, where I make connections between NU's budding entrepreneurs and the venture capital startup community in the Boston area.",
+    "location": {
+      "address": "29 Lansing Road",
+      "postalCode": "02465",
+      "city": "Newton",
+      "region": "Massachusetts"
+    },
+    "profiles": [{
+      "network": "Github",
+      "username": "jaronoff97",
+      "url": "github.com/jaronoff97"
+    }, {
+      "network": "Linkedin",
+      "username": "jaronoff97",
+      "url": "linkedin.com/in/jaronoff97/"
+    }, {
+      "network": "Twitter",
+      "username": "get_sw1fty",
+      "url": "twitter.com/get_sw1fty"
+    }]
+  },
+  "work": [
+    {
+      "company": "Datadog",
+      "position": "Sofware Engineer",
+      "website": "http://www.datadoghq.com",
+      "startDate": "May 2017",
+      "endDate": "Jul 2018",
+      "location": "New York City, New York",
+      "highlights": [
+        "Built a service that handles with millions of requests per day",
+        "Developed and maintained multiple Go and Python services",
+        "Acclerated a portion of the company's infrastructure, solving 50+ customer request tickets",
+        "Migrated a major pipeline dependency to an autoscaling group, using Kafka 10 for load balancing",
+        "Moved multiple services to autoscaling groups in AWS, decreasing the amount of outages",
+        "Generated the first Swift mobile library for the Datadog API, called SwiftDog",
+        "Created a new ElasticSearch 6 cluster, improving frontend performance"
+      ]
+    },
+    {
+      "company": "Bitsight Technologies",
+      "position": "Software Engineering Intern",
+      "website": "https://www.bitsighttech.com",
+      "startDate": "Jun 2015",
+      "endDate": "Aug 2016",
+      "location": "Cambridge, Massachusetts",
+      "highlights": [
+        "Automated customer support by leveraging three seperate APIs in a microservice",
+        "Created micro services in Flask, Javascript, and Java",
+        "Updated the company wide testing suite"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "HackNY",
+      "position": "Fellow",
+      "website": "http://www.hackny.org",
+      "startDate": "May",
+      "endDate": "Aug 2017",
+      "summary": "Served as a member of the hackNY class of 2017 fellows",
+      "highlights": [
+        "Worked on social good projects with other fellows"
+      ]
+    },
+    {
+      "organization": "HackNY",
+      "position": "Mentor",
+      "website": "http://www.hackny.org",
+      "startDate": "May 2018",
+      "endDate": "Present",
+      "summary": "Mentored a group of 19 fellows of the hackNY class of 2018",
+      "highlights": [
+      	"Coordinated events and speakers for fellows",
+      	"Planned hack nights for fellows to work on social good projects"
+      ]
+    },
+    {
+      "organization": "DaisyDebt",
+      "position": "Software Engineer",
+      "website": "http://daisydebt.org",
+      "startDate": "Jan 2018",
+      "endDate": "Present",
+      "summary": "Developed services and automations",
+      "highlights": [
+        "Helped develop a ruby on rails service",
+        "Wrote multiple AWS Lambda functions to automate tasks"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Northeastern University, College of Computer and Information Science",
+      "area": "",
+      "studyType": "Candidate for a Bachelor of Science in Computer Science",
+      "startDate": "Aug 2016",
+      "endDate": "Jun 2020",
+      "gpa": "3.8/4.0",
+      "honors": "Dean's list",
+      "courses": [
+        "CS 3500 - Object Oriented Design",
+        "DS 4400 - Data Mining and Machine Learning",
+        "CS 3650 - Computer Systems"
+      ]
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "App Development",
+      "level": "Expert",
+      "keywords": [
+        "Swift",
+        "Java",
+        "React Native"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Advanced",
+      "keywords": [
+        "Python",
+        "Java",
+        "NodeJS",
+        "SQL",
+        "Go"
+      ]
+    },
+    {
+      "name": "Frameworks",
+      "level": "Advanced",
+      "keywords": [
+        "React",
+        "Flask",
+        "Django",
+        "Vue",
+        "Vapor"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "Advanced",
+      "keywords": [
+        "MySQL",
+        "MongoDB",
+        "Cassandra",
+        "Postgres",
+        "ElasticSearch"
+      ]
+    },
+    {
+      "name": "Technologies",
+      "level": "Advanced",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Terraform"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Hebrew",
+      "fluency": "Beginner"
+    },
+    {
+      "language": "Chinese (Mandarin)",
+      "fluency": "Beginner"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Entrepreneurship",
+      "keywords": [
+        "Tamid",
+        "Entrepreneurs Club"
+      ]
+    },
+    {
+      "name": "Photography",
+      "keywords": []
+    },
+    {
+      "name": "Film",
+      "keywords": []
+    }
+  ],
+  "references": []
+}
