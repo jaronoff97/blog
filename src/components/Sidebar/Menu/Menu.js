@@ -19,6 +19,7 @@ const Menu = ({ menu }: Props) => (
             to={item.path}
             className={styles['menu__list-item-link']}
             activeClassName={styles['menu__list-item-link--active']}
+            partiallyActive={item.path != "/"}
           >
             {item.label}
           </Link>

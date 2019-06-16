@@ -7,32 +7,32 @@ import Feed from '../components/Feed';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
-import type { AllMarkdownRemark, PageContext } from '../types';
+import type { PageContext, AllMarkdownRemark } from '../types';
 
 type Props = {
   data: AllMarkdownRemark,
   pageContext: PageContext
 };
 
-const TagTemplate = ({ data, pageContext }: Props) => {
+const ArchivesTemplate = ({ data, pageContext }: Props) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
 
   const {
-    tag,
     currentPage,
-    prevPagePath,
-    nextPagePath,
+    hasNextPage,
     hasPrevPage,
-    hasNextPage
+    prevPagePath,
+    nextPagePath
   } = pageContext;
 
+
   const { edges } = data.allMarkdownRemark;
-  const pageTitle = currentPage > 0 ? `All Posts tagged as "${tag}" - Page ${currentPage} - ${siteTitle}` : `All Posts tagged as "${tag}" - ${siteTitle}`;
+  const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
-      <Sidebar />
-      <Page title={tag}>
+      <Sidebar isIndex />
+      <Page>
         <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}
@@ -46,17 +46,11 @@ const TagTemplate = ({ data, pageContext }: Props) => {
 };
 
 export const query = graphql`
-  query TagPage($tag: String, $postsLimit: Int!, $postsOffset: Int!) {
-    site {
-      siteMetadata {
-        title
-        subtitle
-      }
-    }
+  query ArchivesTemplate($postsLimit: Int!, $postsOffset: Int!) {
     allMarkdownRemark(
         limit: $postsLimit,
         skip: $postsOffset,
-        filter: { frontmatter: { tags: { in: [$tag] }, template: { in: ["post", "archive"] }, draft: { ne: true } } },
+        filter: { frontmatter: { template: { eq: "archive" }, draft: { ne: true } } },
         sort: { order: DESC, fields: [frontmatter___date] }
       ){
       edges {
@@ -70,10 +64,11 @@ export const query = graphql`
             date
             category
           }
+          excerpt(pruneLength: 100, format: MARKDOWN)
         }
       }
     }
   }
 `;
 
-export default TagTemplate;
+export default ArchivesTemplate;

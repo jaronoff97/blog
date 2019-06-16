@@ -5,6 +5,7 @@ const _ = require('lodash');
 const createCategoriesPages = require('./pagination/create-categories-pages.js');
 const createTagsPages = require('./pagination/create-tags-pages.js');
 const createPostsPages = require('./pagination/create-posts-pages.js');
+const createArchivesPages = require('./pagination/create-archives-pages.js');
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -17,13 +18,13 @@ const createPages = async ({ graphql, actions }) => {
 
   // Tags list
   createPage({
-    path: '/tags',
+    path: '/tag',
     component: path.resolve('./src/templates/tags-list-template.js')
   });
 
   // Categories list
   createPage({
-    path: '/categories',
+    path: '/category',
     component: path.resolve('./src/templates/categories-list-template.js')
   });
 
@@ -62,6 +63,12 @@ const createPages = async ({ graphql, actions }) => {
         component: path.resolve('./src/templates/post-template.js'),
         context: { slug: edge.node.fields.slug }
       });
+    } else if (_.get(edge, 'node.frontmatter.template') === 'archive') {
+      createPage({
+        path: edge.node.fields.slug,
+        component: path.resolve('./src/templates/archive-template.js'),
+        context: { slug: edge.node.fields.slug }
+      });
     }
   });
 
@@ -69,6 +76,7 @@ const createPages = async ({ graphql, actions }) => {
   await createTagsPages(graphql, actions);
   await createCategoriesPages(graphql, actions);
   await createPostsPages(graphql, actions);
+  await createArchivesPages(graphql, actions);
 };
 
 
