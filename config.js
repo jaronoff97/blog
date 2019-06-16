@@ -6,7 +6,7 @@ module.exports = {
   subtitle: 'Software Engineer @ Drift. hackNY \' 17 Alumny. Interact Fellow',
   copyright: '© All rights reserved.',
   disqusShortname: '',
-  postsPerPage: 10,
+  postsPerPage: 8,
   googleAnalyticsId: 'UA-104055831-1',
   menu: [
     {
