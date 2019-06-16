@@ -63,8 +63,8 @@ export const query = graphql`
             title
             date
             category
-            description
           }
+          excerpt(pruneLength: 100, format: MARKDOWN)
         }
       }
     }
