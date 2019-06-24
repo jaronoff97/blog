@@ -37,7 +37,7 @@ module.exports = {
   author: {
     name: 'Jacob Aronoff',
     photo: '/photo.jpg',
-    bio: 'Software Engineer @ Drift. hackNY \' 17 Alumny. Interact Fellow',
+    bio: 'Software Engineer @ Drift. hackNY \'17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!',
     contacts: {
       email: 'me@jaronoff.com',
       twitter: 'get_sw1fty',
