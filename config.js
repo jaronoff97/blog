@@ -3,7 +3,7 @@
 module.exports = {
   url: 'http://jaronoff.com',
   title: 'Jacob Aronoff',
-  subtitle: 'Software Engineer @ Drift. hackNY \' 17 Alumny. Interact Fellow',
+  subtitle: 'Software Engineer @ Drift. hackNY \'17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 8,
