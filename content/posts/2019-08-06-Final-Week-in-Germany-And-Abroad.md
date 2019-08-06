@@ -2,7 +2,7 @@
 template: "post"
 title: Final Week in Germany And Abroad
 date: 2019-08-06
-description: ""
+description: "I really enjoyed our time in Munich, its a very cool city with a lot to offer, I'm going to miss the transit a lot and the beautiful weather in the city as well."
 tags: [update, blog]
 comments: true
 draft: false
