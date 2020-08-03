@@ -40,7 +40,7 @@
   "dependencies": {
     "bluebird": "^3.5.5",
     "classnames": "^2.2.6",
-    "codecov": "^3.5.0",
+    "codecov": "^3.7.1",
     "gatsby": "^2.9.2",
     "gatsby-link": "^2.1.1",
     "gatsby-plugin-catch-links": "^2.0.15",
@@ -107,7 +107,7 @@
     "postcss-pxtorem": "4.0.1",
     "react-test-renderer": "16.8.6",
     "rimraf": "2.6.3",
-    "standard-version": "6.0.1",
+    "standard-version": "8.0.1",
     "stylelint": "10.1.0",
     "stylelint-config-recommended-scss": "3.3.0",
     "stylelint-scss": "3.8.0"
