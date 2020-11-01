@@ -193,7 +193,7 @@ And that's basically it! Now all we need to do is call it to kick it off!
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  generateName: solutions-intercom-loader-
+  generateName: page-crawler-loader-
 spec:
   entrypoint: main
   templates:
