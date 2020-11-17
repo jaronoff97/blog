@@ -1,6 +1,6 @@
 ---
 template: "post"
-title: hackNY, hackathons, and COVID: what comes next?
+title: hackNY, hackathons, and COVID – what comes next?
 date: 2020-11-17
 description: "I’m writing this to let you know that the hackNY hackathon is not returning for now."
 tags: [update, hackNY]
