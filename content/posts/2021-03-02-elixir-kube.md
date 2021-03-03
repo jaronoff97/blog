@@ -249,7 +249,7 @@ in your `config/runtime.exs`:
   app_name = System.get_env("APP_NAME")
   config :libcluster,
     topologies: [
-      localorders: [
+      your-app: [
         strategy: Cluster.Strategy.Kubernetes.DNS,
         config: [
           service: System.fetch_env!("SERVICE_NAME"),
@@ -318,7 +318,7 @@ Finally we'll add the environment variables to our service to connect to our ser
           fieldRef:
             fieldPath: status.podIP
       - name: SERVICE_NAME
-       value: localorders-private
+       value: your-app-private
 ...
 ```
 
@@ -362,8 +362,8 @@ And then attach it in your deployment:
 
 ```
 ...
-      serviceAccountName: localorders-service-account
-      serviceAccount: localorders-service-account
+      serviceAccountName: your-app-service-account
+      serviceAccount: your-app-service-account
 ...
 ```
 
