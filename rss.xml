@@ -1,4 +1,290 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jacob Aronoff]]></title><description><![CDATA[Software Engineer @ Drift. hackNY '17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!]]></description><link>http://jaronoff.com</link><generator>RSS for Node</generator><lastBuildDate>Tue, 17 Nov 2020 20:13:06 GMT</lastBuildDate><item><title><![CDATA[hackNY, hackathons, and COVID – what comes next?]]></title><description><![CDATA[I’m writing this to let you know that the hackNY hackathon is not returning for now.]]></description><link>http://jaronoff.com/posts/2020-11-17-hackNY-updated/</link><guid isPermaLink="false">http://jaronoff.com/posts/2020-11-17-hackNY-updated/</guid><pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1400/1*Af3hDoYQgz6VqHZvLW1p3w.png&quot; alt=&quot;me at hackNY&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jacob Aronoff]]></title><description><![CDATA[Software Engineer @ Drift. hackNY '17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!]]></description><link>http://jaronoff.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 03 Mar 2021 03:19:47 GMT</lastBuildDate><item><title><![CDATA[Running Phoenix (elixir) Apps on Kubernetes]]></title><description><![CDATA[A guide on how to get an elixir app up and running on Kubernetes.]]></description><link>http://jaronoff.com/posts/2021-03-02-elixir-kube/</link><guid isPermaLink="false">http://jaronoff.com/posts/2021-03-02-elixir-kube/</guid><pubDate>Tue, 02 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’m currently working on a side project for a friend (on the hush hush right now), and I’ve had the pleasure of writing it in elixir using Phoenix. Having avoided touching react for a while, being able to write some pretty simple HTML on top of an elixir backend is a wonderful experience. Local development is simple, but how one goes about preparing and deploying their Phoenix app for Kubernetes is a whole other process. I’ll walk you through what I did to get it done on GKE. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Assumption!&lt;/em&gt; You have a working phoenix application running locally generated from the most &lt;code class=&quot;language-text&quot;&gt;mix phx.new&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;preparing-your-application&quot;&gt;&lt;a href=&quot;#preparing-your-application&quot; aria-label=&quot;preparing your application permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Preparing your application&lt;/h2&gt;
+&lt;p&gt;The first thing you’ll need to make is a Dockerfile to containerize your application. Below is a Dockerfile I hodge-podged from other online tutorials:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# ---- Build Stage ----
+FROM hexpm/elixir:1.11.2-erlang-23.1.2-alpine-3.12.1 as build
+
+# install build dependencies
+RUN apk add --no-cache build-base npm git python3
+
+# prepare build dir
+WORKDIR /app
+
+# install hex + rebar
+RUN mix local.hex --force &amp;amp;&amp;amp; \
+    mix local.rebar --force
+
+# set build ENV
+ENV MIX_ENV=prod
+
+# install mix dependencies
+COPY mix.exs mix.lock ./
+RUN mix deps.get --only $MIX_ENV
+RUN mkdir config
+# Dependencies sometimes use compile-time configuration. Copying
+# these compile-time config files before we compile dependencies
+# ensures that any relevant config changes will trigger the dependencies
+# to be re-compiled.
+COPY config/config.exs config/$MIX_ENV.exs config/
+RUN mix deps.compile
+
+# build assets
+COPY assets/package.json assets/package-lock.json ./assets/
+# install all npm dependencies from scratch
+RUN npm --prefix ./assets ci --progress=false --no-audit --loglevel=error
+
+# Copy migrations
+COPY priv priv
+
+# Note: if your project uses a tool like https://purgecss.com/,
+# which customizes asset compilation based on what it finds in
+# your Elixir templates, you will need to move the asset compilation step
+# down so that `lib` is available.
+COPY assets assets
+# use webpack to compile npm dependencies - https://www.npmjs.com/package/webpack-deploy
+RUN npm run --prefix ./assets deploy
+RUN mix phx.digest
+
+# compile and build the release
+COPY lib lib
+RUN mix compile
+# changes to config/runtime.exs don&amp;#39;t require recompiling the code
+COPY config/runtime.exs config/
+# uncomment COPY if rel/ exists
+COPY rel rel
+RUN mix release
+
+# Start a new build stage so that the final image will only contain
+# the compiled release and other runtime necessities
+FROM alpine:3.12.1 AS app
+RUN apk add --no-cache openssl ncurses-libs
+
+WORKDIR /app
+
+RUN chown nobody:nobody /app
+
+USER nobody:nobody
+
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/YOUR_APP_NAME_HERE ./
+
+ENV HOME=/app
+
+ENTRYPOINT [&amp;quot;bin/YOUR_APP_NAME_HERE&amp;quot;]
+CMD [&amp;quot;start&amp;quot;]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This dockerfile uses mix releases to generate a built image, and copies it on to an alpine container using the docker builder pattern. There are two gotchas here that are easy to miss. I initially forgot to copy over the rel directory which meant that my app wasn’t getting started with the correct release name (more on why this is problematic later.) The second is to be sure and copy your runtime config over, if you don’t do this your apps configuration won’t be complete and your phoenix server will fail to startup.&lt;/p&gt;
+&lt;p&gt;You can test this works by building and running the image locally:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;docker build -t YOUR_APP_NAME_HERE .
+docker run -p 4000:4000 --rm -it  --network=host --env SECRET_KEY_BASE=TEST --env DATABASE_URL=ecto://postgres:postgres@localhost:5432/YOUR_APP_NAME_HERE_dev YOUR_APP_NAME_HERE:latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If all of that is working, you are ready to deploy your app!&lt;/p&gt;
+&lt;h2 id=&quot;kube-ifying-your-application&quot;&gt;&lt;a href=&quot;#kube-ifying-your-application&quot; aria-label=&quot;kube ifying your application permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Kube-ifying your application!&lt;/h2&gt;
+&lt;p&gt;I’m going to make the major assumption that you have a running kubernetes cluster somewhere before you began this process. If you do not, I highly recommend reading through &lt;a href=&quot;https://github.com/kelseyhightower/kubernetes-the-hard-way&quot;&gt;this guide&lt;/a&gt; or using a hosted provider like GKE or EKS to create your cluster.&lt;/p&gt;
+&lt;p&gt;We are going to use helm templating to package up our application and ArgoCD to ultimately deploy our application. You can view how to use ArgoCD in your cluster &lt;a href=&quot;https://argoproj.github.io/argo-cd/getting_started/&quot;&gt;here&lt;/a&gt;, all we’re using it for is applying our manifests and dependencies.&lt;/p&gt;
+&lt;p&gt;The basic structure for our helm app is the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;kubernetes/
+    templates/
+        deployment.yaml
+        service.yaml
+    application.yaml &amp;lt;&amp;lt; this is used for ArgoCD
+    Chart.yaml
+    values.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;Chart.yaml&lt;/code&gt; looks like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apiVersion: v2
+appVersion: &amp;quot;1.0.0&amp;quot;
+description: YOUR_APP Deployment
+name: your-app
+version: 1.0.0
+dependencies:
+- name: postgresql
+  version: &amp;quot;10.2.6&amp;quot;
+  repository: &amp;quot;https://charts.bitnami.com/bitnami&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Above you see that we are installing the postgres chart from bitnami. This allows us to easily spin up a new database in our kubernetes with minimal setup. We then are going to use Kube service networking to connect our application to our database.&lt;/p&gt;
+&lt;p&gt;Our values.yaml file is very simple as well, it’s simply configuring our database to use a storage class (in this case the one provided by GKE)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;postgresql:
+  global.storageClass: &amp;quot;standard-rwo&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The final piece here is our application’s deployment:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app_name
+  labels:
+    app: your-app_name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-app_name
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 34%
+      maxUnavailable: 0%
+  template:
+    metadata:
+      name: your-app_name
+      labels:
+        app: your-app_name
+    spec:
+      containers:
+      - name: your-app_name
+        image: your-app_name:latest
+        imagePullPolicy: Always
+        env:
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: your-app_name-postgresql
+                key: postgresql-password
+          - name: DATABASE_USERNAME
+            value: postgres
+          - name: DATABASE_HOSTNAME
+            value: your-app_name-postgresql.your-app_name.svc.cluster.local
+          - name: DATABASE_NAME
+            value: your-app_name_prod
+          - name: PORT
+            value: &amp;quot;4000&amp;quot;
+          - name: RELEASE_COOKIE
+            value: your-app_name-secret-cookie
+          - name: SECRET_KEY_BASE
+            value: XXXXXXXXXXX
+        ports:
+        - name: http
+          containerPort: 4000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Our deployment is pretty straightforward. We define the labels for &lt;code class=&quot;language-text&quot;&gt;app&lt;/code&gt; as we would for any kube app. Our template’s environment variables we mostly are just configuring the database access. This is done by using the secrets file for the database password from the helm chart. The hostname for the DB is also simple – we just use the service created from the helm chart.&lt;/p&gt;
+&lt;p&gt;Once you have that setup, all you need to do is configure ArgoCD to deploy your app in its &lt;code class=&quot;language-text&quot;&gt;application.yaml&lt;/code&gt;: &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: your-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: gitURLFORYOURREPO
+    targetRevision: HEAD
+    path: k8s
+    helm:
+      valueFiles:
+      - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: your-app
+  ignoreDifferences:
+  - group: &amp;quot;&amp;quot;
+    kind: Secret
+    jsonPointers:
+    - /data/postgresql-password
+    - /data/postgresql-postgres-password
+  - group: &amp;quot;networking.k8s.io&amp;quot;
+    kind: Ingress
+    jsonPointers:
+    - /metadata/annotations&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;One thing of note in there is that we’re telling ArgoCD to ignore the diff for the postgres passwords so that when you go to sync your application it doesnt make a new database password as that should be static with your DB.&lt;/p&gt;
+&lt;p&gt;Once you apply and sync your application.yaml file your phoenix deployment should be up and running! You should be able to tail your application’s logs and see that its running successfully.&lt;/p&gt;
+&lt;h2 id=&quot;going-the-next-step&quot;&gt;&lt;a href=&quot;#going-the-next-step&quot; aria-label=&quot;going the next step permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Going the next step&lt;/h2&gt;
+&lt;p&gt;You have your application running, but right now it doesn’t scale correctly. As soon as you go add another replica, the servers are working in isolation and you lose the big benefits of running Phoenix clusters! To remedy this, we need to make a few changes to our application and our Kubernetes configuration.&lt;/p&gt;
+&lt;p&gt;First thing you want to do is implement LibCluster for your application.&lt;/p&gt;
+&lt;p&gt;in &lt;code class=&quot;language-text&quot;&gt;mix.exs&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;      {:libcluster, &amp;quot;~&amp;gt; 3.2.1&amp;quot;},&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;in your &lt;code class=&quot;language-text&quot;&gt;config/runtime.exs&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  app_name = System.get_env(&amp;quot;APP_NAME&amp;quot;)
+  config :libcluster,
+    topologies: [
+      localorders: [
+        strategy: Cluster.Strategy.Kubernetes.DNS,
+        config: [
+          service: System.fetch_env!(&amp;quot;SERVICE_NAME&amp;quot;),
+          application_name: app_name,
+          kubernetes_namespace: System.get_env(&amp;quot;NAMESPACE&amp;quot;),
+          polling_interval: 3_000
+        ]
+      ]
+    ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;in your &lt;code class=&quot;language-text&quot;&gt;application.ex&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;    topologies = Application.get_env(:libcluster, :topologies) || []
+...
+      {Cluster.Supervisor, [topologies, [name: Yourapp.ClusterSupervisor]]},&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, we need to adjust our release configuration to our release to publish our address correctly for libcluster.&lt;/p&gt;
+&lt;p&gt;in &lt;code class=&quot;language-text&quot;&gt;rel/vm.args.eex&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
+-name your-app@${POD_IP}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And in your &lt;code class=&quot;language-text&quot;&gt;rel/env.sh.eex&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
+export RELEASE_DISTRIBUTION=name
+export RELEASE_NODE=&amp;lt;%= @release.name %&amp;gt;@${POD_IP}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can read more about libcluster &lt;a href=&quot;https://github.com/bitwalker/libcluster&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now we need to make some kubernetes configuration changes, the first of which is creating what’s called a headless service that we are going to use for service discovery in kubernetes. We’ll add this to our templates folder in helm.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apiVersion: v1
+kind: Service
+metadata:
+  name: your-app-private
+  labels:
+    app: your-app
+spec:
+  clusterIP: None
+  ports:
+  - name: epmd
+    port: 4369
+  selector:
+    app: your-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally we’ll add the environment variables to our service to connect to our service.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
+    env:
+      - name: NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      - name: SERVICE_NAME
+       value: localorders-private
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You also are going to create and attach a service account that grants your application permission to the kubernetes API to get the endpoints from your headless service:&lt;/p&gt;
+&lt;p&gt;in &lt;code class=&quot;language-text&quot;&gt;deployment.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: your-app-service-account
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: endpoint-role
+rules:
+  - apiGroups:
+      - &amp;quot;&amp;quot;
+    resources:
+      - endpoints
+    verbs:
+      - list
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: rolebinding-name
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: endpoint-role
+subjects:
+  - kind: ServiceAccount
+    name: your-app-service-account
+---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And then attach it in your deployment:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
+      serviceAccountName: localorders-service-account
+      serviceAccount: localorders-service-account
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With that you should be able to keep scaling up your application and they will work in clustered mode!! You can verify it’s working by kubectl exec’ing in to an instance, running iex and running &lt;code class=&quot;language-text&quot;&gt;Node.list&lt;/code&gt; and you should see the list of pod ips for your service.&lt;/p&gt;
+&lt;h2 id=&quot;next-steps&quot;&gt;&lt;a href=&quot;#next-steps&quot; aria-label=&quot;next steps permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Next steps&lt;/h2&gt;
+&lt;p&gt;The final thing you should do (because it’s best practices for running any Kubernetes application) is defining memory requests and limit as well as healthchecks for liveness and readiness. There a bunch of guides out there on how to do this, and we’ve already covered a lot of ground here, so I’ll leave that for follow ups :) &lt;/p&gt;
+&lt;p&gt;One thing I didn’t cover was how to actually access your application from the internet. That’s a whole other blog post in itself IMO, so I think I’ll save that for next time as well. &lt;/p&gt;
+&lt;p&gt;Please reach out and let me know if you have any questions! I think I may create a template repo with all of this code as starter for anyone who runs in to this a few years down the road.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[hackNY, hackathons, and COVID – what comes next?]]></title><description><![CDATA[I’m writing this to let you know that the hackNY hackathon is not returning for now.]]></description><link>http://jaronoff.com/posts/2020-11-17-hackNY-updated/</link><guid isPermaLink="false">http://jaronoff.com/posts/2020-11-17-hackNY-updated/</guid><pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1400/1*Af3hDoYQgz6VqHZvLW1p3w.png&quot; alt=&quot;me at hackNY&quot;&gt;
 &lt;a href=&quot;https://jaronoff45.medium.com/hackny-hackathons-and-covid-what-comes-next-1f28ae9945b3&quot;&gt;reposted from my medium, because I don’t use medium&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Hello World! I’m writing this to let you know that the hackNY hackathon is not returning for now. We’ve thought a lot about this decision, and hopefully this post will explain more about our conclusion. I cannot thank our alumni and volunteers enough for the many hours they put in to helping run our event.&lt;/p&gt;
 &lt;p&gt;Why am I writing this post, you may be wondering. Well, you may remember me from such emails to the hackNY community like “get ready for the next hackNY hackathon!” or “thank you to all the people who made our hackathon possible!”. I was a hackNY fellow in 2017, a mentor in 2018, and have been helping run the hackathons since 2017, so I’m sure you’ve seen many emails from me. I’m reaching out now with an update because it’s been more than a year since our last hackathon. A lot has happened both at hackNY and in the world, and I felt it was time I gave an update about hackNY’s hackathon. Our hackathon began more than ten years ago in April of 2010, and, to our knowledge, was the first ever student-only 24 hour collegiate hackathon. Since then, we have been running hackathons at least once a year. Ten years on, and in the midst of a pandemic, it felt it was the right time to ask ourselves some important questions about our event: what has COVID cost us? What are the most important aspects of our event that we can retain? What does the future of our event look like?&lt;/p&gt;
