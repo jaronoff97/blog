@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jacob Aronoff]]></title><description><![CDATA[Software Engineer @ Drift. hackNY '17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!]]></description><link>http://jaronoff.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 03 Mar 2021 03:19:47 GMT</lastBuildDate><item><title><![CDATA[Running Phoenix (elixir) Apps on Kubernetes]]></title><description><![CDATA[A guide on how to get an elixir app up and running on Kubernetes.]]></description><link>http://jaronoff.com/posts/2021-03-02-elixir-kube/</link><guid isPermaLink="false">http://jaronoff.com/posts/2021-03-02-elixir-kube/</guid><pubDate>Tue, 02 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’m currently working on a side project for a friend (on the hush hush right now), and I’ve had the pleasure of writing it in elixir using Phoenix. Having avoided touching react for a while, being able to write some pretty simple HTML on top of an elixir backend is a wonderful experience. Local development is simple, but how one goes about preparing and deploying their Phoenix app for Kubernetes is a whole other process. I’ll walk you through what I did to get it done on GKE. &lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jacob Aronoff]]></title><description><![CDATA[Software Engineer @ Drift. hackNY '17 alumNY. Interact Fellow. I love to cook, bake, and make cocktails!]]></description><link>http://jaronoff.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 03 Mar 2021 03:22:24 GMT</lastBuildDate><item><title><![CDATA[Running Phoenix (elixir) Apps on Kubernetes]]></title><description><![CDATA[A guide on how to get an elixir app up and running on Kubernetes.]]></description><link>http://jaronoff.com/posts/2021-03-02-elixir-kube/</link><guid isPermaLink="false">http://jaronoff.com/posts/2021-03-02-elixir-kube/</guid><pubDate>Tue, 02 Mar 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’m currently working on a side project for a friend (on the hush hush right now), and I’ve had the pleasure of writing it in elixir using Phoenix. Having avoided touching react for a while, being able to write some pretty simple HTML on top of an elixir backend is a wonderful experience. Local development is simple, but how one goes about preparing and deploying their Phoenix app for Kubernetes is a whole other process. I’ll walk you through what I did to get it done on GKE. &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Assumption!&lt;/em&gt; You have a working phoenix application running locally generated from the most &lt;code class=&quot;language-text&quot;&gt;mix phx.new&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;preparing-your-application&quot;&gt;&lt;a href=&quot;#preparing-your-application&quot; aria-label=&quot;preparing your application permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Preparing your application&lt;/h2&gt;
 &lt;p&gt;The first thing you’ll need to make is a Dockerfile to containerize your application. Below is a Dockerfile I hodge-podged from other online tutorials:&lt;/p&gt;
@@ -192,7 +192,7 @@ spec:
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  app_name = System.get_env(&amp;quot;APP_NAME&amp;quot;)
   config :libcluster,
     topologies: [
-      localorders: [
+      your-app: [
         strategy: Cluster.Strategy.Kubernetes.DNS,
         config: [
           service: System.fetch_env!(&amp;quot;SERVICE_NAME&amp;quot;),
@@ -241,7 +241,7 @@ spec:
           fieldRef:
             fieldPath: status.podIP
       - name: SERVICE_NAME
-       value: localorders-private
+       value: your-app-private
 ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You also are going to create and attach a service account that grants your application permission to the kubernetes API to get the endpoints from your headless service:&lt;/p&gt;
 &lt;p&gt;in &lt;code class=&quot;language-text&quot;&gt;deployment.yaml&lt;/code&gt;&lt;/p&gt;
@@ -277,8 +277,8 @@ subjects:
 ---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And then attach it in your deployment:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
-      serviceAccountName: localorders-service-account
-      serviceAccount: localorders-service-account
+      serviceAccountName: your-app-service-account
+      serviceAccount: your-app-service-account
 ...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;With that you should be able to keep scaling up your application and they will work in clustered mode!! You can verify it’s working by kubectl exec’ing in to an instance, running iex and running &lt;code class=&quot;language-text&quot;&gt;Node.list&lt;/code&gt; and you should see the list of pod ips for your service.&lt;/p&gt;
 &lt;h2 id=&quot;next-steps&quot;&gt;&lt;a href=&quot;#next-steps&quot; aria-label=&quot;next steps permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Next steps&lt;/h2&gt;

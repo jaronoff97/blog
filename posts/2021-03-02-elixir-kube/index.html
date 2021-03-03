@@ -244,7 +244,7 @@ spec:
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  app_name = System.get_env(&quot;APP_NAME&quot;)
   config :libcluster,
     topologies: [
-      localorders: [
+      your-app: [
         strategy: Cluster.Strategy.Kubernetes.DNS,
         config: [
           service: System.fetch_env!(&quot;SERVICE_NAME&quot;),
@@ -293,7 +293,7 @@ spec:
           fieldRef:
             fieldPath: status.podIP
       - name: SERVICE_NAME
-       value: localorders-private
+       value: your-app-private
 ...</code></pre></div>
 <p>You also are going to create and attach a service account that grants your application permission to the kubernetes API to get the endpoints from your headless service:</p>
 <p>in <code class="language-text">deployment.yaml</code></p>
@@ -329,8 +329,8 @@ subjects:
 ---</code></pre></div>
 <p>And then attach it in your deployment:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">...
-      serviceAccountName: localorders-service-account
-      serviceAccount: localorders-service-account
+      serviceAccountName: your-app-service-account
+      serviceAccount: your-app-service-account
 ...</code></pre></div>
 <p>With that you should be able to keep scaling up your application and they will work in clustered mode!! You can verify it’s working by kubectl exec’ing in to an instance, running iex and running <code class="language-text">Node.list</code> and you should see the list of pod ips for your service.</p>
 <h2 id="next-steps"><a href="#next-steps" aria-label="next steps permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Next steps</h2>
