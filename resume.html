@@ -1,597 +1,408 @@
 <!doctype html>
 <html>
-	<head>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
-	
-	<title>Jacob Aronoff</title>
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
-	
-	<style type="text/css">
-	@import url(
-	https://fonts.googleapis.com/css?family=Lato:400,700
-);
-body {
-	background: #fff;
-	font-family: Lato, sans-serif;
-	margin: 0 0 80px;
-}
-a {
-	color: #2ecc71;
-}
-a:focus,
-a:hover {
-	color: #f1c40f;
-	text-decoration: none;
-}
-p {
-	line-height: 1.5;
-	margin: 0;
-}
-p + p {
-	margin-top: 10px;
-}
-h1,
-h2,
-h3,
-h4 {
-	margin-top: 0
-}
-section {
-	margin-top: 30px;
-}
-li {
-	line-height: 1.8;
-	list-style: none;
-}
-li:before {
-	content: "\f052";
-	float: left;
-	font: 13px Octicons;
-	margin-top: 6px;
-	margin-left: -20px;
-	opacity: .1;
-	position: absolute;
-}
-blockquote {
-	border-left: 5px solid #e7e9ec;
-	font-size: 14px;
-}
-em {
-	color: #95a5a6;
-	font-weight: normal;
-	font-style: normal;
-}
-h4 span:first-child {
-	color: #000;
-	font-weight: bold;
-}
-.container {
-	max-width: 750px;
-	padding: 0 30px;
-}
-.col-sm-6 {
-	margin-bottom: 10px;
-}
-.col-sm-12 h4 {
-	margin-top: 12px; 
-}
-.col-sm-12 + .col-sm-12 {
-	margin-top: 30px;
-}
-#header {
-	background: #f4f6f6;
-	padding: 50px 0;
-	margin-bottom: 30px;
-}
-#header h2 {
-	color: #95a5a6;
-	font-size: 24px;
-}
-#content h3 {
-	color: #f1c40f;
-	font-size: 26px;
-	margin-top: -4px;
-}
-#content aside {
-	text-align: right;
-	padding-right: 30px;
-}
-#profiles .network {
-	text-transform: capitalize;
-}
-#work .position,
-#volunteer .position {
-	font-weight: bold;
-	margin-bottom: 8px;
-}
-#education .area {
-	font-weight: bold;
-}
-#education .area:before {
-	content: "\f0d7";
-	font: 16px Octicons;
-	margin-right: 6px;
-}
-#education .studyType {
-	margin-left: 25px;
-}
-#awards .summary,
-#publications .summary {
-	margin-top: 8px;
-}
-#publications .website a:before {
-	content: attr(href);
-}
+    
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+        <title>Jacob Aronoff</title>
+        <style>
+            body {
+              background: #EEEEEE;
+              font: 12px "Times New Roman", Times, sans-serif;
+              line-height: 1.4;
+              margin: 40px 0;
+            }
+            em {
+              color: #999;
+            }
+            p {
+              line-height: 1.4;
+            }
+            ul {
+              margin-bottom: 0;
+            }
+            li {
+              margin-bottom: 2px;
+            }
+            a {
+              text-decoration: none;
+            }
+            
+            #resume {
+              margin: 0 auto;
+              max-width: 600px;
+              padding: 80px 100px;
+              background: #fff;
+              border: 1px solid #ccc;
+              box-shadow: 2px 2px 4px #aaa;
+              -webkit-box-shadow: 2px 2px 4px #aaa;
+            }
+            
+            .coursesList {
+              width: 28%;
+              vertical-align: top;
+              display: inline-block;
+            }
+            
+            .largeFont {
+              font-size: 20px;
+            }
+            
+            .smallFont {
+              font-size: 12px;
+            }
+            
+            .sectionBlock {
+              display: flex;
+              width: 100%;
+            }
+            
+            .sectionName {
+              width: 18%;
+              vertical-align: top;
+              display: inline-block;
+            }
+            
+            .sectionContent {
+              width: 80%;
+              vertical-align: top;
+              display: inline-block;
+            }
+            
+            .sectionContent ul {
+              padding-left: 20px;
+              margin-top: 6px;
+              list-style-type: circle;
+            }
+            
+            .sectionContent .title {
+              font-weight: bold;
+            }
+            
+            .sectionContent .date {
+              float: right;
+            }
+            
+            .sectionContent .separator {
+              height: 14px;
+            }
+            
+            .sectionLine {
+              border-style: dashed;
+              border-width: 1px;
+              border-color: #CFCFCF;
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
+            
+            .divider {
+              font-weight: bold;
+              margin-left: 5px;
+              margin-right: 5px;
+            }
+            
+            .summary {
+              margin-top: 6px;
+            }
+            
+            .skillBlock {
+              margin-bottom: 4px;
+            }
+            
+            .jobBlock {
+              page-break-inside: avoid;
+            }
+            
+            /* Media Queries */
+            @media only screen and (max-width: 40em) {
+              body {
+                margin: 0;
+                font-size: 14px;
+              }
+              #resume {
+                margin: 0 auto;
+                max-width: 600px;
+                padding: 0.5em 1em;
+                border: none;
+              }
+              .sectionContent {
+                width: 100%;
+              }
+              .sectionContent .date {
+                padding-right: 2em;
+              }
+              .sectionName {
+                width: auto;
+              }
+              .largeFont {
+                font-size: 20px;
+              }
+              .smallFont {
+                font-size: 14px;
+              }
+            }
+            
+            @media print {
+              @page {
+                margin: 0;
+              }
+              #resume {
+                margin: 0 auto;
+                max-width: 600px;
+                padding: 0px 0px;
+                border: 0px;
+                background: #fff;
+                box-shadow: none;
+                -webkit-box-shadow: none;
+              }
+            
+              a {
+                color: black;
+              }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id='resume'>
+            <div id='nameBlock' class='largeFont'> <span class='name'>
+      Jacob Aronoff
+    </span>
+ <span class='label'></span>
 
-@media (min-width: 480px) {
-	.strike-through {
-		border-top: 1px solid #f4f6f6;
-		height: 20px;
-		margin-top: 12px;
-		margin-bottom: -2px;
-		position: relative;
-	}
-	.strike-through span,
-	.strike-through a {
-		background: #fff;
-		position: absolute;
-	}
-	.strike-through span:first-child {
-		padding-right: 20px;
-		margin-top: -12px;
-	}
-	.strike-through span + span {
-		font-size: 14px;
-		margin-top: -10px;
-		padding-left: 20px;
-		right: 0;
-	}
-}
-@media (max-width: 768px) {
-	.col-sm-6:last-child {
-		margin-bottom: 0px;
-	}
-	#content aside {
-		margin-bottom: 20px;
-		padding-right: 0;
-		text-align: left;
-	}
-	#publications .website a:before {
-		content: "View publication";
-	}
-}
-@media (max-width: 480px) {
-	h1 {
-		font-size: 26px;
-	}
-	.date {
-		font-size: 14px;
-		margin-bottom: 5px;
-	}
-	.strike-through span:first-child {
-		margin-bottom: 7px;
-	}
-	.strike-through span {
-		display: block;
-	}	
-	#header {
-		margin-bottom: 10px;
-		padding: 40px 0;
-	}
-	#actions {
-		display: none;
-	}
-}
+            </div>
+            <div id='basicsBlock' class='smallFont'>
+                <div class='contactBlock'> <span class='email'>me@jaronoff.com</span>
+ <span class='divider'>|</span>
 
-	</style>
-	
-	</head>
-	<body>
-	
-	<header id="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-9 col-sm-push-3">
-					<h1>
-						Jacob Aronoff
-					</h1>
-					<h2>
-						
-					</h2>
-				</div>
-			</div>
-		</div>
-	</header>
-	<div id="content" class="container">
+                    <span
+                    class='phone'>(617) 645-6573</span> <span class='divider'>|</span>
+ <span class='address'>
+          1313 Washington St, Apartment 215, Boston, Massachusetts, 02118
+        </span>
 
-	<section id="contact" class="row">
-		<aside class="col-sm-3">
-			<h3>Contact</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-6">
-				<strong>Email</strong>
-				<div class="email">jacobaronoff45@gmail.com</div>
-			</div>
-			<div class="col-sm-6">
-				<strong>Phone</strong>
-				<div class="phone">(617) 645-6573</div>
-			</div>
-			<div class="col-sm-6">
-				<strong>Website</strong>
-				<div class="website">
-					<a href="http://jaronoff.com">http://jaronoff.com</a>
-				</div>
-			</div>
-			</div>
-		</div>
-	</section>
-	<section id="about" class="row">
-		<aside class="col-sm-3">
-			<h3>About</h3>
-		</aside>
-		<div class="col-sm-9">
-			<p>I&#x27;m a software engineer at Drift, where I work on making our platform more reliable. I worked for Datadog on their Alerting team as an intern in 2017, and as a co-op in 2018, where I developed Go and Python services using Kafka, elasticsearch, and Cassandra. I currently attend Northeastern University&#x27;s College of Computer and Information Science as a Computer Science major. I serve as the president of [NU Hacks](https://nuhacks.io). I&#x27;m a hackNY 2017 fellow, and interact 2018 fellow. I served as a mentor for the hackNY fellowship program in 2018, planning a multitude of activities, speaker events, and projects. I&#x27;m the director for [hackNY&#x27;s hackathon](https://hackny.org/hackathon/). Outside of work, [I love to cook, bake, and bartend](https://instagram.com/ehicouldeat), you can read more about that [here](https://ehicouldeat.com). </p>
-		</div>
-	</section>
-	<section id="profiles" class="row">
-		<aside class="col-sm-3">
-			<h3>Profiles</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-				<div class="col-sm-6">
-					<strong class="network">
-						Github
-					</strong>
-					<div class="username">
-						<div class="url">
-							<a href="github.com/jaronoff97">jaronoff97</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<strong class="network">
-						Linkedin
-					</strong>
-					<div class="username">
-						<div class="url">
-							<a href="linkedin.com/in/jaronoff97/">jaronoff97</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<strong class="network">
-						Twitter
-					</strong>
-					<div class="username">
-						<div class="url">
-							<a href="twitter.com/get_sw1fty">get_sw1fty</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                </div>
+                <div id='profilesBlock'> <span class='url'>
+              <a href='https://www.github.com/jaronoff97'>github.com/jaronoff97</a>
+            </span>
+ <span class='divider'>|</span>
+ <span class='url'>
+              <a href='https://www.linkedin.com/in/jaronoff97/'>linkedin.com/in/jaronoff97/</a>
+            </span>
+ <span class='divider'>|</span>
+ <span class='url'>
+              <a href='https://www.twitter.com/get_sw1fty'>twitter.com/get_sw1fty</a>
+            </span>
+ <span class='divider'>|</span>
+ <span class='availability'>Available: Open to opportunities</span>
 
-	<section id="work" class="row">
-		<aside class="col-sm-3">
-			<h3>Work</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>Drift</span>
-					<span class="date">
-						January 2019 — Present
-					</span>
-				</h4>
-				<div class="website pull-right">
-					<a href="http://www.drift.com">http://www.drift.com</a>
-				</div>
-				<div class="position">
-					Sofware Engineer
-				</div>
-				<h4>Highlights</h4>
-				<ul class="highlights">
-					<li class="bullet">Engineered a system to automatically generate alerts for our production and QA systems</li>
-					<li class="bullet">Designed Drift&#x27;s game day process for reliability engineering, running multiple game days</li>
-					<li class="bullet">Architected a process to automatically determine the health of a deployed build in multiple environments</li>
-					<li class="bullet">Devised multiple schemes to load test new products at varying scales</li>
-				</ul>
-			</div>
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>Datadog</span>
-					<span class="date">
-						May 2017 — Jul 2018
-					</span>
-				</h4>
-				<div class="website pull-right">
-					<a href="http://www.datadoghq.com">http://www.datadoghq.com</a>
-				</div>
-				<div class="position">
-					Sofware Engineer
-				</div>
-				<h4>Highlights</h4>
-				<ul class="highlights">
-					<li class="bullet">Built a service that handles with millions of requests per day</li>
-					<li class="bullet">Developed and maintained multiple Go and Python services</li>
-					<li class="bullet">Acclerated a portion of the company&#x27;s infrastructure, solving 50+ customer request tickets</li>
-					<li class="bullet">Migrated a major pipeline dependency to an autoscaling group, using Kafka 10 for load balancing</li>
-					<li class="bullet">Moved multiple services to autoscaling groups in AWS, decreasing the amount of outages</li>
-					<li class="bullet">Generated the first Swift mobile library for the Datadog API, called SwiftDog</li>
-					<li class="bullet">Created a new ElasticSearch 6 cluster, improving frontend performance</li>
-				</ul>
-			</div>
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>Bitsight Technologies</span>
-					<span class="date">
-						Jun 2015 — Aug 2016
-					</span>
-				</h4>
-				<div class="website pull-right">
-					<a href="https://www.bitsighttech.com">https://www.bitsighttech.com</a>
-				</div>
-				<div class="position">
-					Software Engineering Intern
-				</div>
-				<h4>Highlights</h4>
-				<ul class="highlights">
-					<li class="bullet">Automated customer support by leveraging three seperate APIs in a microservice</li>
-					<li class="bullet">Created micro services in Flask, Javascript, and Java</li>
-					<li class="bullet">Updated the company wide testing suite</li>
-				</ul>
-			</div>
-			</div>
-		</div>
-	</section>
+                </div>
+            </div>
+            <div class='sectionLine'></div>
+            <div id='education' class="sectionBlock">
+                <div class='sectionName'> <span>EDUCATION</span>
 
-	<section id="volunteer" class="row">
-		<aside class="col-sm-3">
-			<h3>Volunteer</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>HackNY</span>
-					<span class="date">
-						May 2018 — Present
-					</span>
-				</h4>
-				<div class="website pull-right">
-					<a href="http://www.hackny.org">http://www.hackny.org</a>
-				</div>
-				<div class="position">
-					Director of Events
-				</div>
-				<div class="summary">
-					<p>Plan and run the annual hackNY hackathon, the first collegiete hackathon</p>
-				</div>
-				<h4>Highlights</h4>
-				<ul class="highlights">
-					<li class="bullet">Organize volunteers and mentors to assist in the production of the event</li>
-					<li class="bullet">Coordinate an event for 250+ students</li>
-					<li class="bullet">Solicit sponsors for the event</li>
-				</ul>
-			</div>
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>DaisyDebt</span>
-					<span class="date">
-						Jan 2018 — August 2018
-					</span>
-				</h4>
-				<div class="website pull-right">
-					<a href="http://daisydebt.org">http://daisydebt.org</a>
-				</div>
-				<div class="position">
-					Software Engineer
-				</div>
-				<div class="summary">
-					<p>Developed services and automations</p>
-				</div>
-				<h4>Highlights</h4>
-				<ul class="highlights">
-					<li class="bullet">Helped develop a ruby on rails service</li>
-					<li class="bullet">Wrote multiple AWS Lambda functions to automate tasks</li>
-				</ul>
-			</div>
-			</div>
-		</div>
-	</section>
-	
-	<section id="education" class="row">
-		<aside class="col-sm-3">
-			<h3>Education</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-12">
-				<h4 class="strike-through">
-					<span>Northeastern University, College of Computer and Information Science</span>
-					<span class="date">
-						Aug 2016 — Aug 2020
-					</span>
-				</h4>
-				<div class="area">
-					
-				</div>
-				<div class="studyType">
-					Candidate for a Bachelor of Science in Computer Science
-				</div>
-				<h4>Courses</h4>
-				<ul class="courses">
-					<li>CS 3700 - Networks and Distributed Systems</li>
-					<li>DS 4400 - Data Mining and Machine Learning</li>
-					<li>CS 3650 - Computer Systems</li>
-				</ul>
-			</div>
-			</div>
-		</div>
-	</section>
-	
-	
-	
-	<section id="skills" class="row">
-		<aside class="col-sm-3">
-			<h3>Skills</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Backend Development</h4>
-				</div>
-				<ul class="keywords">
-					<li>Python</li>
-					<li>Java</li>
-					<li>NodeJS</li>
-					<li>Go</li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>App Development</h4>
-				</div>
-				<ul class="keywords">
-					<li>Swift</li>
-					<li>Java</li>
-					<li>Kotlin</li>
-					<li>React Native</li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Frameworks</h4>
-				</div>
-				<ul class="keywords">
-					<li>Dropwizard</li>
-					<li>Flask</li>
-					<li>Django</li>
-					<li>React</li>
-					<li>Vapor</li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Databases</h4>
-				</div>
-				<ul class="keywords">
-					<li>MySQL</li>
-					<li>MongoDB</li>
-					<li>Cassandra</li>
-					<li>Postgres</li>
-					<li>ElasticSearch</li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Technologies</h4>
-				</div>
-				<ul class="keywords">
-					<li>AWS</li>
-					<li>Docker</li>
-					<li>Kafka</li>
-					<li>Terraform</li>
-					<li>Kubernetes</li>
-				</ul>
-			</div>
-			</div>
-		</div>
-	</section>
+                </div>
+                <div class='sectionContent'>
+                    <div class='educationBlock'> <span class='title'>
+          Northeastern University, College of Computer and Information Science
+        </span>
+ <span class='date'>
+          2016-08 &mdash; 2020-08
+        </span>
 
-	<section id="languages" class="row">
-		<aside class="col-sm-3">
-			<h3>Languages</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-6">
-				<div class="language">
-					<strong>English</strong>
-				</div>
-				<div class="fluency">
-					Native speaker
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="language">
-					<strong>Hebrew</strong>
-				</div>
-				<div class="fluency">
-					Beginner
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="language">
-					<strong>Chinese (Mandarin)</strong>
-				</div>
-				<div class="fluency">
-					Beginner
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="language">
-					<strong>German</strong>
-				</div>
-				<div class="fluency">
-					Beginner
-				</div>
-			</div>
-			</div>
-		</div>
-	</section>
+                        <div class=''>Bachelor of Science in Computer Science, GPA: 3.6/4.0 Cum laude, Dean&#x27;s
+                            list, CCIS Fellow</div>
+                        <div id='coursesBlock'>
+                            <ul class='coursesList'>
+                                <li class='course'>CS 3700 - Networks and Distributed Systems</li>
+                            </ul>
+                            <ul class='coursesList'>
+                                <li class='course'>DS 4400 - Data Mining and Machine Learning</li>
+                            </ul>
+                            <ul class='coursesList'>
+                                <li class='course'>CS 4400 - Programming Languages</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='sectionLine'></div>
+            <div id='workBlock' class="sectionBlock">
+                <div class='sectionName'> <span>EXPERIENCE</span>
 
-	<section id="interests" class="row">
-		<aside class="col-sm-3">
-			<h3>Interests</h3>
-		</aside>
-		<div class="col-sm-9">
-			<div class="row">
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Entrepreneurship</h4>
-				</div>
-				<ul class="keywords">
-					<li>Tamid</li>
-					<li>Entrepreneurs Club</li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Cooking</h4>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Baking</h4>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Photography</h4>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="name">
-					<h4>Film</h4>
-				</div>
-			</div>
-			</div>
-		</div>
-	</section>
-	
+                </div>
+                <div class='sectionContent'>
+                    <div class="jobBlock">
+                        <div class='blockHeader'> <span class='title'>
+            Drift, Sofware Engineer
+          </span>
+ <span class='date'>
+            2019-01 &mdash; Present
+          </span>
 
-	</div>
-	
-	</body>
+                        </div>
+                        <div> <span class="location">Boston, Massachusetts</span>
+
+                        </div>
+                        <div><a href='http://www.drift.com'>http://www.drift.com</a>
+                        </div>
+                        <ul class='highlights'>
+                            <li>Led the effort to migrate Drift from ECS to Kubernetes</li>
+                            <li>Implemented the backend for the new Prospector tool for Drift</li>
+                            <li>Migrated Drift&#x27;s core chat infrastructure, which handles ~2 million
+                                simultaneous websocket connections, to Kubernetes with zero downtime</li>
+                            <li>Designed Drift&#x27;s game day process for reliability engineering, running
+                                multiple game days</li>
+                            <li>Redesigned the on-call process for engineers</li>
+                            <li>Ran community events for developers at Drift to bond while remote</li>
+                        </ul>
+                        <div class='separator'></div>
+                    </div>
+                    <div class="jobBlock">
+                        <div class='blockHeader'> <span class='title'>
+            Datadog, Sofware Engineer
+          </span>
+ <span class='date'>
+            2017-05 &mdash; 2018-07
+          </span>
+
+                        </div>
+                        <div> <span class="location">New York City, New York</span>
+
+                        </div>
+                        <div><a href='https://www.datadoghq.com'>https://www.datadoghq.com</a>
+                        </div>
+                        <ul class='highlights'>
+                            <li>Built a service that handles millions of requests per day</li>
+                            <li>Migrated a major pipeline dependency to an autoscaling group, using Kafka
+                                10 for load balancing</li>
+                            <li>Generated the first Swift mobile library for the Datadog API, called SwiftDog</li>
+                        </ul>
+                        <div class='separator'></div>
+                    </div>
+                    <div class="jobBlock">
+                        <div class='blockHeader'> <span class='title'>
+            Bitsight Technologies, Software Engineering Intern
+          </span>
+ <span class='date'>
+            2015-06 &mdash; 2016-08
+          </span>
+
+                        </div>
+                        <div> <span class="location">Cambridge, Massachusetts</span>
+
+                        </div>
+                        <div><a href='https://www.bitsighttech.com'>https://www.bitsighttech.com</a>
+                        </div>
+                        <ul class='highlights'>
+                            <li>Developed APIs in Flask and Django</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='sectionLine'></div>
+            <div id='skills' class="sectionBlock">
+                <div class='sectionName'> <span>SKILLS</span>
+
+                </div>
+                <div class='sectionContent'>
+                    <div class='skillBlock'> <span class='title'>Backend Development:</span>
+ <span>Python</span>, <span>Java</span>, <span>Go</span>, <span>Elixir</span>
+
+                    </div>
+                    <div class='skillBlock'> <span class='title'>Devops:</span>
+ <span>AWS</span>, <span>Kubernetes</span>, <span>Istio</span>, <span>ArgoCD</span>, <span>Argo</span>, <span>Terraform</span>
+
+                    </div>
+                    <div class='skillBlock'> <span class='title'>App Development:</span>
+ <span>Swift</span>, <span>Java</span>, <span>Kotlin</span>, <span>React Native</span>
+
+                    </div>
+                    <div class='skillBlock'> <span class='title'>Frameworks:</span>
+ <span>Dropwizard</span>, <span>Flask</span>, <span>Phoenix</span>, <span>Django</span>, <span>React</span>
+
+                    </div>
+                    <div class='skillBlock'> <span class='title'>Databases:</span>
+ <span>MySQL</span>, <span>MongoDB</span>, <span>Cassandra</span>, <span>Postgres</span>, <span>ElasticSearch</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class='sectionLine'></div>
+            <div id='volunteer' class="sectionBlock">
+                <div class='sectionName'> <span>VOLUNTEERING</span>
+
+                </div>
+                <div class='sectionContent'>
+                    <div class='blockHeader'> <span class='title'>HackNY, Director of Events</span>
+ <span class='date'>
+          2018-05 &mdash; Present
+        </span>
+
+                        <div class='website'><a href='https://www.hackny.org'>https://www.hackny.org</a>
+                        </div>
+                        <ul class='highlights'>
+                            <li>Plan and run the annual hackNY hackathon, the first collegiete hackathon</li>
+                            <li>Organize volunteers and mentors to assist in the production of the event</li>
+                            <li>Coordinate an event for 250+ students</li>
+                            <li>Solicit sponsors for the event</li>
+                        </ul>
+                    </div>
+                    <div class='separator'></div>
+                    <div class='blockHeader'> <span class='title'>DaisyDebt, Software Engineer</span>
+ <span class='date'>
+          2018-01 &mdash; 2018-08
+        </span>
+
+                        <div class='website'><a href='https://daisydebt.org'>https://daisydebt.org</a>
+                        </div>
+                        <ul class='highlights'>
+                            <li>Developed services and automations</li>
+                            <li>Helped develop a ruby on rails service</li>
+                            <li>Automated the process for scraping debt collector address information</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='sectionLine'></div>
+            <div id='languages' class="sectionBlock">
+                <div class='sectionName'> <span>LANGUAGES</span>
+
+                </div>
+                <div class='sectionContent'> <span class='language'>English</span>
+ <span class='fluency'><em>(Native)</em></span>
+ <span>,</span>
+
+                    <span
+                    class='language'>Hebrew</span> <span class='fluency'><em>(Beginner)</em></span>
+ <span>,</span>
+
+                        <span
+                        class='language'>Chinese (Mandarin)</span> <span class='fluency'><em>(Beginner)</em></span>
+ <span>,</span>
+
+                            <span
+                            class='language'>German</span> <span class='fluency'><em>(Beginner)</em></span>
+
+                </div>
+                <div class='sectionLine'></div>
+            </div>
+            <div id='interests' class="sectionBlock">
+                <div class='sectionName'> <span>INTERESTS</span>
+
+                </div>
+                <div class='sectionContent'> <span class='name'>Cooking</span>
+                    <!-- --><span>, </span>
+ <span class='name'>Baking</span>
+                    <!-- --><span>, </span>
+ <span class='name'>Photography</span>
+                    <!-- --><span>, </span>
+ <span class='name'>Fermentation</span>
+                    <!-- -->
+                </div>
+                <div class='sectionLine'></div>
+            </div>
+    </body>
+
 </html>
