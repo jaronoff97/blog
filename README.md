@@ -2,6 +2,8 @@
 
 This blog is gatsby based, and the theme comes from [here](https://github.com/alxshelepenok/gatsby-starter-lumen). I'm not a good designer, and I thank the creator for making this!
 
+I did write a lot of this though...
+
 ## License
 The MIT License (MIT)
 
