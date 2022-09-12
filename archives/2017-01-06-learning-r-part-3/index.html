@@ -1,0 +1,325 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Learning R Part 3 - Blog</title><meta name=theme-color><meta name=description content="Learning R Part 3 Part 3, this chapter is all about R objects and I&rsquo;m not excited. R objects, from what I&rsquo;ve gathered are barely objects. We start this chapter with a bunch of different data types. R has six basic atomic vector data types: doubles, integers, characters, logicals, complex, and raw.
+> die <- c(1, 2, 3, 4, 5, 6) > die [1] 1 2 3 4 5 6 > is."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Learning R Part 3"><meta property="og:description" content="What is this language"><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/archives/2017-01-06-learning-r-part-3/"><meta property="article:section" content="archives"><meta property="article:published_time" content="2017-01-06T00:00:00+00:00"><meta property="article:modified_time" content="2017-01-06T00:00:00+00:00"><meta itemprop=name content="Learning R Part 3"><meta itemprop=description content="What is this language"><meta itemprop=datePublished content="2017-01-06T00:00:00+00:00"><meta itemprop=dateModified content="2017-01-06T00:00:00+00:00"><meta itemprop=wordCount content="1406"><meta itemprop=keywords content="R,code,third,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Learning R Part 3"><meta name=twitter:description content="What is this language"></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Learning R Part 3</h1><div class="text-sm opacity-60"><time>Jan 6, 2017</time></div></header><section><h3 id=learning-r-part-3>Learning R Part 3</h3><p>Part 3, this chapter is all about R objects and I&rsquo;m not excited. R objects, from what I&rsquo;ve gathered are barely objects. We start this chapter with a bunch of different data types. R has six basic atomic vector data types: doubles, integers, characters, logicals, complex, and raw.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> die <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>4</span> <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>is.vector</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> five <span style=color:#f92672>&lt;-</span> <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> five
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>is.vector</span>(five)
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>length</span>(five)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>length</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> int <span style=color:#f92672>&lt;-</span> <span style=color:#ae81ff>1L</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> text <span style=color:#f92672>&lt;-</span> <span style=color:#e6db74>&#34;ace&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> int <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>1L</span>, <span style=color:#ae81ff>5L</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> text <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;hearts&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>sum</span>(int)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>sum</span>(text)
+</span></span><span style=display:flex><span>Error in <span style=color:#a6e22e>sum</span>(text) <span style=color:#f92672>:</span> invalid <span style=color:#e6db74>&#39;type&#39;</span> (character) of argument
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;double&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(int)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;integer&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>sqrt</span>(<span style=color:#ae81ff>2</span>)^2 <span style=color:#f92672>-</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>4.440892e-16</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> text <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;hello&#34;</span>, <span style=color:#e6db74>&#34;world&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> text
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;hello&#34;</span> <span style=color:#e6db74>&#34;world&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(text)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;character&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(<span style=color:#e6db74>&#34;Hello&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;character&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>FALSE</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> logic <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#66d9ef>TRUE</span>, <span style=color:#66d9ef>FALSE</span>, <span style=color:#66d9ef>TRUE</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> logic
+</span></span><span style=display:flex><span>[1]  <span style=color:#66d9ef>TRUE</span> <span style=color:#66d9ef>FALSE</span>  <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(logic)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;logical&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(F)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;logical&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> comp <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1i</span>, <span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2i</span>, <span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>3i</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> comp
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1+1i</span> <span style=color:#ae81ff>1+2i</span> <span style=color:#ae81ff>1+3i</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(comp)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;complex&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>raw</span>(<span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>00</span> <span style=color:#ae81ff>00</span> <span style=color:#ae81ff>00</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(<span style=color:#a6e22e>raw</span>(<span style=color:#ae81ff>3</span>))
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;raw&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> hand <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;king&#34;</span>, <span style=color:#e6db74>&#34;queen&#34;</span>, <span style=color:#e6db74>&#34;jack&#34;</span>, <span style=color:#e6db74>&#34;ten&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> hand
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;ace&#34;</span>   <span style=color:#e6db74>&#34;king&#34;</span>  <span style=color:#e6db74>&#34;queen&#34;</span> <span style=color:#e6db74>&#34;jack&#34;</span>  <span style=color:#e6db74>&#34;ten&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(hand)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;character&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>Pretty straightforward stuff here, nothing too out of the ordinary. I&rsquo;m not sure if it&rsquo;s annoying that strings are not a basic class. On one hand it&rsquo;s probably easy to manipulate those vectors. On the other, it&rsquo;s probably annoying to do some operations. It looks like the next part is about attributes, names, and arrays.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>names</span>(die)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>NULL</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>names</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;one&#34;</span>, <span style=color:#e6db74>&#34;two&#34;</span>, <span style=color:#e6db74>&#34;three&#34;</span>, <span style=color:#e6db74>&#34;four&#34;</span>, <span style=color:#e6db74>&#34;five&#34;</span>, <span style=color:#e6db74>&#34;six&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>names</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;one&#34;</span>   <span style=color:#e6db74>&#34;two&#34;</span>   <span style=color:#e6db74>&#34;three&#34;</span> <span style=color:#e6db74>&#34;four&#34;</span>  <span style=color:#e6db74>&#34;five&#34;</span>  <span style=color:#e6db74>&#34;six&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>attributes</span>(die)
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>names
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;one&#34;</span>   <span style=color:#e6db74>&#34;two&#34;</span>   <span style=color:#e6db74>&#34;three&#34;</span> <span style=color:#e6db74>&#34;four&#34;</span>  <span style=color:#e6db74>&#34;five&#34;</span>  <span style=color:#e6db74>&#34;six&#34;</span>  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die<span style=color:#f92672>$</span>names
+</span></span><span style=display:flex><span>Error in die<span style=color:#f92672>$</span>names <span style=color:#f92672>:</span> <span style=color:#f92672>$</span> operator is invalid for atomic vectors
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>  one   two three  four  five   six 
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>1</span>     <span style=color:#ae81ff>2</span>     <span style=color:#ae81ff>3</span>     <span style=color:#ae81ff>4</span>     <span style=color:#ae81ff>5</span>     <span style=color:#ae81ff>6</span> 
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>  one   two three  four  five   six 
+</span></span><span style=display:flex><span>    <span style=color:#ae81ff>2</span>     <span style=color:#ae81ff>3</span>     <span style=color:#ae81ff>4</span>     <span style=color:#ae81ff>5</span>     <span style=color:#ae81ff>6</span>     <span style=color:#ae81ff>7</span> 
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>names</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#66d9ef>NULL</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>4</span> <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(die)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>NULL</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>] [,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>3</span>    <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>[2,]    <span style=color:#ae81ff>2</span>    <span style=color:#ae81ff>4</span>    <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>[2,]    <span style=color:#ae81ff>2</span>    <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>[3,]    <span style=color:#ae81ff>3</span>    <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> die
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>3</span>    <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>5</span>    <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>Okay, so this is kinda weird metaclass stuff. Basically, names are a way to index vectors. Attributes are pretty cool, I guess. It&rsquo;s kind of like the help thing I learned earlier. Dimensions are weird, because it&rsquo;s like names but a little bit more advanced way to index. Next part is matrices, arrays, and classes.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> m <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>matrix</span>(die, nrow <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> m
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>] [,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>3</span>    <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>[2,]    <span style=color:#ae81ff>2</span>    <span style=color:#ae81ff>4</span>    <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> m <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>matrix</span>(die, nrow <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>, byrow <span style=color:#f92672>=</span> T)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> m
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>] [,<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>[1,]    <span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>2</span>    <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>[2,]    <span style=color:#ae81ff>4</span>    <span style=color:#ae81ff>5</span>    <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> ar <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>array</span>(<span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>11</span><span style=color:#f92672>:</span><span style=color:#ae81ff>14</span>, <span style=color:#ae81ff>21</span><span style=color:#f92672>:</span><span style=color:#ae81ff>24</span>, <span style=color:#ae81ff>31</span><span style=color:#f92672>:</span><span style=color:#ae81ff>34</span>), dim <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>))
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> ar
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]   <span style=color:#ae81ff>11</span>   <span style=color:#ae81ff>13</span>
+</span></span><span style=display:flex><span>[2,]   <span style=color:#ae81ff>12</span>   <span style=color:#ae81ff>14</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]   <span style=color:#ae81ff>21</span>   <span style=color:#ae81ff>23</span>
+</span></span><span style=display:flex><span>[2,]   <span style=color:#ae81ff>22</span>   <span style=color:#ae81ff>24</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>, , <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>] [,<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>[1,]   <span style=color:#ae81ff>31</span>   <span style=color:#ae81ff>33</span>
+</span></span><span style=display:flex><span>[2,]   <span style=color:#ae81ff>32</span>   <span style=color:#ae81ff>34</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> cards <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>matrix</span>(<span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;king&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;queen&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;jack&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;ten&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>), ncol <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> cards
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>]     [,<span style=color:#ae81ff>2</span>]    
+</span></span><span style=display:flex><span>[1,] <span style=color:#e6db74>&#34;ace&#34;</span>    <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[2,] <span style=color:#e6db74>&#34;spades&#34;</span> <span style=color:#e6db74>&#34;jack&#34;</span>  
+</span></span><span style=display:flex><span>[3,] <span style=color:#e6db74>&#34;king&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[4,] <span style=color:#e6db74>&#34;spades&#34;</span> <span style=color:#e6db74>&#34;ten&#34;</span>   
+</span></span><span style=display:flex><span>[5,] <span style=color:#e6db74>&#34;queen&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> cards <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>matrix</span>(<span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;king&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;queen&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;jack&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;ten&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>), ncol <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>, byrow <span style=color:#f92672>=</span> T)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> cards
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>]    [,<span style=color:#ae81ff>2</span>]    
+</span></span><span style=display:flex><span>[1,] <span style=color:#e6db74>&#34;ace&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[2,] <span style=color:#e6db74>&#34;king&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[3,] <span style=color:#e6db74>&#34;queen&#34;</span> <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[4,] <span style=color:#e6db74>&#34;jack&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[5,] <span style=color:#e6db74>&#34;ten&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> hand1 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;king&#34;</span>, <span style=color:#e6db74>&#34;queen&#34;</span>, <span style=color:#e6db74>&#34;jack&#34;</span>, <span style=color:#e6db74>&#34;ten&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>, <span style=color:#e6db74>&#34;spades&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>length</span>(hand1)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>matrix</span>(hand1, nrow <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>]    [,<span style=color:#ae81ff>2</span>]    
+</span></span><span style=display:flex><span>[1,] <span style=color:#e6db74>&#34;ace&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[2,] <span style=color:#e6db74>&#34;king&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[3,] <span style=color:#e6db74>&#34;queen&#34;</span> <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[4,] <span style=color:#e6db74>&#34;jack&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[5,] <span style=color:#e6db74>&#34;ten&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>matrix</span>(hand1, ncol <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>]    [,<span style=color:#ae81ff>2</span>]    
+</span></span><span style=display:flex><span>[1,] <span style=color:#e6db74>&#34;ace&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[2,] <span style=color:#e6db74>&#34;king&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[3,] <span style=color:#e6db74>&#34;queen&#34;</span> <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[4,] <span style=color:#e6db74>&#34;jack&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[5,] <span style=color:#e6db74>&#34;ten&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(hand1) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> hand1
+</span></span><span style=display:flex><span>     [,<span style=color:#ae81ff>1</span>]    [,<span style=color:#ae81ff>2</span>]    
+</span></span><span style=display:flex><span>[1,] <span style=color:#e6db74>&#34;ace&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[2,] <span style=color:#e6db74>&#34;king&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[3,] <span style=color:#e6db74>&#34;queen&#34;</span> <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[4,] <span style=color:#e6db74>&#34;jack&#34;</span>  <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span>[5,] <span style=color:#e6db74>&#34;ten&#34;</span>   <span style=color:#e6db74>&#34;spades&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>dim</span>(die) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;double&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(die)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;matrix&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>attributes</span>(die)
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>dim
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(<span style=color:#e6db74>&#34;Hello&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;character&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;numeric&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>So the matrices and arrays are very straightforward. Again, annoying that matrix is seperate from array. Matrix should really just be a multidimensional array, not a different namespace. Class is similar to typeof, however, classes describe the abstract behavior. I&rsquo;d also say that it&rsquo;s both a blessing and a curse that you can accomplish one task in a bunch of different ways. The next part is more data types, and factors.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> now <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>Sys.time</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> now
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;2017-01-06 22:36:38 EST&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(now)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;double&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(now)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;POSIXct&#34;</span> <span style=color:#e6db74>&#34;POSIXt&#34;</span> 
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>unclass</span>(now)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1483760199</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> mil <span style=color:#f92672>&lt;-</span> <span style=color:#ae81ff>1000000</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> mil
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1e+06</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(mil) <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>class</span>(now)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> mil
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;1970-01-12 08:46:40 EST&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> gender <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>factor</span>(<span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;male&#34;</span>, <span style=color:#e6db74>&#34;female&#34;</span>, <span style=color:#e6db74>&#34;female&#34;</span>, <span style=color:#e6db74>&#34;male&#34;</span>))
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> gender
+</span></span><span style=display:flex><span>[1] male   female female male  
+</span></span><span style=display:flex><span>Levels<span style=color:#f92672>:</span> female male
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(gender)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;integer&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>attributes</span>(gender)
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>levels
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;female&#34;</span> <span style=color:#e6db74>&#34;male&#34;</span>  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>class
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;factor&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>unclass</span>(gender)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>attr</span>(,<span style=color:#e6db74>&#34;levels&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;female&#34;</span> <span style=color:#e6db74>&#34;male&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>as.character</span>(gender)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;male&#34;</span>   <span style=color:#e6db74>&#34;female&#34;</span> <span style=color:#e6db74>&#34;female&#34;</span> <span style=color:#e6db74>&#34;male&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> card <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;hearts&#34;</span>, <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> card
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;ace&#34;</span>    <span style=color:#e6db74>&#34;hearts&#34;</span> <span style=color:#e6db74>&#34;1&#34;</span>     
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>sum</span>(<span style=color:#a6e22e>c</span>(T, T, F, F))
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>as.character</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;1&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>as.logical</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>as.numeric</span>(F)
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> list1 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>list</span>(<span style=color:#ae81ff>100</span><span style=color:#f92672>:</span><span style=color:#ae81ff>130</span>, <span style=color:#e6db74>&#34;R&#34;</span>, <span style=color:#a6e22e>list</span>(<span style=color:#66d9ef>TRUE</span>, <span style=color:#66d9ef>FALSE</span>))
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> list1
+</span></span><span style=display:flex><span>[[1]]
+</span></span><span style=display:flex><span> [1] <span style=color:#ae81ff>100</span> <span style=color:#ae81ff>101</span> <span style=color:#ae81ff>102</span> <span style=color:#ae81ff>103</span> <span style=color:#ae81ff>104</span> <span style=color:#ae81ff>105</span> <span style=color:#ae81ff>106</span> <span style=color:#ae81ff>107</span> <span style=color:#ae81ff>108</span> <span style=color:#ae81ff>109</span> <span style=color:#ae81ff>110</span> <span style=color:#ae81ff>111</span> <span style=color:#ae81ff>112</span> <span style=color:#ae81ff>113</span> <span style=color:#ae81ff>114</span> <span style=color:#ae81ff>115</span> <span style=color:#ae81ff>116</span> <span style=color:#ae81ff>117</span> <span style=color:#ae81ff>118</span>
+</span></span><span style=display:flex><span>[20] <span style=color:#ae81ff>119</span> <span style=color:#ae81ff>120</span> <span style=color:#ae81ff>121</span> <span style=color:#ae81ff>122</span> <span style=color:#ae81ff>123</span> <span style=color:#ae81ff>124</span> <span style=color:#ae81ff>125</span> <span style=color:#ae81ff>126</span> <span style=color:#ae81ff>127</span> <span style=color:#ae81ff>128</span> <span style=color:#ae81ff>129</span> <span style=color:#ae81ff>130</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[2]]
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;R&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[3]]
+</span></span><span style=display:flex><span>[[3]][[1]]
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[3]][[2]]
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>FALSE</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> list1[3]
+</span></span><span style=display:flex><span>[[1]]
+</span></span><span style=display:flex><span>[[1]][[1]]
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>TRUE</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[1]][[2]]
+</span></span><span style=display:flex><span>[1] <span style=color:#66d9ef>FALSE</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> card <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>list</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;hearts&#34;</span>, <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> card
+</span></span><span style=display:flex><span>[[1]]
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;ace&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[2]]
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;hearts&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[3]]
+</span></span><span style=display:flex><span>[1] <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> card[1][1]
+</span></span><span style=display:flex><span>[[1]]
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;ace&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>So date times are super easy, and it&rsquo;s really cool (but also VERY unsafe) that you can set the class for the time. I&rsquo;m really not understanding the point of all these different constructors. I mean, why have arrays and lists AND matrices??? R&rsquo;s coercion makes sense which is good, because few other things do. T -> 1, F -> 0, and so forth. Let&rsquo;s see how many more unneccesary data types there are.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> df <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>data.frame</span>(face <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;ace&#34;</span>, <span style=color:#e6db74>&#34;two&#34;</span>, <span style=color:#e6db74>&#34;six&#34;</span>), suit <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>(<span style=color:#e6db74>&#34;clubs&#34;</span>, <span style=color:#e6db74>&#34;clubs&#34;</span>, <span style=color:#e6db74>&#34;clubs&#34;</span>), value <span style=color:#f92672>=</span> <span style=color:#a6e22e>c</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>))
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> df
+</span></span><span style=display:flex><span>  face  suit value
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  ace clubs     <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>  two clubs     <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>  six clubs     <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>typeof</span>(df)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;list&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>class</span>(df)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;data.frame&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>str</span>(df)
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#39;data.frame&#39;</span><span style=color:#f92672>:</span>	<span style=color:#ae81ff>3</span> obs. of  <span style=color:#ae81ff>3</span> variables<span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>$</span> face <span style=color:#f92672>:</span> Factor w<span style=color:#f92672>/</span> <span style=color:#ae81ff>3</span> levels <span style=color:#e6db74>&#34;ace&#34;</span>,<span style=color:#e6db74>&#34;six&#34;</span>,<span style=color:#e6db74>&#34;two&#34;</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>$</span> suit <span style=color:#f92672>:</span> Factor w<span style=color:#f92672>/</span> <span style=color:#ae81ff>1</span> level <span style=color:#e6db74>&#34;clubs&#34;</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>$</span> value<span style=color:#f92672>:</span> num  <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>So the book says, <strong>&ldquo;data frames are the two-dimensional version of a list. They are far and away the most useful storage structure for data analysis.&rdquo;</strong> THEN WHY THE HELL DO WE NEED ALL THESE OTHER THINGS?! I like data frames, the book says they&rsquo;re like a better version of Excel spreadsheets. By the looks of it, it takes all the great data types previously mentioned, and smashes them into one. I have a feeling I&rsquo;m only going to be using these. Next part is all about loading CSVs, another super useful task.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> deck <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>read.table</span>(<span style=color:#e6db74>&#34;/Users/jea/Documents/Code/R-lang/deck.csv&#34;</span>, header<span style=color:#f92672>=</span><span style=color:#66d9ef>TRUE</span>, sep <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;,&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>head</span>(deck)
+</span></span><span style=display:flex><span>   face   suit value
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  king spades    <span style=color:#ae81ff>13</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span> queen spades    <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>  jack spades    <span style=color:#ae81ff>11</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span>   ten spades    <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>5</span>  nine spades     <span style=color:#ae81ff>9</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>6</span> eight spades     <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>write.csv</span>(deck, file<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cards.csv&#34;</span>, row.names <span style=color:#f92672>=</span> <span style=color:#66d9ef>FALSE</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getwd</span>()
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;/Users/jea/Library/Application Support/Sublime Text 3/Packages&#34;</span>
+</span></span></code></pre></div><p>It&rsquo;s great how easy it is to import and work with CSVs, that&rsquo;ll definetly make life easier. At least R has great built in functions, otherwise I&rsquo;d be dreading this so much more. Okay well that&rsquo;s all for this chapter, next chapter is &ldquo;R Notation&rdquo;, whatever they mean by that.</p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/r>R</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/code>code</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/third>third</a></footer></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>

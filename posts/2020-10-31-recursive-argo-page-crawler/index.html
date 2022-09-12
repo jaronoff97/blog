@@ -1,0 +1,227 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Recursive Argo Page Crawlers - Blog</title><meta name=theme-color><meta name=description content="Recently, I&rsquo;ve been doing some work in kubernetes using Argo Workflows. Argo is a hyper powerful tool for running complex jobs, and allows you to run easily parallelized and templated code. One great use case for Argo are for running jobs of unknown length to parallelize data uploads and transformations. Unfortunately very little documentation / examples exist in order to help you do that, so I figured I&rsquo;d share that here in case there&rsquo;s anyone grepping around the internet like I was."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Recursive Argo Page Crawlers"><meta property="og:description" content="How to recursively crawl a website in Argo"><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/posts/2020-10-31-recursive-argo-page-crawler/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-10-31T00:00:00+00:00"><meta property="article:modified_time" content="2020-10-31T00:00:00+00:00"><meta itemprop=name content="Recursive Argo Page Crawlers"><meta itemprop=description content="How to recursively crawl a website in Argo"><meta itemprop=datePublished content="2020-10-31T00:00:00+00:00"><meta itemprop=dateModified content="2020-10-31T00:00:00+00:00"><meta itemprop=wordCount content="1086"><meta itemprop=keywords content="update,argo,kubernetes,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Recursive Argo Page Crawlers"><meta name=twitter:description content="How to recursively crawl a website in Argo"></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Recursive Argo Page Crawlers</h1><div class="text-sm opacity-60"><time>Oct 31, 2020</time></div></header><section><p>Recently, I&rsquo;ve been doing some work in kubernetes using <a href=https://argoproj.github.io/argo/>Argo Workflows.</a> Argo is a hyper powerful tool for running complex jobs, and allows you to run easily parallelized and templated code. One great use case for Argo are for running jobs of unknown length to parallelize data uploads and transformations. Unfortunately very little documentation / examples exist in order to help you do that, so I figured I&rsquo;d share that here in case there&rsquo;s anyone grepping around the internet like I was.</p><p>I&rsquo;ll break it down here in the components to build it up. The example I&rsquo;ll go through is paging through an API and doing some work with the data we get back.</p><h2 id=the-building-blocks>The building blocks</h2><p>We have a few base components required to make this happen: the thing that gets data from an API (and the next page) and the thing to do some work on the data.</p><h3 id=data-getter>Data getter</h3><p>Let&rsquo;s assume we&rsquo;re going to be making calls to api X @ <code>test.X.com/api/block</code>, and the response will look something like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {<span style=color:#960050;background-color:#1e0010>...</span>},
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;next&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;next_page&#34;</span>: <span style=color:#e6db74>&#34;https://test.X.com/api/block?page_token=example_token_123_abc&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>We&rsquo;ll assume we have a docker container (or maybe a python script) that can take a page to get data (input args as <code>--page _page_</code>) and outputs the data it got at <code>/tmp/result.json</code>.</p><p>In Argo, we create a template that looks like this (assume you have the right env vars for whatever container you&rsquo;re running):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-page-data</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>example-image:latest</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#e6db74>&#34;python&#34;</span>, <span style=color:#e6db74>&#34;page_getter.py&#34;</span>]
+</span></span><span style=display:flex><span>      <span style=color:#f92672>args</span>:
+</span></span><span style=display:flex><span>        - --<span style=color:#ae81ff>page</span>
+</span></span><span style=display:flex><span>        - <span style=color:#e6db74>&#34;{{inputs.parameters.next_page}}&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>outputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>output_data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/result.json</span>
+</span></span></code></pre></div><h3 id=data-processor>Data Processor</h3><p>The data processor is a pretty simple container, all it does is take an input artifact and do something with that.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>process-page-data</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>input_data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/input.json</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>example-image:latest</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#e6db74>&#34;python&#34;</span>, <span style=color:#e6db74>&#34;data_processor.py&#34;</span>]
+</span></span></code></pre></div><p>The processor gets some data from argo at the <code>/tmp/input.json</code> path</p><h3 id=helper-functions-a-dumb-thing-i-wrote>Helper Functions (a dumb thing I wrote)</h3><p>Something I found myself doing often in argo is getting some data from the output of a JSON object. At first I just had my containers write extra data to other paths to use as input parameters for other templates, but then I made a much repeatable way of doing this in Argo, without the need to make a container image.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json-getter</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json_path</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/input.json</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>script</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>python:alpine3.6</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#ae81ff>python]</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>source</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        import json
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        with open(&#34;/tmp/input.json&#34;, &#34;r&#34;) as f:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          data = json.load(f)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          print(data{{inputs.parameters.json_path}})</span>        
+</span></span></code></pre></div><p>This function, given a JSON path and some JSON data, will simply traverse the JSON object and output in the <code>[name].outputs.result</code>. I&rsquo;ve used this template in a few workflows, and have found it very helpful!</p><p><em>note</em> a similar thing could be accomplished using <code>jq</code> in a small bash container, but my jq foo isn&rsquo;t too good</p><h3 id=the-first-steps>The first steps</h3><p>Let&rsquo;s build up a single flow of our workflow. We are going to</p><ol><li>Get data</li><li>Get the next page</li><li>Do something with the data</li></ol><p>So let&rsquo;s do that YAML in Argo:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>dag</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>tasks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>get-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{inputs.parameters.next_page}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>consume-output-artifact</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>process-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>input_data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.output_data}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page-path</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>json-getter</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json_path</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#39;[&#34;next&#34;][&#34;next_page&#34;]&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.results}}&#34;</span>
+</span></span></code></pre></div><p>If you&rsquo;re unfamiliar with Argo, we&rsquo;re going to be running this process in a dag (directed-acyclic-graph.) The tasks in this dag follow exactly what we set out to do: we get some data, and then simultaneously get the next page and do something with that data. The final step is, the recursive part&mldr;</p><h3 id=recursion-in-argo>Recursion in Argo</h3><p>At the end of our dag&rsquo;s task list, we need to get the data for the <em>next</em> page and continue processing data and then get the <em>next</em> page&mldr; and so on. But because we already have a task that does this, our dag! So we simply need to call it, by giving it the next page.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>dag</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>tasks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>get-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{inputs.parameters.next_page}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>consume-output-artifact</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>process-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>input_data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.output_data}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page-path</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>json-getter</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json_path</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#39;[&#34;next&#34;][&#34;next_page&#34;]&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.results}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>loop-it</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page-path]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>when</span>: <span style=color:#e6db74>&#34;\&#39;{{tasks.get-next-page-path.outputs.results}}\&#39; != end&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page-path.outputs.results}}&#34;</span>
+</span></span></code></pre></div><p>You&rsquo;ll see that our recursive step&rsquo;s basecase is when the output result from our json-getter == &ldquo;end&rdquo;, but basically you would just need to program for whenever you know your paging is over.</p><p>And that&rsquo;s basically it! Now all we need to do is call it to kick it off!</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>argoproj.io/v1alpha1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Workflow</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>generateName</span>: <span style=color:#ae81ff>page-crawler-loader-</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>entrypoint</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>templates</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>begin-recursion</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{initial_page}}&#34;</span>
+</span></span></code></pre></div><h3 id=the-end>The end</h3><p>We now have a recursive page crawler that can run in argo, my recommendation though is not to check out the UI past a few dozen requests, it starts to lag because there are so many nodes. I recommend just using the argo commands to check the status, or create a dashboard with the metrics to know when the job is complete. Here&rsquo;s the full file if you want to use it as a starter:</p><h3 id=full-file>Full file</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>argoproj.io/v1alpha1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Workflow</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>generateName</span>: <span style=color:#ae81ff>page-crawler-loader-</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>entrypoint</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>templates</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>dag</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>tasks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>get-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{inputs.parameters.next_page}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>consume-output-artifact</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>process-page-data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>input_data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.output_data}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-next-page-path</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>json-getter</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json_path</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#39;[&#34;next&#34;][&#34;next_page&#34;]&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>data</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>from</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page.outputs.artifacts.results}}&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>loop-it</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>dependencies</span>: [<span style=color:#ae81ff>get-next-page-path]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>when</span>: <span style=color:#e6db74>&#34;\&#39;{{tasks.get-next-page-path.outputs.results}}\&#39; != end&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{tasks.get-next-page-path.outputs.results}}&#34;</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json-getter</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>json_path</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/input.json</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>script</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>python:alpine3.6</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#ae81ff>python]</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>source</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        import json
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        with open(&#34;/tmp/input.json&#34;, &#34;r&#34;) as f:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          data = json.load(f)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          print(data{{inputs.parameters.json_path}})</span>        
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get-page-data</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>example-image:latest</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#e6db74>&#34;python&#34;</span>, <span style=color:#e6db74>&#34;page_getter.py&#34;</span>]
+</span></span><span style=display:flex><span>      <span style=color:#f92672>args</span>:
+</span></span><span style=display:flex><span>        - --<span style=color:#ae81ff>page</span>
+</span></span><span style=display:flex><span>        - <span style=color:#e6db74>&#34;{{inputs.parameters.next_page}}&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>outputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>output_data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/result.json</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>process-page-data</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>inputs</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>artifacts</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>input_data</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/tmp/input.json</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>image</span>: <span style=color:#ae81ff>example-image:latest</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>command</span>: [<span style=color:#e6db74>&#34;python&#34;</span>, <span style=color:#e6db74>&#34;data_processor.py&#34;</span>]
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>begin-recursion</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>template</span>: <span style=color:#ae81ff>page-dag</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>arguments</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>parameters</span>:
+</span></span><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>next_page</span>
+</span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;{{initial_page}}&#34;</span>
+</span></span></code></pre></div><h3 id=questions>Questions?</h3><p>Please reach out with questions @ <a href=mailto:jaronoff@drift.com>jaronoff@drift.com</a></p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/update>update</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/argo>argo</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/kubernetes>kubernetes</a></footer><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="flex w-1/2 items-center p-6 pr-3 no-underline" href=https://jaronoff97.github.io/posts/2020-11-17-hackny-updated/><span class=mr-1.5>←</span><span>hackNY, hackathons, and COVID – what comes next?</span></a>
+<a class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline" href=https://jaronoff97.github.io/posts/2020-08-02-transportation-course/><span>Transportation Course</span><span class=ml-1.5>→</span></a></nav></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>

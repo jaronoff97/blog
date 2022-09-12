@@ -1,0 +1,133 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Part 3, Cool, Difficult Swift - Blog</title><meta name=theme-color><meta name=description content="Today is gonna be our toughest day yet, but by the end of it, you&rsquo;re gonna know everything you have to about Swift.
+Lets look back to our Student and Homework classes:
+enum Subject { case English case Programming case Language case Science case History } struct Homework { var subject: Subject var due_date: String var name: String } class Student { var name: String var age: Int var grade: String static let uniform_needed = false private var _homework: [Homework] = [] public var homework:[Homework]{ get { return _homework } } init(name:String, age:Int, grade:String) { self."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Part 3, Cool, Difficult Swift"><meta property="og:description" content="Closures are shorthand functions"><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/archives/2016-05-18-cool-difficult-swift/"><meta property="article:section" content="archives"><meta property="article:published_time" content="2016-05-18T00:00:00+00:00"><meta property="article:modified_time" content="2016-05-18T00:00:00+00:00"><meta itemprop=name content="Part 3, Cool, Difficult Swift"><meta itemprop=description content="Closures are shorthand functions"><meta itemprop=datePublished content="2016-05-18T00:00:00+00:00"><meta itemprop=dateModified content="2016-05-18T00:00:00+00:00"><meta itemprop=wordCount content="849"><meta itemprop=keywords content="swift,code,closures,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Part 3, Cool, Difficult Swift"><meta name=twitter:description content="Closures are shorthand functions"></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Part 3, Cool, Difficult Swift</h1><div class="text-sm opacity-60"><time>May 18, 2016</time></div></header><section><p>Today is gonna be our toughest day yet, but by the end of it, you&rsquo;re gonna know everything you have to about Swift.</p><p>Lets look back to our Student and Homework classes:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>Subject</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> English
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> Programming
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> Language
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> Science
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> History
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Homework</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> subject: Subject
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> due_date: String
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> name: String
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Student</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> name: String
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> age: Int
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> grade: String
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>let</span> uniform_needed = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> _homework: [Homework] = []
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>var</span> homework:[Homework]{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>get</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> _homework
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>init</span>(name:String, age:Int, grade:String) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>self</span>.name=name
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>self</span>.age=age
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>self</span>.grade=grade
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>new_assignment</span>(new_homework: Homework){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>self</span>._homework.append(new_homework)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Lets say we want to sort our homeworks by their priority (lets add in that trait) first:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Homework</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> subject: Subject
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> due_date: String
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> name: String
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> priority: Int
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Lets say our student has a bunch of homework assignments. Lets add a way for our student class that&rsquo;ll help our student stay organized. Now one way of doing this would be a swift implementation of the classic sorting algorithms. But let&rsquo;s do this the <strong>swift</strong> way. Let&rsquo;s sort our array everytime someone calls our getter for our <strong>_homework</strong> variable.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>var</span> homework: [Homework]{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>get</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>self</span>._homework = <span style=color:#66d9ef>self</span>._homework.sort({(homework1, homework2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> (homework1.priority <span style=color:#f92672>&lt;</span> homework2.priority)
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>self</span>._homework
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>So let&rsquo;s go over what&rsquo;s happening here. The sort method of the array class takes what&rsquo;s called a closure as a parameter. Think of a closure as a function. It&rsquo;s a function without a name. When we give it a name this closure is a variable. Here&rsquo;s what that looks like with full verbosity:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>var</span> cool_closure: (String)-&gt;String = { (param1) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;hello </span><span style=color:#e6db74>\(</span>param1<span style=color:#e6db74>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>cool_closure(<span style=color:#e6db74>&#34;world&#34;</span>)
+</span></span></code></pre></div><p>So let&rsquo;s go over what&rsquo;s happening here. The type of this variable is <strong>(String)->String</strong>. This means that this function takes a string as a parameter and returns a string. We can use that parameter similar to the syntax of a for loop: <strong>variable</strong> <strong>in</strong> (our function).</p><p>If we looked at the type of our function <strong>new_assignnment</strong> in our <strong>student</strong> class it would be <strong>(Homework)->Void</strong> because it takes a <strong>Homework</strong> as a parameter and returns nothing or <strong>Void</strong>. Here are some more examples of closure types:</p><ul><li>()->Void takes no params and returns nothing</li><li>()->Int takes no params and returns an Int</li><li>(name:String)->String takes a named parameter and returns a String</li></ul><p>So lets look at a method that takes a closure as a parameter:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>apply_operator</span>(op: (lhs: Int, rhs: Int)-&gt;Int){
+</span></span><span style=display:flex><span>  print(op(lhs: <span style=color:#ae81ff>3</span>,rhs: <span style=color:#ae81ff>10</span>))
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>apply_operator({ (lhs, rhs) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> lhs <span style=color:#f92672>*</span> rhs
+</span></span><span style=display:flex><span>})
+</span></span><span style=display:flex><span>apply_operator({ (lhs, rhs) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> lhs <span style=color:#f92672>+</span> rhs
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><blockquote><p>Notice how because our parameters are named in our function <strong>apply_operator</strong> we have to name them when we call our closure.</p></blockquote><p>So now back to our original use of closures. If we peered inside the Array&rsquo;s Sort method we&rsquo;d see that it would look something like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>sort</span>(method:(Element, Element)-&gt;Bool)-&gt;Array{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//after a bunch of code it would call:</span>
+</span></span><span style=display:flex><span>  method(arr1, arr2)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>So in order to use this we have to pass in a closure that takes two elements as parameters and returns a boolean. Which is why if we want to sort by the homework&rsquo;s priorities, we can pass in the following closure:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>{(homework1, homework2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (homework1.priority <span style=color:#f92672>&lt;</span> homework2.priority)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>The method takes two params and returns a boolean. Because the <strong>sort</strong> method takes a closure that returns a boolean, we don&rsquo;t have to explicitly specify our closure will return a boolean.</p></blockquote><p>Let&rsquo;s say there are a bunch of ways to sort our homework assignments. Let&rsquo;s make an enum which will represent the sorting methods</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>SortMethod</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> AscendingPriority
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> DescendingPriority
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> AscendingDueDate
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>case</span> DescendingDueDate
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>sort_function</span>()-&gt;(Homework, Homework)-&gt;Bool{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>switch</span> <span style=color:#66d9ef>self</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> AscendingPriority:
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> { (h1, h2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> h1.priority&gt;h2.priority
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> DescendingPriority:
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> { (h1, h2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> h1.priority&lt;h2.priority
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> AscendingDueDate:
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> { (h1, h2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> h1.due_date&gt;h2.due_date
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> DescendingDueDate:
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> { (h1, h2) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> h1.due_date&lt;h2.due_date
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>So our enum has four cases: AscendingPriority, DescendingPriority, AscendingDueDate, DescendingDueDate. The next part is a bit weird. Our enum has a function that will return a function that takes two Homeworks and returns a boolean. Now we know that our Array&rsquo;s sort function takes a closure which has two Homeworks as params and returns a boolean. So what our enum&rsquo;s function is doing is returning a function which will be passed in to our <strong>Student&rsquo;s Array&rsquo;s Sort</strong> function.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span> <span style=color:#66d9ef>var</span> sortMethod: SortMethod = .AscendingPriority
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> _homework: [Homework] = []
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>var</span> homework:[Homework]{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>get</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>self</span>._homework = <span style=color:#66d9ef>self</span>._homework.sort(<span style=color:#66d9ef>self</span>.sortMethod.sort_function())
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>self</span>._homework
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>To test this out, change the sort method and print out the homework array.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>jacob.sortMethod = .AscendingPriority
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----AscendingPriority-----&#34;</span>)
+</span></span><span style=display:flex><span>print(jacob.homework)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----AscendingPriority-----&#34;</span>)
+</span></span><span style=display:flex><span>jacob.sortMethod = .DescendingPriority
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----DescendingPriority-----&#34;</span>)
+</span></span><span style=display:flex><span>print(jacob.homework)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----DescendingPriority-----&#34;</span>)
+</span></span><span style=display:flex><span>jacob.sortMethod = .AscendingDueDate
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----AscendingDueDate-----&#34;</span>)
+</span></span><span style=display:flex><span>print(jacob.homework)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----AscendingDueDate-----&#34;</span>)
+</span></span><span style=display:flex><span>jacob.sortMethod = .DescendingDueDate
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----DescendingDueDate-----&#34;</span>)
+</span></span><span style=display:flex><span>print(jacob.homework)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;-----DescendingDueDate-----&#34;</span>)
+</span></span></code></pre></div><p>Well that&rsquo;s all for now, I know this was a tough one, but hopefully you understood it. Next time we&rsquo;re going to start iOS application building by learning three final swift concepts. I also think I&rsquo;m going to make a video to show the iOS stuff.</p><p>{% gist a6e7e5566745593fcbaa7e5a29169c2e %}</p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/swift>swift</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/code>code</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/closures>closures</a></footer></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>

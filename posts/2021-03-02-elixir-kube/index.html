@@ -1,0 +1,260 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Running Phoenix (elixir) Apps on Kubernetes - Blog</title><meta name=theme-color><meta name=description content="I&rsquo;m currently working on a side project for a friend (on the hush hush right now), and I&rsquo;ve had the pleasure of writing it in elixir using Phoenix. Having avoided touching react for a while, being able to write some pretty simple HTML on top of an elixir backend is a wonderful experience. Local development is simple, but how one goes about preparing and deploying their Phoenix app for Kubernetes is a whole other process."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Running Phoenix (elixir) Apps on Kubernetes"><meta property="og:description" content="A guide on how to get an elixir app up and running on Kubernetes."><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/posts/2021-03-02-elixir-kube/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-03-02T00:00:00+00:00"><meta property="article:modified_time" content="2021-03-02T00:00:00+00:00"><meta itemprop=name content="Running Phoenix (elixir) Apps on Kubernetes"><meta itemprop=description content="A guide on how to get an elixir app up and running on Kubernetes."><meta itemprop=datePublished content="2021-03-02T00:00:00+00:00"><meta itemprop=dateModified content="2021-03-02T00:00:00+00:00"><meta itemprop=wordCount content="1585"><meta itemprop=keywords content="update,kubernetes,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Running Phoenix (elixir) Apps on Kubernetes"><meta name=twitter:description content="A guide on how to get an elixir app up and running on Kubernetes."></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Running Phoenix (elixir) Apps on Kubernetes</h1><div class="text-sm opacity-60"><time>Mar 2, 2021</time></div></header><section><p>I&rsquo;m currently working on a side project for a friend (on the hush hush right now), and I&rsquo;ve had the pleasure of writing it in elixir using Phoenix. Having avoided touching react for a while, being able to write some pretty simple HTML on top of an elixir backend is a wonderful experience. Local development is simple, but how one goes about preparing and deploying their Phoenix app for Kubernetes is a whole other process. I&rsquo;ll walk you through what I did to get it done on GKE.</p><p><em>Assumption!</em> You have a working phoenix application running locally generated from the most <code>mix phx.new</code></p><h2 id=preparing-your-application>Preparing your application</h2><p>The first thing you&rsquo;ll need to make is a Dockerfile to containerize your application. Below is a Dockerfile I hodge-podged from other online tutorials:</p><pre tabindex=0><code># ---- Build Stage ----
+FROM hexpm/elixir:1.11.2-erlang-23.1.2-alpine-3.12.1 as build
+
+# install build dependencies
+RUN apk add --no-cache build-base npm git python3
+
+# prepare build dir
+WORKDIR /app
+
+# install hex + rebar
+RUN mix local.hex --force &amp;&amp; \
+    mix local.rebar --force
+
+# set build ENV
+ENV MIX_ENV=prod
+
+# install mix dependencies
+COPY mix.exs mix.lock ./
+RUN mix deps.get --only $MIX_ENV
+RUN mkdir config
+# Dependencies sometimes use compile-time configuration. Copying
+# these compile-time config files before we compile dependencies
+# ensures that any relevant config changes will trigger the dependencies
+# to be re-compiled.
+COPY config/config.exs config/$MIX_ENV.exs config/
+RUN mix deps.compile
+
+# build assets
+COPY assets/package.json assets/package-lock.json ./assets/
+# install all npm dependencies from scratch
+RUN npm --prefix ./assets ci --progress=false --no-audit --loglevel=error
+
+# Copy migrations
+COPY priv priv
+
+# Note: if your project uses a tool like https://purgecss.com/,
+# which customizes asset compilation based on what it finds in
+# your Elixir templates, you will need to move the asset compilation step
+# down so that `lib` is available.
+COPY assets assets
+# use webpack to compile npm dependencies - https://www.npmjs.com/package/webpack-deploy
+RUN npm run --prefix ./assets deploy
+RUN mix phx.digest
+
+# compile and build the release
+COPY lib lib
+RUN mix compile
+# changes to config/runtime.exs don&#39;t require recompiling the code
+COPY config/runtime.exs config/
+# uncomment COPY if rel/ exists
+COPY rel rel
+RUN mix release
+
+# Start a new build stage so that the final image will only contain
+# the compiled release and other runtime necessities
+FROM alpine:3.12.1 AS app
+RUN apk add --no-cache openssl ncurses-libs
+
+WORKDIR /app
+
+RUN chown nobody:nobody /app
+
+USER nobody:nobody
+
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/YOUR_APP_NAME_HERE ./
+
+ENV HOME=/app
+
+ENTRYPOINT [&#34;bin/YOUR_APP_NAME_HERE&#34;]
+CMD [&#34;start&#34;]
+</code></pre><p>This dockerfile uses mix releases to generate a built image, and copies it on to an alpine container using the docker builder pattern. There are two gotchas here that are easy to miss. I initially forgot to copy over the rel directory which meant that my app wasn&rsquo;t getting started with the correct release name (more on why this is problematic later.) The second is to be sure and copy your runtime config over, if you don&rsquo;t do this your apps configuration won&rsquo;t be complete and your phoenix server will fail to startup.</p><p>You can test this works by building and running the image locally:</p><pre tabindex=0><code>docker build -t YOUR_APP_NAME_HERE .
+docker run -p 4000:4000 --rm -it  --network=host --env SECRET_KEY_BASE=TEST --env DATABASE_URL=ecto://postgres:postgres@localhost:5432/YOUR_APP_NAME_HERE_dev YOUR_APP_NAME_HERE:latest
+</code></pre><p>If all of that is working, you are ready to deploy your app!</p><h2 id=kube-ifying-your-application>Kube-ifying your application!</h2><p>I&rsquo;m going to make the major assumption that you have a running kubernetes cluster somewhere before you began this process. If you do not, I highly recommend reading through <a href=https://github.com/kelseyhightower/kubernetes-the-hard-way>this guide</a> or using a hosted provider like GKE or EKS to create your cluster.</p><p>We are going to use helm templating to package up our application and ArgoCD to ultimately deploy our application. You can view how to use ArgoCD in your cluster <a href=https://argoproj.github.io/argo-cd/getting_started/>here</a>, all we&rsquo;re using it for is applying our manifests and dependencies.</p><p>The basic structure for our helm app is the following:</p><pre tabindex=0><code>kubernetes/
+    templates/
+        deployment.yaml
+        service.yaml
+    application.yaml &lt;&lt; this is used for ArgoCD
+    Chart.yaml
+    values.yaml
+</code></pre><p>The <code>Chart.yaml</code> looks like this:</p><pre tabindex=0><code>apiVersion: v2
+appVersion: &#34;1.0.0&#34;
+description: YOUR_APP Deployment
+name: your-app
+version: 1.0.0
+dependencies:
+- name: postgresql
+  version: &#34;10.2.6&#34;
+  repository: &#34;https://charts.bitnami.com/bitnami&#34;
+</code></pre><p>Above you see that we are installing the postgres chart from bitnami. This allows us to easily spin up a new database in our kubernetes with minimal setup. We then are going to use Kube service networking to connect our application to our database.</p><p>Our values.yaml file is very simple as well, it&rsquo;s simply configuring our database to use a storage class (in this case the one provided by GKE)</p><pre tabindex=0><code>postgresql:
+  global.storageClass: &#34;standard-rwo&#34;
+</code></pre><p>The final piece here is our application&rsquo;s deployment:</p><pre tabindex=0><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app_name
+  labels:
+    app: your-app_name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-app_name
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 34%
+      maxUnavailable: 0%
+  template:
+    metadata:
+      name: your-app_name
+      labels:
+        app: your-app_name
+    spec:
+      containers:
+      - name: your-app_name
+        image: your-app_name:latest
+        imagePullPolicy: Always
+        env:
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: your-app_name-postgresql
+                key: postgresql-password
+          - name: DATABASE_USERNAME
+            value: postgres
+          - name: DATABASE_HOSTNAME
+            value: your-app_name-postgresql.your-app_name.svc.cluster.local
+          - name: DATABASE_NAME
+            value: your-app_name_prod
+          - name: PORT
+            value: &#34;4000&#34;
+          - name: RELEASE_COOKIE
+            value: your-app_name-secret-cookie
+          - name: SECRET_KEY_BASE
+            value: XXXXXXXXXXX
+        ports:
+        - name: http
+          containerPort: 4000
+</code></pre><p>Our deployment is pretty straightforward. We define the labels for <code>app</code> as we would for any kube app. Our template&rsquo;s environment variables we mostly are just configuring the database access. This is done by using the secrets file for the database password from the helm chart. The hostname for the DB is also simple – we just use the service created from the helm chart.</p><p>Once you have that setup, all you need to do is configure ArgoCD to deploy your app in its <code>application.yaml</code>:</p><pre tabindex=0><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: your-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: gitURLFORYOURREPO
+    targetRevision: HEAD
+    path: k8s
+    helm:
+      valueFiles:
+      - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: your-app
+  ignoreDifferences:
+  - group: &#34;&#34;
+    kind: Secret
+    jsonPointers:
+    - /data/postgresql-password
+    - /data/postgresql-postgres-password
+  - group: &#34;networking.k8s.io&#34;
+    kind: Ingress
+    jsonPointers:
+    - /metadata/annotations
+</code></pre><p>One thing of note in there is that we&rsquo;re telling ArgoCD to ignore the diff for the postgres passwords so that when you go to sync your application it doesnt make a new database password as that should be static with your DB.</p><p>Once you apply and sync your application.yaml file your phoenix deployment should be up and running! You should be able to tail your application&rsquo;s logs and see that its running successfully.</p><h2 id=going-the-next-step>Going the next step</h2><p>You have your application running, but right now it doesn&rsquo;t scale correctly. As soon as you go add another replica, the servers are working in isolation and you lose the big benefits of running Phoenix clusters! To remedy this, we need to make a few changes to our application and our Kubernetes configuration.</p><p>First thing you want to do is implement LibCluster for your application.</p><p>in <code>mix.exs</code>:</p><pre tabindex=0><code>      {:libcluster, &#34;~&gt; 3.2.1&#34;},
+</code></pre><p>in your <code>config/runtime.exs</code>:</p><pre tabindex=0><code>  app_name = System.get_env(&#34;APP_NAME&#34;)
+  config :libcluster,
+    topologies: [
+      your-app: [
+        strategy: Cluster.Strategy.Kubernetes.DNS,
+        config: [
+          service: System.fetch_env!(&#34;SERVICE_NAME&#34;),
+          application_name: app_name,
+          kubernetes_namespace: System.get_env(&#34;NAMESPACE&#34;),
+          polling_interval: 3_000
+        ]
+      ]
+    ]
+</code></pre><p>in your <code>application.ex</code>:</p><pre tabindex=0><code>    topologies = Application.get_env(:libcluster, :topologies) || []
+...
+      {Cluster.Supervisor, [topologies, [name: Yourapp.ClusterSupervisor]]},
+</code></pre><p>Finally, we need to adjust our release configuration to our release to publish our address correctly for libcluster.</p><p>in <code>rel/vm.args.eex</code>:</p><pre tabindex=0><code>...
+-name your-app@${POD_IP}
+</code></pre><p>And in your <code>rel/env.sh.eex</code>:</p><pre tabindex=0><code>...
+export RELEASE_DISTRIBUTION=name
+export RELEASE_NODE=&lt;%= @release.name %&gt;@${POD_IP}
+</code></pre><p>You can read more about libcluster <a href=https://github.com/bitwalker/libcluster>here</a></p><p>Now we need to make some kubernetes configuration changes, the first of which is creating what&rsquo;s called a headless service that we are going to use for service discovery in kubernetes. We&rsquo;ll add this to our templates folder in helm.</p><pre tabindex=0><code>apiVersion: v1
+kind: Service
+metadata:
+  name: your-app-private
+  labels:
+    app: your-app
+spec:
+  clusterIP: None
+  ports:
+  - name: epmd
+    port: 4369
+  selector:
+    app: your-app
+</code></pre><p>Finally we&rsquo;ll add the environment variables to our service to connect to our service.</p><pre tabindex=0><code>...
+    env:
+      - name: NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      - name: SERVICE_NAME
+       value: your-app-private
+...
+</code></pre><p>You also are going to create and attach a service account that grants your application permission to the kubernetes API to get the endpoints from your headless service:</p><p>in <code>deployment.yaml</code></p><pre tabindex=0><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: your-app-service-account
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: endpoint-role
+rules:
+  - apiGroups:
+      - &#34;&#34;
+    resources:
+      - endpoints
+    verbs:
+      - list
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: rolebinding-name
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: endpoint-role
+subjects:
+  - kind: ServiceAccount
+    name: your-app-service-account
+---
+</code></pre><p>And then attach it in your deployment:</p><pre tabindex=0><code>...
+      serviceAccountName: your-app-service-account
+      serviceAccount: your-app-service-account
+...
+</code></pre><p>With that you should be able to keep scaling up your application and they will work in clustered mode!! You can verify it&rsquo;s working by kubectl exec&rsquo;ing in to an instance, running iex and running <code>Node.list</code> and you should see the list of pod ips for your service.</p><h2 id=next-steps>Next steps</h2><p>The final thing you should do (because it&rsquo;s best practices for running any Kubernetes application) is defining memory requests and limit as well as healthchecks for liveness and readiness. There a bunch of guides out there on how to do this, and we&rsquo;ve already covered a lot of ground here, so I&rsquo;ll leave that for follow ups :)</p><p>One thing I didn&rsquo;t cover was how to actually access your application from the internet. That&rsquo;s a whole other blog post in itself IMO, so I think I&rsquo;ll save that for next time as well.</p><p>Please reach out and let me know if you have any questions! I think I may create a template repo with all of this code as starter for anyone who runs in to this a few years down the road.</p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/update>update</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/kubernetes>kubernetes</a></footer><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline" href=https://jaronoff97.github.io/posts/2020-11-17-hackny-updated/><span>hackNY, hackathons, and COVID – what comes next?</span><span class=ml-1.5>→</span></a></nav></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>

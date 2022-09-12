@@ -1,0 +1,188 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Firebase and Swift - Blog</title><meta name=theme-color><meta name=description content="Hello! Per request of a friendly reddit user, I&rsquo;m going to be doing a quick tutorial on using firebase with swift and how to structure your data models. Before we do anything, just a quick disclaimer, this tutorial is in swift 3, which, even though my life would be made much easier had I used swift 4 (google codeable swift 4), is the current default.
+Basic project setup:
+Single page application default in XCode Cocoapods to install Firebase You&rsquo;ll be able to find the project&rsquo;s link at the end of this guide."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Firebase and Swift"><meta property="og:description" content="Firebase and swift data modelling"><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/archives/2017-08-22-firebase-and-swift/"><meta property="article:section" content="archives"><meta property="article:published_time" content="2017-08-22T00:00:00+00:00"><meta property="article:modified_time" content="2017-08-22T00:00:00+00:00"><meta itemprop=name content="Firebase and Swift"><meta itemprop=description content="Firebase and swift data modelling"><meta itemprop=datePublished content="2017-08-22T00:00:00+00:00"><meta itemprop=dateModified content="2017-08-22T00:00:00+00:00"><meta itemprop=wordCount content="990"><meta itemprop=keywords content="swift,code,firebase,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Firebase and Swift"><meta name=twitter:description content="Firebase and swift data modelling"></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Firebase and Swift</h1><div class="text-sm opacity-60"><time>Aug 22, 2017</time></div></header><section><p>Hello! Per request of a friendly reddit user, I&rsquo;m going to be doing a quick tutorial on using firebase with swift and how to structure your data models. Before we do anything, just a quick disclaimer, this tutorial is in swift 3, which, even though my life would be made much easier had I used swift 4 (google codeable swift 4), is the current default.</p><p>Basic project setup:</p><ul><li>Single page application default in XCode</li><li>Cocoapods to install Firebase</li></ul><p>You&rsquo;ll be able to find the project&rsquo;s link at the end of this guide.</p><p>This app is going to be dumb simple:</p><ul><li>A list of items</li><li>Click on item to view info or delete</li><li><ul><li>button in the top corner to add one</li></ul></li></ul><p>The first piece of code for this pattern is a simple protocol:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>protocol</span> <span style=color:#a6e22e>FirebaseItem</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> id: String { <span style=color:#66d9ef>get</span> <span style=color:#66d9ef>set</span> }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> name: String { <span style=color:#66d9ef>get</span> <span style=color:#66d9ef>set</span> }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>toJSON</span>() -&gt; [String: AnyObject]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>init</span>(fromFirebaseItem: FIRDataSnapshot)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>For the most part every firebase item we&rsquo;ll have will have an ID and a name. Very simply, every item we construct needs to be able to produce a JSON object, and must be able to be constructed from a firebase item.</p><p>Following Firebase&rsquo;s standards we&rsquo;re going to avoid nesting our data, and keep it very simple.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;items&#34;</span> : {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;first&#34;</span> : {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;id&#34;</span> : <span style=color:#e6db74>&#34;first&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;name&#34;</span> : <span style=color:#e6db74>&#34;Apple&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;price&#34;</span> : <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;second&#34;</span> : {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;id&#34;</span> : <span style=color:#e6db74>&#34;second&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;name&#34;</span> : <span style=color:#e6db74>&#34;Banana&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;price&#34;</span> : <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now that that&rsquo;s working, let&rsquo;s setup the class that&rsquo;s going to get our data</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FirebaseInitialization</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> childRef: FIRDatabaseReference!
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> items: [FirebaseItem] = []
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>init</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> ref = FIRDatabase.database().reference()
+</span></span><span style=display:flex><span>        childRef = ref.child(<span style=color:#e6db74>&#34;items&#34;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> addFunc = { (data:FIRDataSnapshot) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.items.append(GroceryItem(fromFirebaseItem: data))
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> removeFunc = { (data: FIRDataSnapshot) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> index = <span style=color:#66d9ef>self</span>.items.index(<span style=color:#66d9ef>where</span>: { (item) -&gt; Bool <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>                item.id == data.value(forKey: <span style=color:#e6db74>&#34;id&#34;</span>) <span style=color:#66d9ef>as</span>! String
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.items.remove(at: index!)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        childRef.observe(FIRDataEventType.childAdded, with: addFunc)
+</span></span><span style=display:flex><span>        childRef.observe(FIRDataEventType.childRemoved, with: removeFunc)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getItems</span>() -&gt; [FirebaseItem] {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> items
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Again, very simple: we connect to the database and setup the things that will automatically add and remove from our internal list. Finally let&rsquo;s look at our UITableViewController</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>GroceryListTableViewController</span>: UITableViewController {
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> firebase: FirebaseInitialization?
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> items: [FirebaseItem]?
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>viewDidLoad</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>.viewDidLoad()
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        firebase = FirebaseInitialization(delegate: <span style=color:#66d9ef>self</span>)
+</span></span><span style=display:flex><span>        items = firebase!.getItems()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>didReceiveMemoryWarning</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>super</span>.didReceiveMemoryWarning()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// </span><span style=color:#75715e>MARK:</span><span style=color:#75715e> - Table view data source</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>numberOfSections</span>(<span style=color:#66d9ef>in</span> tableView: UITableView) -&gt; Int {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// #warning Incomplete implementation, return the number of sections</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>tableView</span>(<span style=color:#66d9ef>_</span> tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> items!.count
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>tableView</span>(<span style=color:#66d9ef>_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span style=color:#e6db74>&#34;groceryItem&#34;</span>, <span style=color:#66d9ef>for</span>: indexPath)
+</span></span><span style=display:flex><span>        cell.textLabel?.text = items![indexPath.row].name
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cell
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>tableView</span>(<span style=color:#66d9ef>_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+</span></span><span style=display:flex><span>        print(<span style=color:#66d9ef>self</span>.items?[indexPath.row])
+</span></span><span style=display:flex><span>        tableView.deselectRow(at: indexPath, animated: <span style=color:#66d9ef>true</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now we initialize our firebase class, and set the list of items. What&rsquo;s very important is that we reload our data when we get new data. With Async behavior this step is very important.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>protocol</span> <span style=color:#a6e22e>FirebaseTableDelegate</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>reloadData</span>()
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>It&rsquo;s very easy to do this with the delegate pattern.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FirebaseInitialization</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> childRef: FIRDatabaseReference!
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>var</span> items: [FirebaseItem] = []
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>let</span> delegate: FirebaseTableDelegate
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>init</span>(delegate: FirebaseTableDelegate) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>self</span>.delegate = delegate
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> ref = FIRDatabase.database().reference()
+</span></span><span style=display:flex><span>        childRef = ref.child(<span style=color:#e6db74>&#34;items&#34;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> addFunc = { (data:FIRDataSnapshot) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.items.append(GroceryItem(fromFirebaseItem: data))
+</span></span><span style=display:flex><span>            delegate.reloadData()
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> removeFunc = { (data: FIRDataSnapshot) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> index = <span style=color:#66d9ef>self</span>.items.index(<span style=color:#66d9ef>where</span>: { (item) -&gt; Bool <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>                item.id == data.value(forKey: <span style=color:#e6db74>&#34;id&#34;</span>) <span style=color:#66d9ef>as</span>! String
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.items.remove(at: index!)
+</span></span><span style=display:flex><span>            delegate.reloadData()
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        childRef.observe(FIRDataEventType.childAdded, with: addFunc)
+</span></span><span style=display:flex><span>        childRef.observe(FIRDataEventType.childRemoved, with: removeFunc)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getItems</span>() -&gt; [FirebaseItem] {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> items
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>and finally:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>extension</span> <span style=color:#a6e22e>GroceryListTableViewController</span>: FirebaseTableDelegate {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>reloadData</span>() {
+</span></span><span style=display:flex><span>        items = firebase?.getItems()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>self</span>.tableView.reloadData()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now automatically, every time an item is added or removed from our database the tableview will automatically reload. For a small application like this, this pattern is perfect; very extendable and very easy to understand. Now let&rsquo;s see how easy it is to add a new item.</p><p>First, in our table view controller</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>    <span style=color:#66d9ef>@IBAction</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>addItem</span>(<span style=color:#66d9ef>_</span> sender: Any) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> alert = UIAlertController(title: <span style=color:#e6db74>&#34;Add Item&#34;</span>, message: <span style=color:#e6db74>&#34;Add an item to grocery list&#34;</span>, preferredStyle: .alert)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        alert.addTextField { (textField) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            textField.placeholder = <span style=color:#e6db74>&#34;Name&#34;</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        alert.addTextField { (textField) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            textField.placeholder = <span style=color:#e6db74>&#34;Price&#34;</span>
+</span></span><span style=display:flex><span>            textField.keyboardType = .decimalPad
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        alert.addAction(UIAlertAction(title: <span style=color:#e6db74>&#34;Add&#34;</span>, style: .<span style=color:#66d9ef>default</span>, handler: { [<span style=color:#66d9ef>weak</span> alert] (<span style=color:#66d9ef>_</span>) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> nameTextField = alert?.textFields![<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> priceTextField = alert?.textFields![<span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> price = Double((priceTextField?.text)<span style=color:#f92672>!</span>)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> uuid = UUID().uuidString
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> item = GroceryItem(id: uuid, name: (nameTextField?.text)<span style=color:#f92672>!</span>, price: price!)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.firebase?.addItem(item: item)
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>        }))
+</span></span><span style=display:flex><span>        alert.addAction(UIAlertAction(title: <span style=color:#e6db74>&#34;Cancel&#34;</span>, style: .cancel, handler: { (action) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;cancel&#34;</span>)
+</span></span><span style=display:flex><span>        }))
+</span></span><span style=display:flex><span>        present(alert, animated: <span style=color:#66d9ef>true</span>) { 
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;done&#34;</span>)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div><p>And lastly in FirebaseInitialization</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>    <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>addItem</span>(item: FirebaseItem) {
+</span></span><span style=display:flex><span>        childRef.child(item.id).setValue(item.toJSON())
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div><p>As you can see it&rsquo;s incredibely easy to implement this if you wanted to create a new class. What&rsquo;s also useful is that there are no strong ties to firebase from the table view. Please let me know what you think on reddit!</p><p>UPDATE</p><p>code to remove items:</p><p>In our FirebaseInitialization class</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>let</span> removeFunc = { (data: FIRDataSnapshot) <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> index = <span style=color:#66d9ef>self</span>.items.index(<span style=color:#66d9ef>where</span>: { (item) -&gt; Bool <span style=color:#66d9ef>in</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>let</span> properties = data.value <span style=color:#66d9ef>as</span>? NSDictionary
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> item.id == properties!.value(forKey: <span style=color:#e6db74>&#34;id&#34;</span>) <span style=color:#66d9ef>as</span>! String
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>self</span>.items.remove(at: index!)
+</span></span><span style=display:flex><span>            delegate.reloadData()
+</span></span><span style=display:flex><span>        }
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>removeItem</span>(id: String) {
+</span></span><span style=display:flex><span>    childRef.child(id).removeValue()
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>And in our UITableViewController</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>override</span> <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>tableView</span>(<span style=color:#66d9ef>_</span> tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> editingStyle == .delete {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> groceryItem = items?[indexPath.row]
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>self</span>.firebase?.removeItem(id: (groceryItem?.id)<span style=color:#f92672>!</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>As you can see adding functionality is quite simple.</p><p>UPDATE 2:</p><p>Models within models</p><p>If you have json within json, as long as that piece of data implements the <code>FirebaseItem</code> protocol, all you have to do is call the <code>getJSON()</code> method. Because of the type system, this simple approach allows us to do whatever we want. What&rsquo;s also great about this is that if you have a sub model that then has another object within it, all you have to do is call that item&rsquo;s <code>getJSON()</code> method within that sub-model&rsquo;s method.</p><p><a href=https://github.com/jaronoff97/FirebasePlayground/tree/data_modeling>github</a></p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/swift>swift</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/code>code</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/firebase>firebase</a></footer></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>

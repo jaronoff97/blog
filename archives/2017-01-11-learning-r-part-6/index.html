@@ -1,0 +1,147 @@
+<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Learning R Part 6 - Blog</title><meta name=theme-color><meta name=description content="Learning R Part 6 Part 6. Oh god. This language. Let it be over. Well this is working with enviroments which will be useful for my data science classes. I&rsquo;m gonna dive right in.
+> library(pryr) > parenvs(all = True) Error: object 'True' not found > parenvs(all = T) label name 1 <environment: R_GlobalEnv> &#34;&#34; 2 <environment: package:pryr> &#34;package:pryr&#34; 3 <environment: package:stats> &#34;package:stats&#34; 4 <environment: package:graphics> &#34;package:graphics&#34; 5 <environment: package:grDevices> &#34;package:grDevices&#34; 6 <environment: package:utils> &#34;package:utils&#34; 7 <environment: package:datasets> &#34;package:datasets&#34; 8 <environment: package:methods> &#34;package:methods&#34; 9 <environment: 0x7f9a81097d78> &#34;Autoloads&#34; 10 <environment: base> &#34;&#34; 11 <environment: R_EmptyEnv> &#34;&#34; > as."><meta name=author content><link rel="preload stylesheet" as=style href=https://jaronoff97.github.io/main.min.css><link rel=preload as=image href=https://jaronoff97.github.io/theme.png><link rel=preload as=image href="https://www.gravatar.com/avatar/1ffba55621ec04ac018b48dbb1ea6d69?s=160&d=identicon"><link rel=preload as=image href=https://jaronoff97.github.io/twitter.svg><link rel=preload as=image href=https://jaronoff97.github.io/github.svg><link rel=preload as=image href=https://jaronoff97.github.io/instagram.svg><link rel=preload as=image href=https://jaronoff97.github.io/rss.svg><link rel=preload as=image href=https://jaronoff97.github.io/linkedin.svg><link rel=icon href=https://jaronoff97.github.io/favicon.ico><link rel=apple-touch-icon href=https://jaronoff97.github.io/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Learning R Part 6"><meta property="og:description" content="What is this language"><meta property="og:type" content="article"><meta property="og:url" content="https://jaronoff97.github.io/archives/2017-01-11-learning-r-part-6/"><meta property="article:section" content="archives"><meta property="article:published_time" content="2017-01-11T00:00:00+00:00"><meta property="article:modified_time" content="2017-01-11T00:00:00+00:00"><meta itemprop=name content="Learning R Part 6"><meta itemprop=description content="What is this language"><meta itemprop=datePublished content="2017-01-11T00:00:00+00:00"><meta itemprop=dateModified content="2017-01-11T00:00:00+00:00"><meta itemprop=wordCount content="490"><meta itemprop=keywords content="R,code,sixth,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Learning R Part 6"><meta name=twitter:description content="What is this language"></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://jaronoff97.github.io>Blog</a>
+<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)"),darkVal=localStorage.getItem("dark");setDark(darkVal?darkVal==="true":darkScheme.matches),darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6"><a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/about/>About</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/archives/>Archives</a>
+<a class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal" href=/resume/>Resume</a></nav><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/get_sw1fty target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/jaronoff97 target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./instagram.svg) href=https://instagram.com/ehicouldeat target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://jaronoff97.github.io/index.xml target=_blank></a>
+<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./linkedin.svg) href=https://linkedin.com/jaronoff97 target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Learning R Part 6</h1><div class="text-sm opacity-60"><time>Jan 11, 2017</time></div></header><section><h3 id=learning-r-part-6>Learning R Part 6</h3><p>Part 6. Oh god. This language. Let it be over. Well this is working with enviroments which will be useful for my data science classes. I&rsquo;m gonna dive right in.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>library</span>(pryr)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>parenvs</span>(all <span style=color:#f92672>=</span> True)
+</span></span><span style=display:flex><span>Error<span style=color:#f92672>:</span> object <span style=color:#e6db74>&#39;True&#39;</span> not found
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>parenvs</span>(all <span style=color:#f92672>=</span> T)
+</span></span><span style=display:flex><span>   label                            name               
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>       <span style=color:#e6db74>&#34;&#34;</span>                 
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>pryr<span style=color:#f92672>&gt;</span>      <span style=color:#e6db74>&#34;package:pryr&#34;</span>     
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>stats<span style=color:#f92672>&gt;</span>     <span style=color:#e6db74>&#34;package:stats&#34;</span>    
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>graphics<span style=color:#f92672>&gt;</span>  <span style=color:#e6db74>&#34;package:graphics&#34;</span> 
+</span></span><span style=display:flex><span><span style=color:#ae81ff>5</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>grDevices<span style=color:#f92672>&gt;</span> <span style=color:#e6db74>&#34;package:grDevices&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>6</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>utils<span style=color:#f92672>&gt;</span>     <span style=color:#e6db74>&#34;package:utils&#34;</span>    
+</span></span><span style=display:flex><span><span style=color:#ae81ff>7</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>datasets<span style=color:#f92672>&gt;</span>  <span style=color:#e6db74>&#34;package:datasets&#34;</span> 
+</span></span><span style=display:flex><span><span style=color:#ae81ff>8</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>methods<span style=color:#f92672>&gt;</span>   <span style=color:#e6db74>&#34;package:methods&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#ae81ff>9</span>  <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a81097d78</span><span style=color:#f92672>&gt;</span>    <span style=color:#e6db74>&#34;Autoloads&#34;</span>        
+</span></span><span style=display:flex><span><span style=color:#ae81ff>10</span> <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> base<span style=color:#f92672>&gt;</span>              <span style=color:#e6db74>&#34;&#34;</span>                 
+</span></span><span style=display:flex><span><span style=color:#ae81ff>11</span> <span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_EmptyEnv<span style=color:#f92672>&gt;</span>        <span style=color:#e6db74>&#34;&#34;</span>                 
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>as.environment</span>(<span style=color:#e6db74>&#34;package:stats&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>stats<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>attr</span>(,<span style=color:#e6db74>&#34;name&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;package:stats&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>attr</span>(,<span style=color:#e6db74>&#34;path&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;/usr/local/Cellar/r/3.3.2/R.framework/Versions/3.3/Resources/library/stats&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>globalenv</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>baseenv</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> base<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>emptyenv</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_EmptyEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>parent.env</span>(<span style=color:#a6e22e>emptyenv</span>())
+</span></span><span style=display:flex><span>Error in <span style=color:#a6e22e>parent.env</span>(<span style=color:#a6e22e>emptyenv</span>()) <span style=color:#f92672>:</span> the empty environment has no parent
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>parent.env</span>(<span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> package<span style=color:#f92672>:</span>pryr<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>attr</span>(,<span style=color:#e6db74>&#34;name&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;package:pryr&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>attr</span>(,<span style=color:#e6db74>&#34;path&#34;</span>)
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;/usr/local/lib/R/3.3/site-library/pryr&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>ls</span>(<span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span><span style=color:#a6e22e>character</span>(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>ls</span>(<span style=color:#a6e22e>baseenv</span>())
+</span></span><span style=display:flex><span>(A BUNCH O THINGS)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>environment</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>Okay so basically all these different environments are what variables we have access to. The next part is about adding variables to different enviroments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>assign</span>(<span style=color:#e6db74>&#34;new&#34;</span>, <span style=color:#e6db74>&#34;Hello Global&#34;</span>, envir <span style=color:#f92672>=</span> <span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>globalenv</span>()<span style=color:#f92672>$</span>new
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;Hello Global&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>globalenv</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>ls</span>(<span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span>[1] <span style=color:#e6db74>&#34;new&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> show_env <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>function</span>(){
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>list</span>(ran.in <span style=color:#f92672>=</span> <span style=color:#a6e22e>environment</span>(),
+</span></span><span style=display:flex><span>	parent <span style=color:#f92672>=</span> <span style=color:#a6e22e>parent.env</span>(<span style=color:#a6e22e>environment</span>()),
+</span></span><span style=display:flex><span>	objects <span style=color:#f92672>=</span> <span style=color:#a6e22e>ls.str</span>(<span style=color:#a6e22e>environment</span>()))
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>show_env</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>ran.in
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a871564d8</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>parent
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>objects
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>show_env</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>ran.in
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a871611c8</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>parent
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>objects
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>So we can add variables to an environment, which is kinda cool. What&rsquo;s really annoying is that the enviromnment changes every time the function is called. It looks like it&rsquo;s gonna get more annoying.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=display:flex><span><span style=color:#f92672>&gt;</span>  show_env <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>function</span>(x <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;something&#34;</span>){
+</span></span><span style=display:flex><span>  	<span style=color:#a6e22e>list</span>(ran.in <span style=color:#f92672>=</span> <span style=color:#a6e22e>environment</span>(),
+</span></span><span style=display:flex><span>  	parent <span style=color:#f92672>=</span> <span style=color:#a6e22e>parent.env</span>(<span style=color:#a6e22e>environment</span>()),
+</span></span><span style=display:flex><span>  	objects <span style=color:#f92672>=</span> <span style=color:#a6e22e>ls.str</span>(<span style=color:#a6e22e>environment</span>()))
+</span></span><span style=display:flex><span>  	}
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>show_env</span>()
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>ran.in
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a8722adb8</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>parent
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>objects
+</span></span><span style=display:flex><span>x <span style=color:#f92672>:</span>  chr <span style=color:#e6db74>&#34;something&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>show_env</span>(x<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;something else&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>ran.in
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a86047778</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>parent
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> R_GlobalEnv<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span>objects
+</span></span><span style=display:flex><span>x <span style=color:#f92672>:</span>  chr <span style=color:#e6db74>&#34;something else&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> setup <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>function</span>(deck) {
+</span></span><span style=display:flex><span>  	DECK <span style=color:#f92672>&lt;-</span> deck
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  	DEAL <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>function</span>() {
+</span></span><span style=display:flex><span>  		card <span style=color:#f92672>&lt;-</span> deck[1, ]
+</span></span><span style=display:flex><span>  		<span style=color:#a6e22e>assign</span>(<span style=color:#e6db74>&#34;deck&#34;</span>, deck[<span style=color:#ae81ff>-1</span>. ], envir<span style=color:#f92672>=</span><span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span>  		card
+</span></span><span style=display:flex><span>  	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  	SHUFFLE <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>function</span>() {
+</span></span><span style=display:flex><span>  		random <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>sample</span>(<span style=color:#ae81ff>1</span><span style=color:#f92672>:</span><span style=color:#ae81ff>52</span>, size<span style=color:#f92672>=</span><span style=color:#ae81ff>52</span>)
+</span></span><span style=display:flex><span>  		<span style=color:#a6e22e>assign</span>(<span style=color:#e6db74>&#34;deck&#34;</span>, DECK[random, ], envir<span style=color:#f92672>=</span> <span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span>  	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  	<span style=color:#a6e22e>list</span>(deal <span style=color:#f92672>=</span> DEAL, shuffle <span style=color:#f92672>=</span> SHUFFLE)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> deck <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>read.table</span>(<span style=color:#e6db74>&#34;/Users/jea/Documents/Code/R-lang/deck.csv&#34;</span>, header<span style=color:#f92672>=</span><span style=color:#66d9ef>TRUE</span>, sep <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;,&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> cards <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>setup</span>(deck)
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> deal <span style=color:#f92672>&lt;-</span> cards<span style=color:#f92672>$</span>deal
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> shuffle <span style=color:#f92672>&lt;-</span> cards<span style=color:#f92672>$</span>shuffle
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> deal
+</span></span><span style=display:flex><span><span style=color:#a6e22e>function</span>() {
+</span></span><span style=display:flex><span>card <span style=color:#f92672>&lt;-</span> deck[1, ]
+</span></span><span style=display:flex><span><span style=color:#a6e22e>assign</span>(<span style=color:#e6db74>&#34;deck&#34;</span>, deck[<span style=color:#ae81ff>-1</span>. ], envir<span style=color:#f92672>=</span><span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span>card
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a813e0698</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> shuffle
+</span></span><span style=display:flex><span><span style=color:#a6e22e>function</span>() {
+</span></span><span style=display:flex><span>random <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>sample</span>(<span style=color:#ae81ff>1</span><span style=color:#f92672>:</span><span style=color:#ae81ff>52</span>, size<span style=color:#f92672>=</span><span style=color:#ae81ff>52</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>assign</span>(<span style=color:#e6db74>&#34;deck&#34;</span>, DECK[random, ], envir<span style=color:#f92672>=</span> <span style=color:#a6e22e>globalenv</span>())
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;</span>environment<span style=color:#f92672>:</span> <span style=color:#ae81ff>0x7f9a813e0698</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;</span> 
+</span></span></code></pre></div><p>This is some cool environment stuff. An environment captures it&rsquo;s parameters and everything above it. R also has closures which can capture their environment as well. From their we can assign things from inside the environment to objects outside, and when we use a function like <strong>shuffle</strong>, it will affect <strong>deal</strong>. Well that wraps up this chapter. Next part is a new project about slot machines. I&rsquo;m glad the language has closures, even though a lot of parts about enviroments are stupid (namely constantly changing environments).</p></section><footer class="mt-12 flex flex-wrap"><a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/r>R</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/code>code</a>
+<a class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]" href=https://jaronoff97.github.io/tags/sixth>sixth</a></footer></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
+<a class=link href=https://jaronoff97.github.io>Blog</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>
