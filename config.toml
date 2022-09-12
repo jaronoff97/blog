@@ -1,0 +1,46 @@
+baseURL = 'https://jaronoff97.github.io'
+theme = "paper"
+languageCode = 'en-us'
+title = "Blog"
+
+[params]
+  # color style
+  color = 'linen'                 # linen, wheat, gray, light
+
+  # header social icons
+  twitter = 'get_sw1fty'
+  github = 'jaronoff97'
+  instagram = 'ehicouldeat'
+  linkedin = 'jaronoff97'
+  rss = true
+
+  # home page profile
+  avatar = 'jaronoff97'
+  name = 'Jacob Aronoff'
+  bio = "Current Tech Lead for the Telemetry Pipeline team at Lightstep focused on OpenTelemetry and Kubernetes integration. Outside of work, I love to cook, bake, and make cocktails."
+
+  # misc
+  disableHLJS = true
+  monoDarkIcon = true
+
+  mainSections = "posts"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "archives"
+    name = "Archives"
+    url = "/archives/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "resume"
+    name = "Resume"
+    url = "/resume/"
+    weight = 10
