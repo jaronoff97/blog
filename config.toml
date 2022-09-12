@@ -5,7 +5,7 @@ title = "Blog"
 
 [params]
   # color style
-  color = 'linen'                 # linen, wheat, gray, light
+  color = 'linen' # linen, wheat, gray, light
 
   # header social icons
   twitter = 'get_sw1fty'
