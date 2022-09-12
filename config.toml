@@ -38,3 +38,9 @@ title = "Blog"
     name = "Archives"
     url = "/archives/"
     weight = 10
+
+  [[menu.main]]
+    identifier = "resume"
+    name = "Resume"
+    url = "/resume/"
+    weight = 10
