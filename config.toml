@@ -15,7 +15,7 @@ title = "Blog"
   rss = true
 
   # home page profile
-  avatar = 'jaronoff97'
+  avatar = 'jacobaronoff45@gmail.com'
   name = 'Jacob Aronoff'
   bio = "Current Tech Lead for the Telemetry Pipeline team at Lightstep focused on OpenTelemetry and Kubernetes integration. Outside of work, I love to cook, bake, and make cocktails."
 
