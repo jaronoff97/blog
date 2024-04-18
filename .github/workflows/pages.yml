@@ -43,6 +43,8 @@ jobs:
         with:
           static_site_generator: next
 
+      - name: Install dependencies
+        run: yarn install --immutable
       - name: Build with Next.js 🏗️
         run: yarn build
 
