@@ -1,0 +1,74 @@
+---
+title: How to launch a BlueSky PDS on AWS
+date: 2024-04-25
+description: 'Launching a bsky PDS'
+tags: [update, pds]
+draft: false
+project: tails
+---
+
+Like me, you may have been very excited and eager to run your own bluesky PDS.
+
+Doing it right now is a bit of a manual process, but not all too terrible!
+
+I wrote a small bit of terraform that you can use too :)
+
+## Instructions
+### Clone the repo
+Clone [this repo](https://github.com/jaronoff97/pds-tf).
+
+> You can learn more about cloning [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+### Create your variables file
+
+In terminal, clone the repo locally
+```bash
+cd pds-tf
+# generate RSA keypair if you don't have one
+ssh-keygen -t rsa -b 4096
+echo "key_pair_name=\"test\"\npublic_key=\"$(cat ~/.ssh/id_rsa.pub)\"\n" > main.auto.tfvars
+
+```
+
+### Apply the code
+Assuming you've already authed to AWS...
+
+```
+terraform apply
+```
+
+### Setup the records
+
+While your instance boots, you should have a new static IP address (found in your AWS console).
+
+Be sure to update the records for your domain per the PDS docs:
+
+```
+NAME                TYPE   VALUE
+----                ----   -----
+example.com         A      <ipaddress>
+*.example.com       A      <ipaddress>
+```
+
+Once you've completed this, you may need to restart your instance.
+
+### Confirm it works
+
+After a few minutes, you should be able to curl your domain's health endpoint
+
+```bash
+curl -v https://pds.example.com/xrpc/_health
+```
+
+### SSH to run admin commands
+
+Once your PDS is up and healthy, you can SSH into your instance to run commands:
+```bash
+ssh -i ~/.ssh/id_rsa ubuntu@<ipaddress>
+sudo pdsadmin list
+```
+
+## Troubleshooting
+
+* You may find no running PDS, in this case SSH into the instance and manually run [the setup](https://github.com/bluesky-social/pds/blob/6164812e8ac3ff1079d53752ebde1dd919334182/README.md#installer-on-ubuntu-20042204-and-debian-1112)
+* PDSadmin commands 404'ing. This is a [known issue](https://github.com/bluesky-social/pds/pull/50) maybe bump this issue?
